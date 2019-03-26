@@ -11,11 +11,13 @@
 
 <style lang="scss">
 .header-container {
+  margin-bottom: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-flow: column nowrap;
-  background: #eee;
+  background: #efefef;
+  filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.3));
 
   .title {
     font-family: 'Quicksand', 'Source Sans Pro', -apple-system,
@@ -23,10 +25,11 @@
       sans-serif;
     color: #35495e;
     letter-spacing: 1px;
+    filter: drop-shadow(4px 3px 0px rgba(0, 0, 100, 0.2));
   }
 
   .subtitle {
-    font-size: 18px;
+    font-size: 14px;
     color: #526488;
   }
 }
