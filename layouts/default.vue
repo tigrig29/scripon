@@ -1,8 +1,22 @@
 <template>
-  <div>
+  <artilce>
+    <HeaderArea />
+    <SettingArea />
     <nuxt />
-  </div>
+  </artilce>
 </template>
+
+<script>
+import HeaderArea from '@/components/HeaderArea.vue'
+import SettingArea from '@/components/SettingArea.vue'
+
+export default {
+  components: {
+    HeaderArea,
+    SettingArea
+  }
+}
+</script>
 
 <style>
 html {
