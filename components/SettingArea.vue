@@ -2,96 +2,52 @@
   <aside>
     <div class="settings-container">
       <h2 class="settings-title">設定</h2>
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <label class="input-group-text" for="inputGroupSelect01"
-            >コメント削除</label
-          >
-        </div>
-        <select id="inputGroupSelect01" class="custom-select">
-          <option :selected="settings.deleteComments" value="true">する</option>
-          <option :selected="!settings.deleteComments" value="false"
-            >しない</option
-          >
-        </select>
-      </div>
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <label class="input-group-text" for="inputGroupSelect01"
-            >シナリオ先頭に追加</label
-          >
-        </div>
-        <select id="inputGroupSelect01" class="custom-select">
-          <option :selected="settings.deleteComments" value="true">する</option>
-          <option :selected="!settings.deleteComments" value="false"
-            >しない</option
-          >
-        </select>
-      </div>
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <label class="input-group-text" for="inputGroupSelect01"
-            >シナリオ末尾に追加</label
-          >
-        </div>
-        <select id="inputGroupSelect01" class="custom-select">
-          <option :selected="settings.deleteComments" value="true">する</option>
-          <option :selected="!settings.deleteComments" value="false"
-            >しない</option
-          >
-        </select>
-      </div>
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <label class="input-group-text" for="inputGroupSelect01"
-            >行頭に追加</label
-          >
-        </div>
-        <select id="inputGroupSelect01" class="custom-select">
-          <option :selected="settings.deleteComments" value="true">する</option>
-          <option :selected="!settings.deleteComments" value="false"
-            >しない</option
-          >
-        </select>
-      </div>
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <label class="input-group-text" for="inputGroupSelect01"
-            >行末に追加</label
-          >
-        </div>
-        <select id="inputGroupSelect01" class="custom-select">
-          <option :selected="settings.deleteComments" value="true">する</option>
-          <option :selected="!settings.deleteComments" value="false"
-            >しない</option
-          >
-        </select>
-      </div>
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <label class="input-group-text" for="inputGroupSelect01"
-            >詳細な置換</label
-          >
-        </div>
-        <select id="inputGroupSelect01" class="custom-select">
-          <option :selected="settings.deleteComments" value="true">する</option>
-          <option :selected="!settings.deleteComments" value="false"
-            >しない</option
-          >
-        </select>
+      <div v-for="set in settings" :key="set.id" class="setting-columns">
+        <Selectbox
+          :selectbox="getSelectBoxElements(set)"
+          :onchanged="test(set)"
+        />
+        <p>{{ set.enabled }}</p>
       </div>
     </div>
   </aside>
 </template>
 
 <script>
+import Selectbox from '@/components/Selectbox.vue'
+import { mapState, mapMutations } from 'vuex'
+
 export default {
+  components: {
+    Selectbox
+  },
   computed: {
-    settings() {
+    ...mapState('settings', { settings: 'list' })
+  },
+  methods: {
+    getSelectBoxElements(setting) {
       return {
-        deleteComments: true
+        id: setting.id,
+        title: setting.title,
+        value: setting.enabled,
+        options: [
+          {
+            text: 'する',
+            value: true
+          },
+          {
+            text: 'しない',
+            value: false
+          }
+        ]
       }
-    }
+    },
+    test(setting) {
+      // 選択された値を取得することもできる
+      // const selectedValue = event.target.selectedOptions[0].value
+      this.changeEnabled(setting)
+    },
+    ...mapMutations({ changeEnabled: 'settings/changeEnabled' })
   }
 }
 </script>
@@ -103,12 +59,6 @@ export default {
   .settings-title {
     margin: 10px auto;
     text-align: center;
-  }
-  .settings-form-container {
-    padding: 5px;
-    .settings-subtitle {
-      font-size: 16px;
-    }
   }
 }
 </style>
