@@ -1,9 +1,11 @@
 <template>
   <div class="input-group mb-3">
     <div class="input-group-prepend">
-      <label class="input-group-text" :for="selectbox.id">{{
-        selectbox.title
-      }}</label>
+      <label
+        :class="`input-group-text ${selectbox.value ? 'enabled' : ''}`"
+        :for="selectbox.id"
+        >{{ selectbox.title }}</label
+      >
     </div>
     <select
       :id="selectbox.id"
@@ -36,4 +38,8 @@ export default {
 }
 </script>
 
-<style lang="scss"></style>
+<style lang="scss" scoped>
+.input-group-text.enabled {
+  background-color: #d6f4ff; //#a1f8c3;
+}
+</style>
