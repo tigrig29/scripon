@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import Selectbox from '@/components/Selectbox.vue'
+import Selectbox from '@/components/setting-components/Selectbox.vue'
 import LineFormsContainer from '@/components/setting-components/LineFormsContainer.vue'
 import { mapState, mapMutations, mapGetters } from 'vuex'
 
