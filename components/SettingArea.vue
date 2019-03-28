@@ -3,11 +3,7 @@
     <div class="settings-container">
       <h2 class="settings-title">設定</h2>
       <div v-for="set in settings" :key="set.id" class="setting-columns">
-        <Selectbox
-          :selectbox="getSelectBoxElements(set)"
-          :onchanged="test(set)"
-        />
-        <p>{{ set.enabled }}</p>
+        <Selectbox :selectbox="getSelectBoxElements(set)" :onchanged="test" />
       </div>
     </div>
   </aside>
@@ -15,14 +11,15 @@
 
 <script>
 import Selectbox from '@/components/Selectbox.vue'
-import { mapState, mapMutations } from 'vuex'
+import { mapState, mapMutations, mapGetters } from 'vuex'
 
 export default {
   components: {
     Selectbox
   },
   computed: {
-    ...mapState('settings', { settings: 'list' })
+    ...mapState('settings', { settings: 'list' }),
+    ...mapGetters({ getSettingById: 'settings/getSettingById' })
   },
   methods: {
     getSelectBoxElements(setting) {
@@ -42,9 +39,9 @@ export default {
         ]
       }
     },
-    test(setting) {
-      // 選択された値を取得することもできる
-      // const selectedValue = event.target.selectedOptions[0].value
+    test(event) {
+      const targetId = event.target.id
+      const setting = this.getSettingById(targetId)
       this.changeEnabled(setting)
     },
     ...mapMutations({ changeEnabled: 'settings/changeEnabled' })
