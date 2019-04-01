@@ -14,7 +14,7 @@ export const state = () => ({
         options: {},
         text: [
           {
-            id: 1,
+            id: 'addToFirst1',
             value: '',
             enabled: true
           }
@@ -30,12 +30,12 @@ export const state = () => ({
         options: {},
         text: [
           {
-            id: 1,
+            id: 'addToLast1',
             value: '[l][cm]',
             enabled: true
           },
           {
-            id: 2,
+            id: 'addToLast2',
             value: '[p]',
             enabled: true
           }
@@ -51,7 +51,7 @@ export const state = () => ({
         options: {},
         text: [
           {
-            id: 1,
+            id: 'addLineHead1',
             value: '',
             enabled: true
           }
@@ -67,7 +67,7 @@ export const state = () => ({
         options: {},
         text: [
           {
-            id: 1,
+            id: 'addLineEnd1',
             value: '',
             enabled: true
           }
@@ -83,7 +83,7 @@ export const state = () => ({
         options: {},
         text: [
           {
-            id: 1,
+            id: 'detailsReplace1',
             before: '',
             after: '',
             enabled: true

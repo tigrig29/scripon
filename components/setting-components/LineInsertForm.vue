@@ -3,11 +3,15 @@
     <div class="col-md-0.5">
       <div class="custom-control custom-switch">
         <input
-          id="customSwitch1"
+          :id="`customSwitch${line.id}`"
           type="checkbox"
           class="custom-control-input"
+          :checked="line.enabled"
         />
-        <label class="custom-control-label" for="customSwitch1"></label>
+        <label
+          class="custom-control-label"
+          :for="`customSwitch${line.id}`"
+        ></label>
       </div>
     </div>
     <div class="col-md-10">
