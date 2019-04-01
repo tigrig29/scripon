@@ -39,12 +39,13 @@ export default {
 
 <style lang="scss">
 .setting-lines-container {
-  padding-left: 1rem;
   margin-left: 1rem;
-  border-left: 5px solid #85a9de;
 
   .form-row {
     margin-bottom: 1rem;
+  }
+  .custom-switch {
+    margin-top: 0.4rem;
   }
 }
 </style>
