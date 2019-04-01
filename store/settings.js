@@ -69,7 +69,7 @@ export const state = () => ({
           {
             id: 'addLineEnd1',
             value: '',
-            enabled: true
+            enabled: false
           }
         ]
       }

@@ -3,30 +3,20 @@
     v-if="setting.enabled && setting.lines !== undefined"
     class="setting-lines-container"
   >
-    <template v-if="setting.lines.type === 'insert'">
-      <LineInsertForm
-        v-for="line in setting.lines.text"
-        :key="line.id"
-        :line="line"
-      />
-    </template>
-    <template v-if="setting.lines.type === 'replace'">
-      <LineReplaceForm
-        v-for="line in setting.lines.text"
-        :key="line.id"
-        :line="line"
-      />
-    </template>
+    <LineForm
+      v-for="line in setting.lines.text"
+      :key="line.id"
+      :line="line"
+      :form-type="setting.lines.type"
+    />
   </div>
 </template>
 <script>
-import LineInsertForm from '@/components/setting-components/LineInsertForm.vue'
-import LineReplaceForm from '@/components/setting-components/LineReplaceForm.vue'
+import LineForm from '@/components/setting-components/LineForm.vue'
 
 export default {
   components: {
-    LineInsertForm,
-    LineReplaceForm
+    LineForm
   },
   props: {
     setting: {
