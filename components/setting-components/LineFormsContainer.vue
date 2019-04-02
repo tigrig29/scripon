@@ -9,6 +9,7 @@
       :line="line"
       :form-type="setting.lines.type"
     />
+    <button type="button" class="btn btn-primary add-new-line">追加</button>
   </div>
 </template>
 <script>
@@ -36,6 +37,17 @@ export default {
   }
   .custom-switch {
     margin-top: 0.4rem;
+  }
+
+  .add-new-line {
+    width: 100%;
+    padding: 0.3rem 0.6rem;
+    margin-bottom: 1rem;
+    background: #fff;
+    color: #007bff;
+    &:hover {
+      background: #dfeeff;
+    }
   }
 }
 </style>

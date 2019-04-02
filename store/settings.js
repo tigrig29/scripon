@@ -12,13 +12,7 @@ export const state = () => ({
       lines: {
         type: 'insert',
         options: {},
-        text: [
-          {
-            id: 'addToFirst1',
-            value: '',
-            enabled: true
-          }
-        ]
+        text: []
       }
     },
     {

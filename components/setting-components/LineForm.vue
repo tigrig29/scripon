@@ -1,7 +1,7 @@
 <template>
   <div class="form-row">
-    <!-- スイッチ -->
-    <div class="col-md-0.5">
+    <!-- スイッチ（共通） -->
+    <div :class="formType === 'insert' ? 'col-md-1' : 'col-md-0.5'">
       <div class="custom-control custom-switch">
         <input
           :id="`customSwitch${line.id}`"
