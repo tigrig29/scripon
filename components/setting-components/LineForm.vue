@@ -23,6 +23,7 @@
           type="text"
           placeholder="文字、スクリプト等を入力して下さい"
           :value="line.value"
+          @input="/*updateLine($event.target.value)*/"
         />
       </div>
       <div class="col-md-1">

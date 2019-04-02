@@ -12,7 +12,12 @@ export const state = () => ({
       lines: {
         type: 'insert',
         options: {},
-        text: []
+        text: [],
+        template: {
+          id: '',
+          value: '',
+          enabled: true
+        }
       }
     },
     {
@@ -24,16 +29,21 @@ export const state = () => ({
         options: {},
         text: [
           {
-            id: 'addToLast1',
+            id: 'addToLast-1',
             value: '[l][cm]',
             enabled: true
           },
           {
-            id: 'addToLast2',
+            id: 'addToLast-2',
             value: '[p]',
             enabled: true
           }
-        ]
+        ],
+        template: {
+          id: '',
+          value: '',
+          enabled: true
+        }
       }
     },
     {
@@ -45,11 +55,16 @@ export const state = () => ({
         options: {},
         text: [
           {
-            id: 'addLineHead1',
+            id: 'addLineHead-1',
             value: '',
             enabled: true
           }
-        ]
+        ],
+        template: {
+          id: '',
+          value: '',
+          enabled: true
+        }
       }
     },
     {
@@ -61,11 +76,16 @@ export const state = () => ({
         options: {},
         text: [
           {
-            id: 'addLineEnd1',
+            id: 'addLineEnd-1',
             value: '',
             enabled: false
           }
-        ]
+        ],
+        template: {
+          id: '',
+          value: '',
+          enabled: true
+        }
       }
     },
     {
@@ -77,18 +97,35 @@ export const state = () => ({
         options: {},
         text: [
           {
-            id: 'detailsReplace1',
+            id: 'detailsReplace-1',
             before: '',
             after: '',
             enabled: true
           }
-        ]
+        ],
+        template: {
+          id: '',
+          before: '',
+          after: '',
+          enabled: true
+        }
       }
     }
   ]
 })
 
 export const mutations = {
+  addLine(state, setting) {
+    const line = Object.assign({}, setting.lines.template)
+    line.id = setting.id + setting.lines.text.length
+    line.value = 'hogehgoe'
+    setting.lines.text.push(line)
+  },
+  updateLine(state, id, value) {
+    const setting = state.list.find(setting => setting.id === id.split('-')[0])
+    const line = setting.lines.text.find(line => line.id === id)
+    line.value = value
+  },
   changeEnabled(state, setting) {
     setting.enabled = !setting.enabled
   }
