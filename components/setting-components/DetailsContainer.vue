@@ -1,26 +1,24 @@
 <template>
-  <div
-    v-if="setting.enabled && setting.lines !== undefined"
-    class="setting-lines-container"
-  >
-    <LineForm
-      v-for="line in setting.lines.text"
+  <div class="setting-lines-container">
+    <!-- <LineForm
+      v-for="line in detail.lines"
       :key="line.id"
       :line="line"
-      :form-type="setting.lines.type"
+      :form-type="detail.type"
     />
-    <button type="button" class="btn btn-primary add-new-line">追加</button>
+    <button type="button" class="btn btn-primary add-new-line">追加</button> -->
+    <p>{{ detail.type }}</p>
   </div>
 </template>
 <script>
-import LineForm from '@/components/setting-components/LineForm.vue'
+// import LineForm from '@/components/setting-components/LineForm.vue'
 
 export default {
   components: {
-    LineForm
+    // LineForm
   },
   props: {
-    setting: {
+    detail: {
       type: Object,
       required: true
     }

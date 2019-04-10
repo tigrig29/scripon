@@ -1,54 +1,39 @@
 export const state = () => ({
-  insertToFirst: {
-    type: 'insert',
-    options: {},
-    lines: [],
-    template: {
+  template: {
+    insert: {
       id: '',
       value: '',
       enabled: true
-    }
-  },
-  insertToLast: {
-    type: 'insert',
-    options: {},
-    lines: [],
-    template: {
-      id: '',
-      value: '',
-      enabled: true
-    }
-  },
-  insertLineHead: {
-    type: 'insert',
-    options: {},
-    lines: [],
-    template: {
-      id: '',
-      value: '',
-      enabled: true
-    }
-  },
-  insertLineEnd: {
-    type: 'insert',
-    options: {},
-    lines: [],
-    template: {
-      id: '',
-      value: '',
-      enabled: true
-    }
-  },
-  detailsReplace: {
-    type: 'replace',
-    options: {},
-    lines: [],
-    template: {
+    },
+    replace: {
       id: '',
       before: '',
       after: '',
       enabled: true
     }
+  },
+  deleteComments: {
+    type: 'none'
+  },
+  insertToFirst: {
+    type: 'insert',
+    lines: []
+  },
+  insertToLast: {
+    type: 'insert',
+    lines: []
+  },
+  insertLineHead: {
+    type: 'insert',
+    lines: []
+  },
+  insertLineEnd: {
+    type: 'insert',
+    lines: []
+  },
+  detailsReplace: {
+    type: 'replace',
+    lines: []
   }
 })
 
