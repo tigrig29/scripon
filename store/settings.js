@@ -6,8 +6,8 @@ export const state = () => ({
       enabled: false
     },
     {
-      id: 'addToFirst',
-      title: 'シナリオ先頭行に追加',
+      id: 'insertToFirst',
+      title: 'シナリオ先頭行に挿入',
       enabled: false,
       lines: {
         type: 'insert',
@@ -21,20 +21,20 @@ export const state = () => ({
       }
     },
     {
-      id: 'addToLast',
-      title: 'シナリオ末尾行に追加',
+      id: 'insertToLast',
+      title: 'シナリオ末尾行に挿入',
       enabled: false,
       lines: {
         type: 'insert',
         options: {},
         text: [
           {
-            id: 'addToLast-1',
+            id: 'insertToLast-1',
             value: '[l][cm]',
             enabled: true
           },
           {
-            id: 'addToLast-2',
+            id: 'insertToLast-2',
             value: '[p]',
             enabled: true
           }
@@ -47,15 +47,15 @@ export const state = () => ({
       }
     },
     {
-      id: 'addLineHead',
-      title: '行頭に追加',
+      id: 'insertLineHead',
+      title: '行頭に挿入',
       enabled: false,
       lines: {
         type: 'insert',
         options: {},
         text: [
           {
-            id: 'addLineHead-1',
+            id: 'insertLineHead-1',
             value: '',
             enabled: true
           }
@@ -68,15 +68,15 @@ export const state = () => ({
       }
     },
     {
-      id: 'addLineEnd',
-      title: '行末に追加',
+      id: 'insertLineEnd',
+      title: '行末に挿入',
       enabled: false,
       lines: {
         type: 'insert',
         options: {},
         text: [
           {
-            id: 'addLineEnd-1',
+            id: 'insertLineEnd-1',
             value: '',
             enabled: false
           }

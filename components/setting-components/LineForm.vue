@@ -15,7 +15,7 @@
         ></label>
       </div>
     </div>
-    <!-- 追加フォーム -->
+    <!-- 挿入フォーム -->
     <template v-if="formType === 'insert'">
       <div class="col-md-10">
         <input

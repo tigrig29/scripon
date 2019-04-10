@@ -1,9 +1,5 @@
 export const state = () => ({
-  deleteComments: {
-    type: 'insert',
-    options: {}
-  },
-  addToFirst: {
+  insertToFirst: {
     type: 'insert',
     options: {},
     lines: [],
@@ -13,7 +9,7 @@ export const state = () => ({
       enabled: true
     }
   },
-  addToLast: {
+  insertToLast: {
     type: 'insert',
     options: {},
     lines: [],
@@ -23,7 +19,7 @@ export const state = () => ({
       enabled: true
     }
   },
-  addLineHead: {
+  insertLineHead: {
     type: 'insert',
     options: {},
     lines: [],
@@ -33,7 +29,7 @@ export const state = () => ({
       enabled: true
     }
   },
-  addLineEnd: {
+  insertLineEnd: {
     type: 'insert',
     options: {},
     lines: [],
@@ -57,6 +53,11 @@ export const state = () => ({
 })
 
 export const mutations = {
+  /**
+   * 設定行の追加
+   * @param {Object} state $store.state
+   * @param {String} settingId 挿入/置換文字を追加する対象の設定ID
+   */
   addLine(state, settingId) {
     // 設定対象の Lines を取得
     const targetLines = state[settingId].lines
