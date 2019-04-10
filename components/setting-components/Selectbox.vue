@@ -11,7 +11,7 @@
       :id="selectbox.id"
       class="custom-select"
       :value="selectbox.value"
-      @change="onchanged"
+      @change="toggleEnabled"
     >
       <option
         v-for="option in selectbox.options"
@@ -26,13 +26,33 @@
 <script>
 export default {
   props: {
-    selectbox: {
+    setting: {
       type: Object,
       required: true
-    },
-    onchanged: {
-      type: Function,
-      required: true
+    }
+  },
+  computed: {
+    selectbox() {
+      return {
+        id: this.setting.id,
+        title: this.setting.title,
+        value: this.setting.enabled,
+        options: [
+          {
+            text: 'する',
+            value: true
+          },
+          {
+            text: 'しない',
+            value: false
+          }
+        ]
+      }
+    }
+  },
+  methods: {
+    toggleEnabled() {
+      this.$store.commit('settings/changeEnabled', this.setting)
     }
   }
 }
