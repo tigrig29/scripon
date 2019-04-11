@@ -16,21 +16,16 @@
       </div>
     </div>
     <!-- 挿入フォーム -->
-    <template v-if="formType === 'insert'">
-      <div class="col-md-10">
-        <input
-          class="form-control"
-          type="text"
-          placeholder="文字、スクリプト等を入力して下さい"
-          :value="line.value"
-          @input="
-            e => {
-              updateLine({ line, value: e.target.value })
-            }
-          "
-        />
-      </div>
-    </template>
+    <InsertForm
+      v-if="formType === 'insert'"
+      :value="line.value"
+      placeholder="文字、スクリプト等を入力して下さい"
+      :inputfunc="
+        value => {
+          updateLine({ line, value })
+        }
+      "
+    />
     <!-- 置換フォーム -->
     <template v-if="formType === 'replace'">
       <div class="col-md-5">
@@ -77,6 +72,7 @@
 </template>
 
 <script>
+import InsertForm from '@/components/setting/form/InsertForm.vue'
 import { mapMutations } from 'vuex'
 
 export default {
@@ -92,6 +88,9 @@ export default {
   },
   methods: {
     ...mapMutations('settingDetails', ['updateLine', 'deleteLine'])
+  },
+  components: {
+    InsertForm
   }
 }
 </script>
