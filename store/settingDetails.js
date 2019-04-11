@@ -12,29 +12,37 @@ export const state = () => ({
       enabled: true
     }
   },
-  deleteComments: {
-    type: 'none'
-  },
-  insertToFirst: {
-    type: 'insert',
-    lines: []
-  },
-  insertToLast: {
-    type: 'insert',
-    lines: []
-  },
-  insertLineHead: {
-    type: 'insert',
-    lines: []
-  },
-  insertLineEnd: {
-    type: 'insert',
-    lines: []
-  },
-  detailsReplace: {
-    type: 'replace',
-    lines: []
-  }
+  list: [
+    {
+      settingId: 'deleteComments',
+      type: 'none'
+    },
+    {
+      settingId: 'insertToFirst',
+      type: 'insert',
+      lines: []
+    },
+    {
+      settingId: 'insertToLast',
+      type: 'insert',
+      lines: []
+    },
+    {
+      settingId: 'insertLineHead',
+      type: 'insert',
+      lines: []
+    },
+    {
+      settingId: 'insertLineEnd',
+      type: 'insert',
+      lines: []
+    },
+    {
+      settingId: 'detailsReplace',
+      type: 'replace',
+      lines: []
+    }
+  ]
 })
 
 export const mutations = {
@@ -43,13 +51,12 @@ export const mutations = {
    * @param {Object} state $store.state
    * @param {String} settingId 挿入/置換文字を追加する対象の設定ID
    */
-  addLine(state, settingId) {
+  addLine(state, detail) {
     // 設定対象の Lines を取得
-    const targetLines = state[settingId].lines
+    const targetLines = detail.lines
     // 設定内容を作成
-    const line = Object.assign({}, state[settingId].template)
-    line.id = settingId + (targetLines.length + 1)
-    line.value = 'hogehgoe'
+    const line = Object.assign({}, state.template[detail.type])
+    line.id = `${detail.settingId}-${targetLines.length + 1}`
     // 追加
     targetLines.push(line)
   },

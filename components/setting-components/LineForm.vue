@@ -4,14 +4,14 @@
     <div :class="formType === 'insert' ? 'col-md-1' : 'col-md-0.5'">
       <div class="custom-control custom-switch">
         <input
-          :id="`customSwitch${line.id}`"
+          :id="`customSwitch-${line.id}`"
           type="checkbox"
           class="custom-control-input"
           :checked="line.enabled"
         />
         <label
           class="custom-control-label"
-          :for="`customSwitch${line.id}`"
+          :for="`customSwitch-${line.id}`"
         ></label>
       </div>
     </div>

@@ -8,7 +8,6 @@
           v-show="set.enabled"
           :detail="getSettingDetail(set.id)"
         />
-        <!-- <p v-show="set.enabled">aaa</p> -->
       </div>
     </div>
   </aside>
@@ -29,7 +28,9 @@ export default {
   },
   methods: {
     getSettingDetail(id) {
-      return this.$store.state.settingDetails[id]
+      return this.$store.state.settingDetails.list.find(
+        detail => detail.settingId === id
+      )
     }
   }
 }

@@ -6,12 +6,19 @@
       :line="line"
       :form-type="detail.type"
     />
-    <button type="button" class="btn btn-primary add-new-line">追加</button>
-    <!-- <p>{{ detail.type }}</p> -->
+    <button
+      v-if="detail.type !== 'none'"
+      type="button"
+      class="btn btn-primary add-new-line"
+      @click="addLine(detail)"
+    >
+      追加
+    </button>
   </div>
 </template>
 <script>
 import LineForm from '@/components/setting-components/LineForm.vue'
+import { mapMutations } from 'vuex'
 
 export default {
   components: {
@@ -22,6 +29,9 @@ export default {
       type: Object,
       required: true
     }
+  },
+  methods: {
+    ...mapMutations('settingDetails', ['addLine'])
   }
 }
 </script>
