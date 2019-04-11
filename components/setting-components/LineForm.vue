@@ -23,7 +23,11 @@
           type="text"
           placeholder="文字、スクリプト等を入力して下さい"
           :value="line.value"
-          @input="/*updateLine($event.target.value)*/"
+          @input="
+            e => {
+              updateLine({ line, value: e.target.value })
+            }
+          "
         />
       </div>
     </template>
@@ -35,6 +39,11 @@
           type="text"
           placeholder="置換対象の文字列を入力（正規表現可）"
           :value="line.before"
+          @input="
+            e => {
+              updateLine({ line, value: e.target.value })
+            }
+          "
         />
       </div>
       <div class="col-md-0.5 height-centering">
@@ -46,12 +55,21 @@
           type="text"
           placeholder="置換後の文字列を入力（正規表現可）"
           :value="line.after"
+          @input="
+            e => {
+              updateLine({ line, value: e.target.value })
+            }
+          "
         />
       </div>
     </template>
     <!-- 削除ボタン（共通） -->
     <div class="col-md-1">
-      <button type="button" class="btn btn-danger" @click="deleteLine(line)">
+      <button
+        type="button"
+        class="btn btn-danger"
+        @click="deleteLine({ line })"
+      >
         削除
       </button>
     </div>
@@ -73,7 +91,7 @@ export default {
     }
   },
   methods: {
-    ...mapMutations('settingDetails', ['deleteLine'])
+    ...mapMutations('settingDetails', ['updateLine', 'deleteLine'])
   }
 }
 </script>

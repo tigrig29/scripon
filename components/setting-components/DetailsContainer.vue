@@ -10,7 +10,7 @@
       v-if="detail.type !== 'none'"
       type="button"
       class="btn btn-primary add-new-line"
-      @click="addLine(detail)"
+      @click="addLine({ detail })"
     >
       追加
     </button>

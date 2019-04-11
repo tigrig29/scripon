@@ -52,11 +52,11 @@ export const state = () => ({
 
 export const mutations = {
   /**
-   * 設定詳細行の追加
+   * 挿入/行の追加
    * @param {Object} state $store.state
-   * @param {Object} detail 設定詳細を追加する対象の設定オブジェクト
+   * @param {Object} payload.detail 設定詳細を追加する対象の設定オブジェクト
    */
-  addLine(state, detail) {
+  addLine(state, { detail }) {
     // 設定内容を作成
     const line = Object.assign({}, state.template[detail.type])
     line.id = `${detail.settingId}-${detail.linesCounta++}`
@@ -65,20 +65,23 @@ export const mutations = {
     // 追加
     detail.lines.push(line)
   },
-  updateLine(state, id, value) {
-    const setting = state.list.find(setting => setting.id === id.split('-')[0])
-    const line = setting.lines.text.find(line => line.id === id)
+  /**
+   * 設定詳細行の値更新
+   * @param {Object} state $store.state
+   * @param {Object} payload.line 設定詳細行
+   * @param {String} payload.value 設定する値
+   */
+  updateLine(state, { line, value }) {
     line.value = value
   },
   /**
    * 設定詳細行の削除
    * @param {Object} state $store.state
-   * @param {Object} detail 設定詳細を追加する対象の設定オブジェクト
+   * @param {Object} payload.line 設定詳細行
    */
-  deleteLine(state, line) {
+  deleteLine(state, { line }) {
     const detail = state.list.find(d => d.settingId === line.id.split('-')[0])
     const index = detail.lines.findIndex(l => l.id === line.id)
     detail.lines.splice(index, 1)
-    alert(index)
   }
 }
