@@ -20,27 +20,32 @@ export const state = () => ({
     {
       settingId: 'insertToFirst',
       type: 'insert',
-      lines: []
+      lines: [],
+      linesCounta: 0
     },
     {
       settingId: 'insertToLast',
       type: 'insert',
-      lines: []
+      lines: [],
+      linesCounta: 0
     },
     {
       settingId: 'insertLineHead',
       type: 'insert',
-      lines: []
+      lines: [],
+      linesCounta: 0
     },
     {
       settingId: 'insertLineEnd',
       type: 'insert',
-      lines: []
+      lines: [],
+      linesCounta: 0
     },
     {
       settingId: 'detailsReplace',
       type: 'replace',
-      lines: []
+      lines: [],
+      linesCounta: 0
     }
   ]
 })
@@ -49,20 +54,29 @@ export const mutations = {
   /**
    * 設定行の追加
    * @param {Object} state $store.state
-   * @param {String} settingId 挿入/置換文字を追加する対象の設定ID
+   * @param {Object} detail 設定詳細を追加する対象の設定オブジェクト
    */
   addLine(state, detail) {
-    // 設定対象の Lines を取得
-    const targetLines = detail.lines
     // 設定内容を作成
     const line = Object.assign({}, state.template[detail.type])
-    line.id = `${detail.settingId}-${targetLines.length + 1}`
+    line.id = `${detail.settingId}-${detail.linesCounta++}`
+    line.value = ''
+    line.enabled = true
     // 追加
-    targetLines.push(line)
+    detail.lines.push(line)
   },
   updateLine(state, id, value) {
     const setting = state.list.find(setting => setting.id === id.split('-')[0])
     const line = setting.lines.text.find(line => line.id === id)
     line.value = value
+  },
+  /**
+   *
+   * @param {Object} state $store.state
+   * @param {Object} detail 設定詳細を追加する対象の設定オブジェクト
+   */
+  deleteLine(state, line) {
+    const detail = state.list.find(d => d.settingId === line.id.split('-')[0])
+    alert(detail.settingId)
   }
 }
