@@ -52,7 +52,7 @@ export const state = () => ({
 
 export const mutations = {
   /**
-   * 設定行の追加
+   * 設定詳細行の追加
    * @param {Object} state $store.state
    * @param {Object} detail 設定詳細を追加する対象の設定オブジェクト
    */
@@ -71,12 +71,14 @@ export const mutations = {
     line.value = value
   },
   /**
-   *
+   * 設定詳細行の削除
    * @param {Object} state $store.state
    * @param {Object} detail 設定詳細を追加する対象の設定オブジェクト
    */
   deleteLine(state, line) {
     const detail = state.list.find(d => d.settingId === line.id.split('-')[0])
-    alert(detail.settingId)
+    const index = detail.lines.findIndex(l => l.id === line.id)
+    detail.lines.splice(index, 1)
+    alert(index)
   }
 }

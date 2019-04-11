@@ -26,9 +26,6 @@
           @input="/*updateLine($event.target.value)*/"
         />
       </div>
-      <div class="col-md-1">
-        <button type="button" class="btn btn-danger">削除</button>
-      </div>
     </template>
     <!-- 置換フォーム -->
     <template v-if="formType === 'replace'">
@@ -51,14 +48,19 @@
           :value="line.after"
         />
       </div>
-      <div class="col-md-1">
-        <button type="button" class="btn btn-danger">削除</button>
-      </div>
     </template>
+    <!-- 削除ボタン（共通） -->
+    <div class="col-md-1">
+      <button type="button" class="btn btn-danger" @click="deleteLine(line)">
+        削除
+      </button>
+    </div>
   </div>
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+
 export default {
   props: {
     line: {
@@ -69,6 +71,9 @@ export default {
       type: String,
       required: true
     }
+  },
+  methods: {
+    ...mapMutations('settingDetails', ['deleteLine'])
   }
 }
 </script>
