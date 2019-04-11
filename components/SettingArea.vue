@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import Selectbox from '@/components/setting-components/Selectbox.vue'
-import DetailsContainer from '@/components/setting-components/DetailsContainer.vue'
+import Selectbox from '@/components/setting/Selectbox.vue'
+import DetailsContainer from '@/components/setting/DetailsContainer.vue'
 import { mapState } from 'vuex'
 
 export default {

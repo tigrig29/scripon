@@ -17,7 +17,7 @@
   </div>
 </template>
 <script>
-import LineForm from '@/components/setting-components/LineForm.vue'
+import LineForm from '@/components/setting/LineForm.vue'
 import { mapMutations } from 'vuex'
 
 export default {
