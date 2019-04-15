@@ -7,8 +7,10 @@ export const state = () => ({
     },
     replace: {
       id: '',
-      before: '',
-      after: '',
+      value: {
+        before: '',
+        after: ''
+      },
       enabled: true
     }
   },

@@ -1,7 +1,7 @@
 <template>
-  <div class="insert-form form-row">
+  <div class="replace-form form-row">
     <!-- スイッチ（共通） -->
-    <div class="col-md-1">
+    <div class="col-md-0.5">
       <div class="custom-control custom-switch">
         <input
           :id="`customSwitch-${line.id}`"
@@ -15,15 +15,31 @@
         ></label>
       </div>
     </div>
-    <div class="col-md-10">
+    <div class="col-md-5">
       <input
         class="form-control"
         type="text"
-        :value="line.value"
-        :placeholder="placeholder"
+        :value="line.value.before"
+        :placeholder="placeholder.before"
         @input="
           e => {
-            inputfunc(e.target.value)
+            inputfunc({ before: e.target.value, after: line.value.after })
+          }
+        "
+      />
+    </div>
+    <div class="col-md-0.5 height-centering">
+      <p>→</p>
+    </div>
+    <div class="col-md-5">
+      <input
+        class="form-control"
+        type="text"
+        :value="line.value.after"
+        :placeholder="placeholder.after"
+        @input="
+          e => {
+            inputfunc({ before: line.value.before, after: e.target.value })
           }
         "
       />
@@ -54,7 +70,10 @@ export default {
       default() {
         return {
           id: '',
-          value: '',
+          value: {
+            before: '',
+            after: ''
+          },
           enabled: true
         }
       }
@@ -62,7 +81,12 @@ export default {
     placeholder: {
       type: String,
       require: false,
-      default: '文字、スクリプト等を入力して下さい'
+      default() {
+        return {
+          before: '置換対象の文字列を入力（正規表現可）',
+          after: '置換後の文字列を入力（正規表現可）'
+        }
+      }
     },
     inputfunc: {
       type: Function,
