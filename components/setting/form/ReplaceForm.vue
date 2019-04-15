@@ -1,7 +1,7 @@
 <template>
   <div class="replace-form form-row">
     <!-- スイッチ（共通） -->
-    <div class="col-md-0.5">
+    <div class="col-switch">
       <div class="custom-control custom-switch">
         <input
           :id="`customSwitch-${line.id}`"
@@ -15,7 +15,7 @@
         ></label>
       </div>
     </div>
-    <div class="col-md-5">
+    <div class="col-input-half">
       <input
         class="form-control"
         type="text"
@@ -28,10 +28,10 @@
         "
       />
     </div>
-    <div class="col-md-0.5 height-centering">
+    <div class="col-separater">
       <p>→</p>
     </div>
-    <div class="col-md-5">
+    <div class="col-input-half">
       <input
         class="form-control"
         type="text"
@@ -45,7 +45,7 @@
       />
     </div>
     <!-- 削除ボタン（共通） -->
-    <div class="col-md-1">
+    <div class="col-btn">
       <button
         type="button"
         class="btn btn-danger"

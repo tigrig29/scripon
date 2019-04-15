@@ -1,7 +1,7 @@
 <template>
   <div class="insert-form form-row">
     <!-- スイッチ（共通） -->
-    <div class="col-md-1">
+    <div class="col-switch">
       <div class="custom-control custom-switch">
         <input
           :id="`customSwitch-${line.id}`"
@@ -15,7 +15,7 @@
         ></label>
       </div>
     </div>
-    <div class="col-md-10">
+    <div class="col-input">
       <input
         class="form-control"
         type="text"
@@ -29,7 +29,7 @@
       />
     </div>
     <!-- 削除ボタン（共通） -->
-    <div class="col-md-1">
+    <div class="col-btn">
       <button
         type="button"
         class="btn btn-danger"

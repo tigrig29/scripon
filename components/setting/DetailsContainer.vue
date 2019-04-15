@@ -1,6 +1,6 @@
 <template>
   <div class="setting-lines-container">
-    <div v-for="line in detail.lines" :key="line.id" :line="line">
+    <div v-for="line in detail.lines" :key="line.id">
       <!-- 挿入フォーム -->
       <InsertForm
         v-if="detail.type === 'insert'"
@@ -71,10 +71,27 @@ export default {
 
 <style lang="scss">
 .setting-lines-container {
-  margin-left: 1rem;
-
   .form-row {
     margin-bottom: 1rem;
+    .col-switch {
+      width: 8%;
+    }
+    .col-btn {
+      width: 15%;
+    }
+    .col-input {
+      width: 77%;
+    }
+    .col-input-half {
+      width: 36%;
+    }
+    .col-separater {
+      width: 5%;
+      p {
+        line-height: 2rem;
+        margin: 0;
+      }
+    }
   }
   .custom-switch {
     margin-top: 0.4rem;
