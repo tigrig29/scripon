@@ -1,9 +1,9 @@
 <template>
-  <artilce>
+  <article>
     <HeaderArea />
     <SettingArea />
     <nuxt />
-  </artilce>
+  </article>
 </template>
 
 <script>

@@ -3,54 +3,35 @@
     <div class="settings-container">
       <h2 class="settings-title">設定</h2>
       <div v-for="set in settings" :key="set.id" class="setting-columns">
-        <Selectbox
-          :selectbox="getSelectBoxElements(set)"
-          :onchanged="toggleEnabled"
+        <Selectbox :setting="set" />
+        <DetailsContainer
+          v-show="set.enabled"
+          :detail="getSettingDetail(set.id)"
         />
-        <LineFormsContainer :setting="set" />
       </div>
     </div>
   </aside>
 </template>
 
 <script>
-import Selectbox from '@/components/setting-components/Selectbox.vue'
-import LineFormsContainer from '@/components/setting-components/LineFormsContainer.vue'
-import { mapState, mapMutations, mapGetters } from 'vuex'
+import Selectbox from '@/components/setting/Selectbox.vue'
+import DetailsContainer from '@/components/setting/DetailsContainer.vue'
+import { mapState } from 'vuex'
 
 export default {
   components: {
     Selectbox,
-    LineFormsContainer
+    DetailsContainer
   },
   computed: {
-    ...mapState('settings', { settings: 'list' }),
-    ...mapGetters({ getSettingById: 'settings/getSettingById' })
+    ...mapState('settings', { settings: 'list' })
   },
   methods: {
-    getSelectBoxElements(setting) {
-      return {
-        id: setting.id,
-        title: setting.title,
-        value: setting.enabled,
-        options: [
-          {
-            text: 'する',
-            value: true
-          },
-          {
-            text: 'しない',
-            value: false
-          }
-        ]
-      }
-    },
-    toggleEnabled(event) {
-      const targetId = event.target.id
-      const setting = this.getSettingById(targetId)
-      this.changeEnabled(setting)
-    },
-    ...mapMutations({ changeEnabled: 'settings/changeEnabled' })
+    getSettingDetail(id) {
+      return this.$store.state.settingDetails.list.find(
+        detail => detail.settingId === id
+      )
+    }
   }
 }
 </script>
