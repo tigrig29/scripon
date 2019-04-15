@@ -79,7 +79,7 @@ export default {
       }
     },
     placeholder: {
-      type: String,
+      type: Object,
       require: false,
       default() {
         return {
