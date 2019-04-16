@@ -73,23 +73,37 @@ export default {
 .setting-lines-container {
   .form-row {
     margin-bottom: 1rem;
-    .col-switch {
-      width: 8%;
-    }
-    .col-btn {
-      width: 15%;
-    }
+    flex-wrap: nowrap;
+    justify-content: flex-end;
     .col-input {
-      width: 77%;
+      width: 75%;
     }
     .col-input-half {
-      width: 36%;
+      width: 34%;
     }
     .col-separater {
-      width: 5%;
       p {
         line-height: 2rem;
         margin: 0;
+      }
+    }
+    textarea {
+      height: 40px;
+      overflow-y: hidden;
+      overflow-x: scroll;
+      resize: none;
+      cursor: default;
+      &::-webkit-scrollbar {
+        width: 0px;
+      }
+      &::-webkit-scrollbar:horizontal {
+        height: 10px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background-clip: padding-box;
+        background-color: rgba(0, 0, 50, 0.2);
+        border: solid 3px rgba(0, 0, 0, 0);
+        border-radius: 10px;
       }
     }
   }

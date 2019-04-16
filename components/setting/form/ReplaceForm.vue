@@ -16,9 +16,11 @@
       </div>
     </div>
     <div class="col-input-half">
-      <input
+      <textarea
         class="form-control"
         type="text"
+        rows="1"
+        wrap="off"
         :value="line.value.before"
         :placeholder="placeholder.before"
         @input="
@@ -32,9 +34,11 @@
       <p>→</p>
     </div>
     <div class="col-input-half">
-      <input
+      <textarea
         class="form-control"
         type="text"
+        rows="1"
+        wrap="off"
         :value="line.value.after"
         :placeholder="placeholder.after"
         @input="

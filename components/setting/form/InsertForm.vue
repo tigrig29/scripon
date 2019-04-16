@@ -16,9 +16,11 @@
       </div>
     </div>
     <div class="col-input">
-      <input
+      <textarea
         class="form-control"
         type="text"
+        rows="1"
+        wrap="off"
         :value="line.value"
         :placeholder="placeholder"
         @input="
