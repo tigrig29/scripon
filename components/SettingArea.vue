@@ -46,4 +46,11 @@ export default {
     text-align: center;
   }
 }
+
+@media (min-width: 1025px) {
+  .settings-container {
+    width: 480px;
+    float: left;
+  }
+}
 </style>
