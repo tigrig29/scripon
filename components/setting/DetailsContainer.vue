@@ -6,6 +6,11 @@
         v-if="detail.type === 'insert'"
         :line="line"
         placeholder="文字、スクリプト等を入力して下さい"
+        :switchfunc="
+          () => {
+            toggleLineEnabled({ line })
+          }
+        "
         :inputfunc="
           value => {
             updateLine({ line, value })
@@ -25,6 +30,11 @@
           before: '置換対象の文字列を入力（正規表現可）',
           after: '置換後の文字列を入力（正規表現可）'
         }"
+        :switchfunc="
+          () => {
+            toggleLineEnabled({ line })
+          }
+        "
         :inputfunc="
           value => {
             updateLine({ line, value })
@@ -64,7 +74,12 @@ export default {
     }
   },
   methods: {
-    ...mapMutations('settingDetails', ['addLine', 'updateLine', 'deleteLine'])
+    ...mapMutations('settingDetails', [
+      'addLine',
+      'toggleLineEnabled',
+      'updateLine',
+      'deleteLine'
+    ])
   }
 }
 </script>

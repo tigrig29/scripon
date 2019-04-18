@@ -8,6 +8,7 @@
           type="checkbox"
           class="custom-control-input"
           :checked="line.enabled"
+          @change="switchfunc"
         />
         <label
           class="custom-control-label"
@@ -67,6 +68,13 @@ export default {
       type: String,
       require: false,
       default: '文字、スクリプト等を入力して下さい'
+    },
+    switchfunc: {
+      type: Function,
+      require: false,
+      default: () => {
+        alert('toggleEnabled')
+      }
     },
     inputfunc: {
       type: Function,
