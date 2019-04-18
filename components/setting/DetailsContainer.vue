@@ -138,7 +138,14 @@ export default {
   }
 
   // 使用可否によるデザイン変更
-  .form-row.enabled {
+  .form-row {
+    .form-control {
+      transition: color 0.15s ease-in-out;
+    }
+    .btn-danger {
+      transition: background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
   }
   .form-row.disabled {
     .form-control {
