@@ -1,7 +1,7 @@
 <template>
   <div class="replace-form form-row">
     <!-- スイッチ（共通） -->
-    <div class="col-md-0.5">
+    <div class="col-switch">
       <div class="custom-control custom-switch">
         <input
           :id="`customSwitch-${line.id}`"
@@ -15,12 +15,16 @@
         ></label>
       </div>
     </div>
-    <div class="col-md-5">
-      <input
+    <!-- 入力エリア -->
+    <div class="col-input-half">
+      <textarea
         class="form-control"
         type="text"
+        rows="1"
+        wrap="off"
         :value="line.value.before"
         :placeholder="placeholder.before"
+        @keydown.enter.prevent=""
         @input="
           e => {
             inputfunc({ before: e.target.value, after: line.value.after })
@@ -28,15 +32,18 @@
         "
       />
     </div>
-    <div class="col-md-0.5 height-centering">
+    <div class="col-separater">
       <p>→</p>
     </div>
-    <div class="col-md-5">
-      <input
+    <div class="col-input-half">
+      <textarea
         class="form-control"
         type="text"
+        rows="1"
+        wrap="off"
         :value="line.value.after"
         :placeholder="placeholder.after"
+        @keydown.enter.prevent=""
         @input="
           e => {
             inputfunc({ before: line.value.before, after: e.target.value })
@@ -45,7 +52,7 @@
       />
     </div>
     <!-- 削除ボタン（共通） -->
-    <div class="col-md-1">
+    <div class="col-btn">
       <button
         type="button"
         class="btn btn-danger"

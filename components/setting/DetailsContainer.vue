@@ -1,6 +1,6 @@
 <template>
   <div class="setting-lines-container">
-    <div v-for="line in detail.lines" :key="line.id" :line="line">
+    <div v-for="line in detail.lines" :key="line.id">
       <!-- 挿入フォーム -->
       <InsertForm
         v-if="detail.type === 'insert'"
@@ -71,10 +71,41 @@ export default {
 
 <style lang="scss">
 .setting-lines-container {
-  margin-left: 1rem;
-
   .form-row {
     margin-bottom: 1rem;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    .col-input {
+      width: 75%;
+    }
+    .col-input-half {
+      width: 34%;
+    }
+    .col-separater {
+      p {
+        line-height: 2rem;
+        margin: 0;
+      }
+    }
+    textarea {
+      height: 40px;
+      overflow-y: hidden;
+      overflow-x: scroll;
+      resize: none;
+      cursor: default;
+      &::-webkit-scrollbar {
+        width: 0px;
+      }
+      &::-webkit-scrollbar:horizontal {
+        height: 10px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background-clip: padding-box;
+        background-color: rgba(0, 0, 50, 0.2);
+        border: solid 3px rgba(0, 0, 0, 0);
+        border-radius: 10px;
+      }
+    }
   }
   .custom-switch {
     margin-top: 0.4rem;
