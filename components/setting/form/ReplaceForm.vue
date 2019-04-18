@@ -15,6 +15,7 @@
         ></label>
       </div>
     </div>
+    <!-- 入力エリア -->
     <div class="col-input-half">
       <textarea
         class="form-control"
@@ -23,6 +24,7 @@
         wrap="off"
         :value="line.value.before"
         :placeholder="placeholder.before"
+        @keydown.enter.prevent=""
         @input="
           e => {
             inputfunc({ before: e.target.value, after: line.value.after })
@@ -41,6 +43,7 @@
         wrap="off"
         :value="line.value.after"
         :placeholder="placeholder.after"
+        @keydown.enter.prevent=""
         @input="
           e => {
             inputfunc({ before: line.value.before, after: e.target.value })

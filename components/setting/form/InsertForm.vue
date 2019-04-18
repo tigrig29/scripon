@@ -15,6 +15,7 @@
         ></label>
       </div>
     </div>
+    <!-- 入力エリア -->
     <div class="col-input">
       <textarea
         class="form-control"
@@ -23,6 +24,7 @@
         wrap="off"
         :value="line.value"
         :placeholder="placeholder"
+        @keydown.enter.prevent=""
         @input="
           e => {
             inputfunc(e.target.value)
