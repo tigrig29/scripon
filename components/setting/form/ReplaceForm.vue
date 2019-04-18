@@ -10,6 +10,7 @@
           type="checkbox"
           class="custom-control-input"
           :checked="line.enabled"
+          @change="switchfunc"
         />
         <label
           class="custom-control-label"
@@ -95,6 +96,13 @@ export default {
           before: '置換対象の文字列を入力（正規表現可）',
           after: '置換後の文字列を入力（正規表現可）'
         }
+      }
+    },
+    switchfunc: {
+      type: Function,
+      require: false,
+      default: () => {
+        alert('toggleEnabled')
       }
     },
     inputfunc: {

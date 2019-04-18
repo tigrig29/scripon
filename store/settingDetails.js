@@ -54,9 +54,9 @@ export const state = () => ({
 
 export const mutations = {
   /**
-   * 挿入/行の追加
+   * 挿入/置換 設定行の追加
    * @param {Object} state $store.state
-   * @param {Object} payload.detail 設定詳細を追加する対象の設定オブジェクト
+   * @param {Object} payload.detail 挿入/置換 設定を追加する対象の設定オブジェクト
    */
   addLine(state, { detail }) {
     // 設定内容を作成
@@ -68,18 +68,26 @@ export const mutations = {
     detail.lines.push(line)
   },
   /**
-   * 設定詳細行の値更新
+   * 挿入/置換 設定行の使用可否の変更
    * @param {Object} state $store.state
-   * @param {Object} payload.line 設定詳細行
+   * @param {Object} payload.line 挿入/置換 設定行
+   */
+  toggleLineEnabled(state, { line }) {
+    line.enabled = !line.enabled
+  },
+  /**
+   * 挿入/置換 設定行の値更新
+   * @param {Object} state $store.state
+   * @param {Object} payload.line 挿入/置換 設定行
    * @param {String} payload.value 設定する値
    */
   updateLine(state, { line, value }) {
     line.value = value
   },
   /**
-   * 設定詳細行の削除
+   * 挿入/置換 設定行の削除
    * @param {Object} state $store.state
-   * @param {Object} payload.line 設定詳細行
+   * @param {Object} payload.line 挿入/置換 設定行
    */
   deleteLine(state, { line }) {
     const detail = state.list.find(d => d.settingId === line.id.split('-')[0])
