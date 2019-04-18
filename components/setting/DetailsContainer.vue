@@ -121,5 +121,18 @@ export default {
       background: #dfeeff;
     }
   }
+
+  // 使用可否によるデザイン変更
+  .form-row.enabled {
+  }
+  .form-row.disabled {
+    .form-control {
+      color: #adb5bd;
+    }
+    .btn-danger {
+      border-color: #b36f76;
+      background-color: #b36f76;
+    }
+  }
 }
 </style>
