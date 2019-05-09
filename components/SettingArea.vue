@@ -38,19 +38,35 @@ export default {
 
 <style lang="scss">
 .settings-container {
+  max-height: 500px;
   border: 3px solid #efefef;
   padding: 5px;
-
+  overflow-x: auto;
+  resize: both;
   .settings-title {
     margin: 10px auto;
     text-align: center;
+  }
+
+  &::-webkit-scrollbar {
+    width: 12px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-clip: padding-box;
+    background-color: rgba(0, 0, 50, 0.2);
+    border: solid 3px rgba(0, 0, 0, 0);
+    border-radius: 10px;
   }
 }
 
 @media (min-width: 1025px) {
   .settings-container {
+    top: 90px;
     width: 480px;
-    float: left;
+    height: 100%;
+    max-height: 835px;
+    position: sticky;
+    overflow-x: auto;
   }
 }
 </style>
