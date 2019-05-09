@@ -1,8 +1,24 @@
 <template>
   <div>
-    <nuxt />
+    <HeaderArea />
+    <article>
+      <SettingArea />
+      <nuxt />
+    </article>
   </div>
 </template>
+
+<script>
+import HeaderArea from '@/components/HeaderArea.vue'
+import SettingArea from '@/components/SettingArea.vue'
+
+export default {
+  components: {
+    HeaderArea,
+    SettingArea
+  }
+}
+</script>
 
 <style>
 html {
@@ -51,5 +67,11 @@ html {
 .button--grey:hover {
   color: #fff;
   background-color: #35495e;
+}
+
+@media (min-width: 1025px) {
+  article {
+    display: flex;
+  }
 }
 </style>
