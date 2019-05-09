@@ -14,7 +14,6 @@
   margin-bottom: 10px;
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-flow: column nowrap;
   background: #efefef;
   filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.3));
@@ -32,5 +31,12 @@
     font-size: 14px;
     color: #526488;
   }
+}
+
+// ヘッダー固定用
+header {
+  top: 0;
+  position: sticky;
+  z-index: 10;
 }
 </style>

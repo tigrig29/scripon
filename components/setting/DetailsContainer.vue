@@ -136,5 +136,25 @@ export default {
       background: #dfeeff;
     }
   }
+
+  // 使用可否によるデザイン変更
+  .form-row {
+    .form-control {
+      transition: color 0.15s ease-in-out;
+    }
+    .btn-danger {
+      transition: background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+  }
+  .form-row.disabled {
+    .form-control {
+      color: #adb5bd;
+    }
+    .btn-danger {
+      border-color: #b36f76;
+      background-color: #b36f76;
+    }
+  }
 }
 </style>

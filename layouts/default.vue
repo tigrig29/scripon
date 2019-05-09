@@ -1,9 +1,11 @@
 <template>
-  <article>
+  <div>
     <HeaderArea />
-    <SettingArea />
-    <nuxt />
-  </article>
+    <article>
+      <SettingArea />
+      <nuxt />
+    </article>
+  </div>
 </template>
 
 <script>
@@ -65,5 +67,11 @@ html {
 .button--grey:hover {
   color: #fff;
   background-color: #35495e;
+}
+
+@media (min-width: 1025px) {
+  article {
+    display: flex;
+  }
 }
 </style>
