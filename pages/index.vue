@@ -3,7 +3,7 @@
     <HeaderArea />
     <article>
       <SettingArea />
-      <!-- <ConvertArea /> -->
+      <ConvertArea />
     </article>
   </div>
 </template>
@@ -11,11 +11,13 @@
 <script>
 import HeaderArea from '@/components/HeaderArea.vue'
 import SettingArea from '@/components/SettingArea.vue'
+import ConvertArea from '@/components/ConvertArea.vue'
 
 export default {
   components: {
     HeaderArea,
-    SettingArea
+    SettingArea,
+    ConvertArea
   }
 }
 </script>
