@@ -1,13 +1,24 @@
 <template>
   <header>
     <div class="header-container">
-      <h1 class="title">Tyrano-SS-Converter</h1>
+      <h1 class="title">{{ title }}</h1>
       <h2 class="subtitle">
-        ティラノスクリプトのスクリプト制作、シナリオのスクリプト化作業を簡単に！
+        ノベルゲーム制作（ティラノスクリプト、吉里吉里、NScripter、...）におけるシナリオのスクリプト化作業を簡単に！
       </h2>
     </div>
   </header>
 </template>
+
+<script>
+export default {
+  props: {
+    title: {
+      type: String,
+      default: ''
+    }
+  }
+}
+</script>
 
 <style lang="scss">
 .header-container {
