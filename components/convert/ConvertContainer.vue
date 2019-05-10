@@ -91,10 +91,17 @@ export default {
           // 詳細な置換
           case 'detailsReplace':
             for (const replaceObj of setting.lines) {
-              if (!replaceObj.enabled) continue
+              if (!replaceObj.enabled || replaceObj.value.before === '')
+                continue
+              const regexpObj = {}
+              try {
+                regexpObj.before = new RegExp(replaceObj.value.before, 'g')
+              } catch (error) {
+                continue
+              }
               value = value.replace(
-                new RegExp(replaceObj.value.before, 'g'),
-                replaceObj.value.after
+                regexpObj.before,
+                this.unEscapeJs(replaceObj.value.after)
               )
             }
             break
@@ -103,23 +110,17 @@ export default {
 
       return value
     },
-    // コメント削除
-    deleteComments($state, value) {
-      const setting = $state.settings.list.find(s => s.id === 'deleteComments')
-
-      if (!setting.enabled) return value
-
-      // コメント削除処理
-      return value.replace(/[\s\t]*;.*/g, '')
-    },
-    // シナリオ先頭行に挿入
-    insertToFirst($state, value) {
-      const setting = $state.settings.list.find(s => s.id === 'insertToFirst')
-
-      if (!setting.enabled) return value
-
-      // コメント削除処理
-      return value.replace(/[\s\t]*;.*/g, '')
+    /**
+     * JavaScriptアンエスケープ
+     *
+     * @param {String} str 変換したい文字列
+     */
+    unEscapeJs(str) {
+      if (['\\\\n', '\\\\t', '\\\\0'].includes(str)) return str
+      return str
+        .replace('\\n', '\n')
+        .replace('\\t', '\t')
+        .replace('\\0', '\0')
     }
   }
 }
