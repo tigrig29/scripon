@@ -16,36 +16,48 @@ export const state = () => ({
   },
   list: [
     {
-      settingId: 'deleteComments',
-      type: 'none'
+      id: 'deleteComments',
+      title: 'コメント削除',
+      type: 'none',
+      enabled: false
     },
     {
-      settingId: 'insertToFirst',
+      id: 'insertToFirst',
+      title: '行頭に挿入',
       type: 'insert',
+      enabled: false,
       lines: [],
       linesCounta: 0
     },
     {
-      settingId: 'insertToLast',
+      id: 'insertToLast',
       type: 'insert',
+      title: '行末に挿入',
+      enabled: false,
       lines: [],
       linesCounta: 0
     },
     {
-      settingId: 'insertLineHead',
+      id: 'insertLineHead',
+      title: 'シナリオ先頭行に挿入',
       type: 'insert',
+      enabled: false,
       lines: [],
       linesCounta: 0
     },
     {
-      settingId: 'insertLineEnd',
+      id: 'insertLineEnd',
+      title: 'シナリオ最終行に挿入',
       type: 'insert',
+      enabled: false,
       lines: [],
       linesCounta: 0
     },
     {
-      settingId: 'detailsReplace',
+      id: 'detailsReplace',
+      title: '詳細な置換',
       type: 'replace',
+      enabled: false,
       lines: [],
       linesCounta: 0
     }
@@ -54,6 +66,14 @@ export const state = () => ({
 
 export const mutations = {
   /**
+   * 設定の有効/無効化
+   * @param {Object} state $store.state
+   * @param {Object} payload.setting 対象の設定オブジェクト
+   */
+  changeEnabled(state, { setting }) {
+    setting.enabled = !setting.enabled
+  },
+  /**
    * 挿入/置換 設定行の追加
    * @param {Object} state $store.state
    * @param {Object} payload.detail 挿入/置換 設定を追加する対象の設定オブジェクト
@@ -61,7 +81,7 @@ export const mutations = {
   addLine(state, { detail }) {
     // 設定内容を作成
     const line = Object.assign({}, state.template[detail.type])
-    line.id = `${detail.settingId}-${detail.linesCounta++}`
+    line.id = `${detail.id}-${detail.linesCounta++}`
     line.enabled = true
     // 追加
     detail.lines.push(line)
@@ -89,7 +109,7 @@ export const mutations = {
    * @param {Object} payload.line 挿入/置換 設定行
    */
   deleteLine(state, { line }) {
-    const detail = state.list.find(d => d.settingId === line.id.split('-')[0])
+    const detail = state.list.find(d => d.id === line.id.split('-')[0])
     const index = detail.lines.findIndex(l => l.id === line.id)
     detail.lines.splice(index, 1)
   }

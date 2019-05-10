@@ -2,12 +2,9 @@
   <aside>
     <div class="settings-container">
       <h2 class="settings-title">設定</h2>
-      <div v-for="set in settings" :key="set.id" class="setting-columns">
+      <div v-for="set in settings" :key="set.id" class="setting-row">
         <Selectbox :setting="set" />
-        <DetailsContainer
-          v-show="set.enabled"
-          :detail="getSettingDetail(set.id)"
-        />
+        <DetailsContainer v-show="set.enabled" :detail="set" />
       </div>
     </div>
   </aside>
@@ -24,14 +21,7 @@ export default {
     DetailsContainer
   },
   computed: {
-    ...mapState('settings', { settings: 'list' })
-  },
-  methods: {
-    getSettingDetail(id) {
-      return this.$store.state.settingDetails.list.find(
-        detail => detail.settingId === id
-      )
-    }
+    ...mapState('settingDetails', { settings: 'list' })
   }
 }
 </script>
