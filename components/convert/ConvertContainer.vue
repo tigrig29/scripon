@@ -44,11 +44,6 @@ export default {
         // 機能OFF判定
         if (!setting.enabled) continue
 
-        // 詳細設定オブジェクト取得
-        const detail = $state.settingDetails.list.find(
-          dtl => dtl.settingId === setting.id
-        )
-
         switch (setting.id) {
           // コメント削除処理
           case 'deleteComments':
@@ -56,21 +51,21 @@ export default {
             break
           // シナリオ先頭行に挿入
           case 'insertToFirst':
-            for (const line of detail.lines) {
+            for (const line of setting.lines) {
               if (!line.enabled) continue
               value = line.value + '\n' + value
             }
             break
           // シナリオ末尾行に挿入
           case 'insertToLast':
-            for (const line of detail.lines) {
+            for (const line of setting.lines) {
               if (!line.enabled) continue
               value += '\n' + line.value
             }
             break
           // 行頭に挿入
           case 'insertLineHead':
-            for (const insertObj of [...detail.lines].reverse()) {
+            for (const insertObj of [...setting.lines].reverse()) {
               if (!insertObj.enabled) continue
               // value を行ごとにループ
               const valueLines = value.split('\n')
@@ -83,7 +78,7 @@ export default {
             break
           // 行末に挿入
           case 'insertLineEnd':
-            for (const insertObj of detail.lines) {
+            for (const insertObj of setting.lines) {
               if (!insertObj.enabled) continue
               // value を行ごとにループ
               const valueLines = value.split('\n')
@@ -95,7 +90,7 @@ export default {
             break
           // 詳細な置換
           case 'detailsReplace':
-            for (const replaceObj of detail.lines) {
+            for (const replaceObj of setting.lines) {
               if (!replaceObj.enabled) continue
               value = value.replace(
                 new RegExp(replaceObj.value.before, 'g'),
