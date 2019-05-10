@@ -1,60 +1,61 @@
 <template>
   <div class="setting-lines-container">
-    <div v-for="line in detail.lines" :key="line.id">
-      <!-- 挿入フォーム -->
-      <InsertForm
-        v-if="detail.type === 'insert'"
-        :line="line"
-        placeholder="文字、スクリプト等を入力して下さい"
-        :switchfunc="
-          () => {
-            toggleLineEnabled({ line })
-          }
-        "
-        :inputfunc="
-          value => {
-            updateLine({ line, value })
-          }
-        "
-        :deletefunc="
-          () => {
-            deleteLine({ line })
-          }
-        "
-      />
-      <!-- 置換フォーム -->
-      <ReplaceForm
-        v-if="detail.type === 'replace'"
-        :line="line"
-        :placeholder="{
-          before: '置換対象の文字列を入力（正規表現可）',
-          after: '置換後の文字列を入力（正規表現可）'
-        }"
-        :switchfunc="
-          () => {
-            toggleLineEnabled({ line })
-          }
-        "
-        :inputfunc="
-          value => {
-            updateLine({ line, value })
-          }
-        "
-        :deletefunc="
-          () => {
-            deleteLine({ line })
-          }
-        "
-      />
-    </div>
-    <button
-      v-if="detail.type !== 'none'"
-      type="button"
-      class="btn btn-primary add-new-line"
-      @click="addLine({ detail })"
-    >
-      追加
-    </button>
+    <template v-if="setting.type !== 'none'">
+      <div v-for="line in setting.lines" :key="line.id">
+        <!-- 挿入フォーム -->
+        <InsertForm
+          v-if="setting.type === 'insert'"
+          :line="line"
+          placeholder="文字、スクリプト等を入力して下さい"
+          :switchfunc="
+            () => {
+              toggleLineEnabled({ line })
+            }
+          "
+          :inputfunc="
+            value => {
+              updateLine({ line, value })
+            }
+          "
+          :deletefunc="
+            () => {
+              deleteLine({ line })
+            }
+          "
+        />
+        <!-- 置換フォーム -->
+        <ReplaceForm
+          v-if="setting.type === 'replace'"
+          :line="line"
+          :placeholder="{
+            before: '置換対象の文字列を入力（正規表現可）',
+            after: '置換後の文字列を入力（正規表現可）'
+          }"
+          :switchfunc="
+            () => {
+              toggleLineEnabled({ line })
+            }
+          "
+          :inputfunc="
+            value => {
+              updateLine({ line, value })
+            }
+          "
+          :deletefunc="
+            () => {
+              deleteLine({ line })
+            }
+          "
+        />
+      </div>
+      <button
+        type="button"
+        class="btn btn-primary add-new-line"
+        @click="addLine({ setting })"
+      >
+        追加
+      </button>
+    </template>
   </div>
 </template>
 <script>
@@ -68,13 +69,13 @@ export default {
     ReplaceForm
   },
   props: {
-    detail: {
+    setting: {
       type: Object,
       required: true
     }
   },
   methods: {
-    ...mapMutations('settingDetails', [
+    ...mapMutations('settings', [
       'addLine',
       'toggleLineEnabled',
       'updateLine',
