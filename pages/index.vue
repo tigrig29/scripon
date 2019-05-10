@@ -1,6 +1,6 @@
 <template>
   <div>
-    <HeaderArea />
+    <HeaderArea :title="title" />
     <article>
       <SettingArea />
       <ConvertArea />
@@ -13,11 +13,23 @@ import HeaderArea from '@/components/HeaderArea.vue'
 import SettingArea from '@/components/SettingArea.vue'
 import ConvertArea from '@/components/ConvertArea.vue'
 
+const title = 'NovelGame-SS-Converter'
+
 export default {
+  head() {
+    return {
+      title: `${title} | ノベルゲーム制作のシナリオ→スクリプト化作業を簡単に！`
+    }
+  },
   components: {
     HeaderArea,
     SettingArea,
     ConvertArea
+  },
+  data() {
+    return {
+      title
+    }
   }
 }
 </script>
