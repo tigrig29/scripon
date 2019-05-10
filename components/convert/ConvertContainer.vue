@@ -35,7 +35,7 @@ export default {
   },
   methods: {
     convertSenarioToScript(value) {
-      // if (value === '') return value
+      if (value === '') return value
 
       const $state = this.$store.state
 
