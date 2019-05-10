@@ -9,12 +9,14 @@
         placeholder="変換したいシナリオテキストを入力（貼り付け等）して下さい。"
         rows="10"
       ></b-form-textarea>
+      <font-awesome-icon icon="angle-double-down" class="fa-5x ngss-color" />
       <b-form-textarea
         id="outputScript"
         v-model="outputValue"
         :value="outputValue"
         placeholder="ここに変換結果が出力されます。"
         rows="10"
+        readonly
       ></b-form-textarea>
     </div>
   </section>
@@ -133,8 +135,15 @@ export default {
   .convert-area {
     display: flex;
     flex-flow: column nowrap;
+    align-items: center;
     textarea {
       margin-top: 10px;
+      &.form-control[readonly] {
+        background-color: #f5f8fa;
+      }
+    }
+    .ngss-color {
+      color: #9ee4fd;
     }
   }
 }

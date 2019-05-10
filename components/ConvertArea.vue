@@ -1,6 +1,6 @@
 <template>
   <section class="main-container">
-    <div class="convert-setting-wrapper">
+    <div v-if="false" class="convert-setting-wrapper">
       <b-button-group size="sm">
         <b-button variant="primary">
           {{ '〇〇モード' }}
