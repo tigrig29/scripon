@@ -6,16 +6,6 @@ export const state = () => ({
       enabled: false
     },
     {
-      id: 'insertToFirst',
-      title: 'シナリオ先頭行に挿入',
-      enabled: false
-    },
-    {
-      id: 'insertToLast',
-      title: 'シナリオ末尾行に挿入',
-      enabled: false
-    },
-    {
       id: 'insertLineHead',
       title: '行頭に挿入',
       enabled: false
@@ -23,6 +13,16 @@ export const state = () => ({
     {
       id: 'insertLineEnd',
       title: '行末に挿入',
+      enabled: false
+    },
+    {
+      id: 'insertToFirst',
+      title: 'シナリオ先頭行に挿入',
+      enabled: false
+    },
+    {
+      id: 'insertToLast',
+      title: 'シナリオ最終行に挿入',
       enabled: false
     },
     {

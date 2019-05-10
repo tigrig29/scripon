@@ -62,7 +62,6 @@ export const mutations = {
     // 設定内容を作成
     const line = Object.assign({}, state.template[detail.type])
     line.id = `${detail.settingId}-${detail.linesCounta++}`
-    line.value = ''
     line.enabled = true
     // 追加
     detail.lines.push(line)

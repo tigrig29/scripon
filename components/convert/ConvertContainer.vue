@@ -75,19 +75,20 @@ export default {
               // value を行ごとにループ
               const valueLines = value.split('\n')
               for (const i in [...Array(valueLines.length).keys()]) {
-                valueLines[i] = insertObj.value + valueLines[i]
+                valueLines[i] =
+                  valueLines[i] === '' ? '' : insertObj.value + valueLines[i]
               }
               value = valueLines.join('\n')
             }
             break
           // 行末に挿入
           case 'insertLineEnd':
-            for (const insertObj of [...detail.lines].reverse()) {
+            for (const insertObj of detail.lines) {
               if (!insertObj.enabled) continue
               // value を行ごとにループ
               const valueLines = value.split('\n')
               for (const i in [...Array(valueLines.length).keys()]) {
-                valueLines[i] += insertObj.value
+                valueLines[i] += valueLines[i] === '' ? '' : insertObj.value
               }
               value = valueLines.join('\n')
             }
