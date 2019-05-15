@@ -1,5 +1,5 @@
 {
-  "name": "Tyrano-SS-Converter",
+  "name": "novelgame-ss-converter",
   "version": "1.0.0",
   "description": "My flawless Nuxt.js project",
   "author": "tigrig",
@@ -14,11 +14,15 @@
     "dev-debug": "node --inspect-brk=9229 node_modules/nuxt/bin/nuxt"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.18",
+    "@fortawesome/free-solid-svg-icons": "^5.8.2",
+    "@fortawesome/vue-fontawesome": "^0.1.6",
     "@nuxtjs/axios": "^5.3.6",
     "bootstrap": "^4.1.3",
     "bootstrap-vue": "^2.0.0-rc.11",
     "cross-env": "^5.2.0",
-    "nuxt": "^2.4.0"
+    "nuxt": "^2.4.0",
+    "nuxt-fontawesome": "^0.4.0"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^0.0.1",

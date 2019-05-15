@@ -2,36 +2,26 @@
   <aside>
     <div class="settings-container">
       <h2 class="settings-title">設定</h2>
-      <div v-for="set in settings" :key="set.id" class="setting-columns">
-        <Selectbox :setting="set" />
-        <DetailsContainer
-          v-show="set.enabled"
-          :detail="getSettingDetail(set.id)"
-        />
+      <div v-for="set in settings" :key="set.id" class="setting-row">
+        <SettingTitle :setting="set" />
+        <SettingBody v-show="set.enabled" :setting="set" />
       </div>
     </div>
   </aside>
 </template>
 
 <script>
-import Selectbox from '@/components/setting/Selectbox.vue'
-import DetailsContainer from '@/components/setting/DetailsContainer.vue'
+import SettingTitle from '@/components/setting/SettingTitle.vue'
+import SettingBody from '@/components/setting/SettingBody.vue'
 import { mapState } from 'vuex'
 
 export default {
   components: {
-    Selectbox,
-    DetailsContainer
+    SettingTitle,
+    SettingBody
   },
   computed: {
     ...mapState('settings', { settings: 'list' })
-  },
-  methods: {
-    getSettingDetail(id) {
-      return this.$store.state.settingDetails.list.find(
-        detail => detail.settingId === id
-      )
-    }
   }
 }
 </script>

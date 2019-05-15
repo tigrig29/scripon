@@ -1,5 +1,5 @@
 <template>
-  <div class="input-group mb-3">
+  <div class="setting-title input-group mb-3">
     <div class="input-group-prepend">
       <label
         :class="`input-group-text ${selectbox.value ? 'enabled' : ''}`"
@@ -52,7 +52,7 @@ export default {
   },
   methods: {
     toggleEnabled() {
-      this.$store.commit('settings/changeEnabled', this.setting)
+      this.$store.commit('settings/changeEnabled', { setting: this.setting })
     }
   }
 }
