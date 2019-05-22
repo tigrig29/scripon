@@ -1,10 +1,16 @@
 <template>
-  <div>
-    <HeaderArea :title="title" />
-    <article>
-      <SettingArea />
-      <ConvertArea />
-    </article>
+  <div class="container">
+    <header>
+      <HeaderArea :title="title" />
+    </header>
+    <main>
+      <aside>
+        <SettingArea />
+      </aside>
+      <article>
+        <ConvertArea />
+      </article>
+    </main>
   </div>
 </template>
 
@@ -34,10 +40,26 @@ export default {
 }
 </script>
 
-<style>
-@media (min-width: 1025px) {
-  article {
-    display: flex;
+<style lang="scss">
+.container {
+  header {
+    padding: 8px;
+    background: #fff;
+    border-bottom: 2px #efefef solid;
+    // ヘッダー固定用
+    top: 0;
+    position: sticky;
+    z-index: 10;
+  }
+}
+
+// PC
+@media (min-width: 768px) {
+  .container {
+    main {
+      display: grid;
+      grid-template-columns: 512px minmax(256px, auto);
+    }
   }
 }
 </style>

@@ -1,13 +1,10 @@
 <template>
-  <aside>
-    <div class="settings-container">
-      <h2 class="settings-title">設定</h2>
-      <div v-for="set in settings" :key="set.id" class="setting-row">
-        <SettingTitle :setting="set" />
-        <SettingBody v-show="set.enabled" :setting="set" />
-      </div>
+  <div class="settings-container">
+    <div v-for="set in settings" :key="set.id" class="setting-row">
+      <SettingTitle :setting="set" />
+      <SettingBody v-show="set.enabled" :setting="set" />
     </div>
-  </aside>
+  </div>
 </template>
 
 <script>
@@ -27,16 +24,12 @@ export default {
 </script>
 
 <style lang="scss">
+// SP
 .settings-container {
-  max-height: 500px;
-  border: 3px solid #efefef;
-  padding: 5px;
+  padding: 8px;
   overflow-x: auto;
-  resize: both;
-  .settings-title {
-    margin: 10px auto;
-    text-align: center;
-  }
+  height: 50vh;
+  border-bottom: 2px solid #efefef;
 
   &::-webkit-scrollbar {
     width: 12px;
@@ -49,14 +42,11 @@ export default {
   }
 }
 
-@media (min-width: 1025px) {
+// PC
+@media (min-width: 768px) {
   .settings-container {
-    top: 90px;
-    width: 480px;
-    height: 100%;
-    max-height: 835px;
-    position: sticky;
-    overflow-x: auto;
+    height: calc(100vh - 58px);
+    border-right: 2px solid #efefef;
   }
 }
 </style>
