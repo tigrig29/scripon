@@ -1,8 +1,52 @@
 <template>
-  <nuxt />
+  <div class="home">
+    <header>
+      <HeaderArea :title="title" />
+    </header>
+    <main>
+      <nuxt />
+    </main>
+  </div>
 </template>
 
+<script>
+import HeaderArea from '@/components/HeaderArea.vue'
+
+const title = 'NovelGame-SS-Converter'
+
+export default {
+  head() {
+    return {
+      title: `${title} | ノベルゲーム制作のシナリオ→スクリプト化作業を簡単に！`
+    }
+  },
+  components: {
+    HeaderArea
+  },
+  data() {
+    return {
+      title
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+.home {
+  header {
+    padding: 8px;
+    background: #fff;
+    border-bottom: 2px #efefef solid;
+    // ヘッダー固定用
+    top: 0;
+    position: sticky;
+    z-index: 10;
+  }
+}
+</style>
+
 <style lang="scss">
+// 共通レイアウト
 @font-face {
   font-family: 'spin cycle 3d';
   src: url('~assets/others/spincycle_3d_ot.otf') format('opentype');
@@ -14,7 +58,8 @@
 }
 </style>
 
-<style>
+<style lang="scss">
+// デフォルトの設定
 html {
   font-family: 'GenNoKakuJP', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, 'Helvetica Neue', Arial, sans-serif;
