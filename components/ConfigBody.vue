@@ -3,7 +3,7 @@
     <template v-if="setting.type !== 'none'">
       <div v-for="line in setting.lines" :key="line.id">
         <!-- 挿入フォーム -->
-        <InsertForm
+        <ConfigInsertForm
           v-if="setting.type === 'insert'"
           :line="line"
           placeholder="文字、スクリプト等を入力して下さい"
@@ -24,7 +24,7 @@
           "
         />
         <!-- 置換フォーム -->
-        <ReplaceForm
+        <ConfigReplaceForm
           v-if="setting.type === 'replace'"
           :line="line"
           :placeholder="{
@@ -59,14 +59,14 @@
   </div>
 </template>
 <script>
-import InsertForm from '@/components/setting/form/InsertForm.vue'
-import ReplaceForm from '@/components/setting/form/ReplaceForm.vue'
+import ConfigInsertForm from '@/components/ConfigInsertForm.vue'
+import ConfigReplaceForm from '@/components/ConfigReplaceForm.vue'
 import { mapMutations } from 'vuex'
 
 export default {
   components: {
-    InsertForm,
-    ReplaceForm
+    ConfigInsertForm,
+    ConfigReplaceForm
   },
   props: {
     setting: {
@@ -75,7 +75,7 @@ export default {
     }
   },
   methods: {
-    ...mapMutations('settings', [
+    ...mapMutations('config', [
       'addLine',
       'toggleLineEnabled',
       'updateLine',

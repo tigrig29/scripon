@@ -42,7 +42,7 @@ export default {
       const $state = this.$store.state
 
       // 各種 挿入・置換処理
-      for (const setting of $state.settings.list) {
+      for (const setting of $state.config.list) {
         // 機能OFF判定
         if (!setting.enabled) continue
 

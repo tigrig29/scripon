@@ -52,7 +52,7 @@ export default {
   },
   methods: {
     toggleEnabled() {
-      this.$store.commit('settings/changeEnabled', { setting: this.setting })
+      this.$store.commit('config/changeEnabled', { setting: this.setting })
     }
   }
 }

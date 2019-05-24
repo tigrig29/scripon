@@ -11,16 +11,16 @@
       </b-button-group>
       <div style="float:right;">リアルタイム変換 ON</div>
     </div>
-    <ConvertContainer />
+    <ConverterBody />
   </section>
 </template>
 
 <script>
-import ConvertContainer from '@/components/convert/ConvertContainer.vue'
+import ConverterBody from '@/components/ConverterBody.vue'
 
 export default {
   components: {
-    ConvertContainer
+    ConverterBody
   }
 }
 </script>

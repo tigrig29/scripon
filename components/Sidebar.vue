@@ -1,24 +1,24 @@
 <template>
   <div class="settings-container">
-    <div v-for="set in settings" :key="set.id" class="setting-row">
-      <SettingTitle :setting="set" />
-      <SettingBody v-show="set.enabled" :setting="set" />
+    <div v-for="set in config" :key="set.id" class="setting-row">
+      <ConfigHeader :setting="set" />
+      <ConfigBody v-show="set.enabled" :setting="set" />
     </div>
   </div>
 </template>
 
 <script>
-import SettingTitle from '@/components/setting/SettingTitle.vue'
-import SettingBody from '@/components/setting/SettingBody.vue'
+import ConfigHeader from '@/components/ConfigHeader.vue'
+import ConfigBody from '@/components/ConfigBody.vue'
 import { mapState } from 'vuex'
 
 export default {
   components: {
-    SettingTitle,
-    SettingBody
+    ConfigHeader,
+    ConfigBody
   },
   computed: {
-    ...mapState('settings', { settings: 'list' })
+    ...mapState('config', { config: 'list' })
   }
 }
 </script>

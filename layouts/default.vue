@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <header>
-      <HeaderArea :title="title" />
+      <Header :title="title" />
     </header>
     <main>
       <nuxt />
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import HeaderArea from '@/components/HeaderArea.vue'
+import Header from '@/components/Header.vue'
 
 const title = 'NovelGame-SS-Converter'
 
@@ -21,7 +21,7 @@ export default {
     }
   },
   components: {
-    HeaderArea
+    Header
   },
   data() {
     return {
@@ -49,7 +49,7 @@ export default {
 // 共通レイアウト
 @font-face {
   font-family: 'spin cycle 3d';
-  src: url('~assets/others/spincycle_3d_ot.otf') format('opentype');
+  src: url('~static/fonts/spincycle_3d_ot.otf') format('opentype');
 }
 .container {
   // grid.scss 帳消し

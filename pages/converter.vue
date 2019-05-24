@@ -1,22 +1,22 @@
 <template>
   <div class="container">
     <aside>
-      <SettingArea />
+      <Sidebar />
     </aside>
     <article>
-      <ConvertArea />
+      <Converter />
     </article>
   </div>
 </template>
 
 <script>
-import SettingArea from '@/components/SettingArea.vue'
-import ConvertArea from '@/components/ConvertArea.vue'
+import Sidebar from '@/components/Sidebar.vue'
+import Converter from '@/components/Converter.vue'
 
 export default {
   components: {
-    SettingArea,
-    ConvertArea
+    Sidebar,
+    Converter
   }
 }
 </script>
