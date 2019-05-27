@@ -1,8 +1,6 @@
 <template>
-  <div class="home">
-    <header>
-      <Header :title="title" />
-    </header>
+  <div>
+    <Header :title="title" />
     <main>
       <nuxt />
     </main>
@@ -30,20 +28,6 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.home {
-  header {
-    padding: 8px;
-    background: #fff;
-    border-bottom: 2px #efefef solid;
-    // ヘッダー固定用
-    top: 0;
-    position: sticky;
-    z-index: 10;
-  }
-}
-</style>
 
 <style lang="scss">
 // 共通レイアウト
