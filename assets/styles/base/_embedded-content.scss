@@ -1,0 +1,26 @@
+// 埋め込み要素
+
+// IE 9-. 表示用
+audio, video
+{
+  display: inline-block;
+}
+
+// iOS 4-7. 表示用
+audio:not([controls])
+{
+  display: none;
+  height: 0;
+}
+
+// IE 10-. img 内部リンクの線を消す
+img
+{
+  border-style: none;
+}
+
+// IE
+svg:not(:root)
+{
+  overflow: hidden;
+}

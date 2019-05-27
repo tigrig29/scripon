@@ -25,6 +25,13 @@ export default {
 </script>
 
 <style lang="scss">
+@include font-face(
+  'spin cycle 3d',
+  '~static/fonts/spincycle_3d_ot.otf',
+  null,
+  null,
+  otf
+);
 .Header {
   padding: 8px;
   border-bottom: 2px #efefef solid;
