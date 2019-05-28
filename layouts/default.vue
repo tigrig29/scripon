@@ -10,7 +10,7 @@
 <script>
 import Header from '@/components/Header.vue'
 
-const title = 'NovelGame-SS-Converter'
+const title = 'ScriPon!'
 
 export default {
   head() {

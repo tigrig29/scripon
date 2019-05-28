@@ -1,107 +1,50 @@
-/* Text-level semantics
-   ========================================================================== */
-
-/**
- * 1. Remove the gray background on active links in IE 10.
- * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
- */
-
+// IE 10. アクティブリンクの背景が灰色にならないよう調整
+// iOS 8+, Safari 8+. リンクのアンダーラインをつける（共通化）
 a
 {
   text-decoration: none;
-  background-color: transparent; /* 1 */
-  -webkit-text-decoration-skip: objects; /* 2 */
-  color: #41b883;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+  color: $color-primary;
   &:hover
   {
     text-decoration: underline;
   }
 }
 
-/**
- * Remove the outline on focused links when they are also active or hovered
- * in all browsers (opinionated).
- */
-
+// outline はデフォルトでは無しとする
 a:active, a:hover
 {
   outline-width: 0;
 }
 
-/**
- * 1. Remove the bottom border in Firefox 39-.
- * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
- */
-
-abbr[title]
-{
-  border-bottom: none; /* 1 */
-  text-decoration: underline; /* 2 */
-  text-decoration: underline dotted; /* 2 */
-}
-
-/**
- * Prevent the duplicate application of `bolder` by the next rule in Safari 6.
- */
-
+// Safari 6. 表示用
 b, strong
 {
   font-weight: inherit;
 }
 
-/**
- * Add the correct font weight in Chrome, Edge, and Safari.
- */
-
+// Chrome, Edge, Safari.
 b, strong
 {
   font-weight: 600;
 }
 
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd `em` font sizing in all browsers.
- */
-
+// コード系
 code, kbd, samp
 {
   font-family: "Andale Mono", monospace, monospace; /* 1 */
   font-size: 14px; /* 2 */
 }
 
-/**
- * Add the correct font style in Android 4.3-.
- */
-
-dfn
-{
-  font-style: italic;
-}
-
-/**
- * Add the correct background and color in IE 9-.
- */
-
+// IE 9-. 用
 mark
 {
   background-color: #ff0;
   color: #000;
 }
 
-/**
- * Add the correct font size in all browsers.
- */
-
-small
-{
-  font-size: 13px;
-}
-
-/**
- * Prevent `sub` and `sup` elements from affecting the line height in
- * all browsers.
- */
-
+// 下付き文字、上付き文字
 sub, sup
 {
   font-size: 12px;
