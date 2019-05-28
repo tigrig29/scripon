@@ -1,24 +1,42 @@
 <template>
-  <header class="Header">
-    <div class="header-container">
-      <h1 class="title">{{ title }}</h1>
-      <p>h</p>
-      <p>h</p>
-      <p>h</p>
+  <header class="Header sticky">
+    <nuxt-link to="/" class="Header__Logo">
+      <scripon-logo />
+      <h1 class="Header__Logo__Text">{{ title }}</h1>
+    </nuxt-link>
 
-      <!-- <h2 class="subtitle">
-        ノベルゲーム制作（ティラノスクリプト、吉里吉里、NScripter、...）におけるシナリオのスクリプト化作業を簡単に！
-      </h2> -->
+    <div class="Header__Toggler">
+      <div class="Header__Toggler__Button" @click="toggle">
+        <div :class="{ 'icon menu': !visible, 'icon close': visible }"></div>
+      </div>
     </div>
+    <HeaderNav />
   </header>
 </template>
 
 <script>
+import scriponLogo from '@/components/icons/scripon'
+import HeaderNav from '@/components/HeaderNav'
+
 export default {
+  components: {
+    scriponLogo,
+    HeaderNav
+  },
   props: {
     title: {
       type: String,
       default: ''
+    }
+  },
+  computed: {
+    visible() {
+      return this.$store.state.view.visibleHeader
+    }
+  },
+  methods: {
+    toggle() {
+      this.$store.commit('view/toggle', 'visibleHeader')
     }
   }
 }
@@ -33,28 +51,43 @@ export default {
   otf
 );
 .Header {
-  padding: 8px;
-  border-bottom: 2px #efefef solid;
+  display: flex;
+  height: 60px;
+  flex-direction: row;
+  border-bottom: 2px $--color-grey-4 solid;
+  @media (min-width: $--md) {
+    height: 80px;
+  }
   // ヘッダー固定用
-  top: 0;
-  position: sticky;
-  z-index: 10;
-  .header-container {
+  &.sticky {
+    top: 0;
+  }
+  // ロゴエリア
+  &__Logo {
     display: flex;
     align-items: center;
-    flex-flow: row nowrap;
-
-    .title {
-      font-family: 'spin cycle 3d';
-      font-size: 32px;
-      color: #56b3bc;
-      margin-bottom: 0;
-      filter: drop-shadow(3px 3px 1px #56b3bc4f);
+    @media (min-width: $--md) {
+      width: 189px;
     }
-
-    .subtitle {
-      font-size: 14px;
-      color: #526488;
+    &__Text {
+      margin: 0;
+      width: 0;
+      overflow: hidden;
+    }
+  }
+  &__Toggler {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: flex-end;
+    @media (min-width: 991px) {
+      display: none;
+    }
+    &__Button {
+      display: flex;
+      width: 25px;
+      height: 20px;
+      cursor: pointer;
     }
   }
 }

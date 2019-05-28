@@ -1,10 +1,6 @@
-// IE 10. アクティブリンクの背景が灰色にならないよう調整
-// iOS 8+, Safari 8+. リンクのアンダーラインをつける（共通化）
 a
 {
   text-decoration: none;
-  background-color: transparent;
-  -webkit-text-decoration-skip: objects;
   color: $color-primary;
   &:hover
   {
@@ -33,15 +29,8 @@ b, strong
 // コード系
 code, kbd, samp
 {
-  font-family: "Andale Mono", monospace, monospace; /* 1 */
-  font-size: 14px; /* 2 */
-}
-
-// IE 9-. 用
-mark
-{
-  background-color: #ff0;
-  color: #000;
+  font-family: "Andale Mono", monospace, monospace;
+  font-size: 14px;
 }
 
 // 下付き文字、上付き文字

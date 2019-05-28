@@ -3,9 +3,9 @@ body
   margin: 0;
 }
 
-// IE 9-. 表示用
 article, aside, footer, header, nav, section
 {
+  padding: $space-sm;
   display: block;
 }
 
