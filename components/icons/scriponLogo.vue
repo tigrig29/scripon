@@ -37,22 +37,22 @@
 
 <style lang="scss">
 .SVG-nuxtjs {
-  height: 24px;
+  height: $font-size-lg;
   display: inline-block;
-  @media (min-width: 991px) {
-    height: 26px;
+  @media (min-width: $--sm) {
+    height: $font-size-xl;
   }
   .cls-1 {
-    fill: #2e495e;
+    fill: $color-reverse;
   }
   .cls-2 {
-    fill: #00c48d;
+    fill: $color-primary;
   }
   .cls-3 {
     fill: none;
   }
   .cls-5 {
-    fill: #108775;
+    fill: $color-secondary;
   }
 }
 </style>

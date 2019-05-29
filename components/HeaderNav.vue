@@ -1,7 +1,9 @@
 <template>
-  <nav class="Nav" :class="{ 'Nav--hidden': !visible }">
+  <nav class="Nav">
     <div class="Nav__Menu">
       <nuxt-header-nav-menu />
+    </div>
+    <div class="Nav__Social">
       <nuxt-header-nav-social />
     </div>
   </nav>
@@ -15,69 +17,29 @@ export default {
   components: {
     NuxtHeaderNavMenu,
     NuxtHeaderNavSocial
-  },
-  computed: {
-    visible() {
-      return this.$store.state.view.visibleHeader
-    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .Nav {
-  display: block;
-  position: fixed;
-  z-index: 995;
-  top: 60px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  overflow-y: auto;
-  background-color: #fff;
-  @media (min-width: 991px) {
-    display: flex;
-    flex: 1;
-    top: 0;
-    flex-wrap: nowrap;
-    overflow-y: visible;
-    position: relative;
-  }
-  &--hidden {
-    display: none;
-    @media (min-width: 991px) {
-      display: flex;
-    }
-  }
-  &__Search {
-    width: 100%;
-    height: 60px;
-    display: flex;
-    border-bottom: 1px solid #dbdfe1;
-    @media (min-width: 991px) {
-      flex: 3;
-      order: 1;
-      height: 79px;
-      border-bottom: none;
-    }
-  }
-  &__Lang {
-    width: 100%;
-    display: flex;
-    @media (min-width: 991px) {
-      width: 80px;
-      height: 79px;
-    }
+  height: $header-height-sp;
+  padding: 0;
+  display: flex;
+  flex: 5;
+  overflow-x: hidden;
+  @media (min-width: $--sm) {
+    height: $header-height-pc;
   }
   &__Menu {
-    width: 100%;
     display: flex;
-    border-bottom: 1px solid #dbdfe1;
-    @media (min-width: 991px) {
-      flex: 4;
-      order: 2;
-      height: 79px;
-      border-bottom: none;
+    flex: 5;
+  }
+  &__Social {
+    display: flex;
+    flex: 1;
+    @media (max-width: $--xs) {
+      display: none;
     }
   }
 }
