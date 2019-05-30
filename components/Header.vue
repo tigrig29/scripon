@@ -39,6 +39,7 @@ export default {
   height: $header-height-sp;
   flex-direction: row;
   border-bottom: 2px $--color-grey-4 solid;
+  background: $--color-white;
   @media (min-width: $--sm) {
     height: $header-height-pc;
   }

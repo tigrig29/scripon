@@ -88,11 +88,11 @@
     margin-left: $space-base;
     &__Link {
       &__Icon {
-        width: $font-size-lg;
+        width: $font-size-base;
         height: auto;
         fill: currentColor;
         @media (min-width: $--sm) {
-          width: $font-size-xl;
+          width: $font-size-lg;
         }
         &--Github {
           color: $--color-github;
