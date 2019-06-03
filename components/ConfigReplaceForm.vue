@@ -1,7 +1,5 @@
 <template>
-  <div
-    :class="`replace-form form-row ${line.enabled ? 'enabled' : 'disabled'}`"
-  >
+  <div class="Replacer form-row">
     <!-- スイッチ（共通） -->
     <div class="col-switch">
       <div class="custom-control custom-switch">

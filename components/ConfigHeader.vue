@@ -1,15 +1,20 @@
 <template>
-  <div class="setting-title input-group mb-3">
-    <div class="input-group-prepend">
+  <div class="Config__Header input-group mb-3">
+    <div class="Config__Header__Title input-group-prepend">
       <label
-        :class="`input-group-text ${selectbox.value ? 'enabled' : ''}`"
+        class="input-group-text Config__Header__Title__Label"
+        :class="{
+          'Config__Header__Title__Label--enabled': selectbox.value,
+          'Config__Header__Title__Label--disabled': !selectbox.value
+        }"
         :for="selectbox.id"
-        >{{ selectbox.title }}</label
       >
+        {{ selectbox.title }}
+      </label>
     </div>
     <select
       :id="selectbox.id"
-      class="custom-select"
+      class="custom-select Config__Header__Select"
       :value="selectbox.value"
       @change="toggleEnabled"
     >
@@ -17,8 +22,9 @@
         v-for="option in selectbox.options"
         :key="option.text"
         :value="option.value"
-        >{{ option.text }}</option
       >
+        {{ option.text }}
+      </option>
     </select>
   </div>
 </template>
@@ -59,6 +65,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.Config__Header {
+  &__Title {
+    &__Label {
+      &--enabled {
+        background-color: #d6f4ff;
+      }
+      &--disabled {
+        background-color: #e9ecef;
+      }
+    }
+  }
+}
 .input-group-text.enabled {
   background-color: #d6f4ff; //#a1f8c3;
 }

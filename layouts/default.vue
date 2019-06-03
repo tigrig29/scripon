@@ -1,9 +1,7 @@
 <template>
   <div>
     <Header :title="title" />
-    <main>
-      <nuxt />
-    </main>
+    <nuxt />
   </div>
 </template>
 

@@ -1,7 +1,15 @@
 <template>
-  <div class="setting-lines-container">
+  <div class="Config__Body">
     <template v-if="setting.type !== 'none'">
-      <div v-for="line in setting.lines" :key="line.id">
+      <div
+        v-for="line in setting.lines"
+        :key="line.id"
+        class="Config__Body__Item"
+        :class="{
+          'Config__Body__Item--enabled': line.enabled,
+          'Config__Body__Item--disabled': !line.enabled
+        }"
+      >
         <!-- 挿入フォーム -->
         <ConfigInsertForm
           v-if="setting.type === 'insert'"
@@ -48,6 +56,7 @@
           "
         />
       </div>
+      <!-- 追加ボタン -->
       <button
         type="button"
         class="btn btn-primary add-new-line"
@@ -86,8 +95,8 @@ export default {
 </script>
 
 <style lang="scss">
-.setting-lines-container {
-  .form-row {
+.Config__Body {
+  &__Item {
     margin-bottom: 1rem;
     flex-wrap: nowrap;
     justify-content: flex-end;
@@ -122,6 +131,26 @@ export default {
         border-radius: 10px;
       }
     }
+
+    // 使用可否によるデザイン変更
+    &--enabled {
+      .form-control {
+        transition: color 0.15s ease-in-out;
+      }
+      .btn-danger {
+        transition: background-color 0.15s ease-in-out,
+          border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+      }
+    }
+    &--disabled {
+      .form-control {
+        color: #adb5bd;
+      }
+      .btn-danger {
+        border-color: #b36f76;
+        background-color: #b36f76;
+      }
+    }
   }
   .custom-switch {
     margin-top: 0.4rem;
@@ -135,26 +164,6 @@ export default {
     color: #007bff;
     &:hover {
       background: #dfeeff;
-    }
-  }
-
-  // 使用可否によるデザイン変更
-  .form-row {
-    .form-control {
-      transition: color 0.15s ease-in-out;
-    }
-    .btn-danger {
-      transition: background-color 0.15s ease-in-out,
-        border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-    }
-  }
-  .form-row.disabled {
-    .form-control {
-      color: #adb5bd;
-    }
-    .btn-danger {
-      border-color: #b36f76;
-      background-color: #b36f76;
     }
   }
 }

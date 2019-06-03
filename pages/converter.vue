@@ -1,12 +1,8 @@
 <template>
-  <div class="container">
-    <aside>
-      <Sidebar />
-    </aside>
-    <article>
-      <Converter />
-    </article>
-  </div>
+  <main class="Main">
+    <Sidebar />
+    <Converter />
+  </main>
 </template>
 
 <script>
@@ -24,7 +20,7 @@ export default {
 <style lang="scss">
 // PC
 @media (min-width: 768px) {
-  .container {
+  .Main {
     display: grid;
     grid-template-columns: 512px minmax(256px, auto);
   }

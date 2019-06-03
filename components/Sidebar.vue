@@ -1,21 +1,18 @@
 <template>
-  <div class="settings-container">
-    <div v-for="set in config" :key="set.id" class="setting-row">
-      <ConfigHeader :setting="set" />
-      <ConfigBody v-show="set.enabled" :setting="set" />
+  <aside class="Sidebar">
+    <div v-for="set in config" :key="set.id" class="Sidebar__Item">
+      <Config :setting="set" />
     </div>
-  </div>
+  </aside>
 </template>
 
 <script>
-import ConfigHeader from '@/components/ConfigHeader.vue'
-import ConfigBody from '@/components/ConfigBody.vue'
+import Config from '@/components/Config.vue'
 import { mapState } from 'vuex'
 
 export default {
   components: {
-    ConfigHeader,
-    ConfigBody
+    Config
   },
   computed: {
     ...mapState('config', { config: 'list' })
@@ -25,7 +22,7 @@ export default {
 
 <style lang="scss">
 // SP
-.settings-container {
+.Sidebar {
   padding: 8px;
   overflow-x: auto;
   height: 50vh;
@@ -44,7 +41,7 @@ export default {
 
 // PC
 @media (min-width: 768px) {
-  .settings-container {
+  .Sidebar {
     height: calc(100vh - 58px);
     border-right: 2px solid #efefef;
   }

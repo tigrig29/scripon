@@ -1,5 +1,5 @@
 <template>
-  <div :class="`insert-form form-row ${line.enabled ? 'enabled' : 'disabled'}`">
+  <div class="Inserter form-row">
     <!-- スイッチ（共通） -->
     <div class="col-switch">
       <div class="custom-control custom-switch">
