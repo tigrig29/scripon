@@ -3,6 +3,7 @@ export const state = () => ({
     insert: {
       id: '',
       value: '',
+      placeholder: '文字、スクリプト等を入力してください',
       enabled: true
     },
     replace: {
@@ -10,6 +11,10 @@ export const state = () => ({
       value: {
         before: '',
         after: ''
+      },
+      placeholder: {
+        before: '置換対象の文字列を入力（正規表現可）',
+        after: '置換後の文字列を入力（正規表現可）'
       },
       enabled: true
     }
@@ -26,40 +31,40 @@ export const state = () => ({
       title: '行頭に挿入',
       type: 'insert',
       enabled: false,
-      lines: [],
-      linesCounta: 0
+      settings: [],
+      settingsCounta: 0
     },
     {
       id: 'insertLineEnd',
       title: '行末に挿入',
       type: 'insert',
       enabled: false,
-      lines: [],
-      linesCounta: 0
+      settings: [],
+      settingsCounta: 0
     },
     {
       id: 'insertToFirst',
       title: 'シナリオ先頭行に挿入',
       type: 'insert',
       enabled: false,
-      lines: [],
-      linesCounta: 0
+      settings: [],
+      settingsCounta: 0
     },
     {
       id: 'insertToLast',
       title: 'シナリオ最終行に挿入',
       type: 'insert',
       enabled: false,
-      lines: [],
-      linesCounta: 0
+      settings: [],
+      settingsCounta: 0
     },
     {
       id: 'detailsReplace',
       title: '詳細な置換',
       type: 'replace',
       enabled: false,
-      lines: [],
-      linesCounta: 0
+      settings: [],
+      settingsCounta: 0
     }
   ]
 })
@@ -68,49 +73,49 @@ export const mutations = {
   /**
    * 設定の有効/無効化
    * @param {Object} state $store.state
-   * @param {Object} payload.setting 対象の設定オブジェクト
+   * @param {Object} config 対象のConfig
    */
-  changeEnabled(state, { setting }) {
-    setting.enabled = !setting.enabled
+  changeEnabled(state, config) {
+    config.enabled = !config.enabled
   },
   /**
    * 挿入/置換 設定行の追加
    * @param {Object} state $store.state
-   * @param {Object} payload.setting 挿入/置換 設定を追加する対象の設定オブジェクト
+   * @param {Object} config 挿入/置換 設定を追加する対象のConfig
    */
-  addLine(state, { setting }) {
+  addSetting(state, config) {
     // 設定内容を作成
-    const line = Object.assign({}, state.template[setting.type])
-    line.id = `${setting.id}-${setting.linesCounta++}`
-    line.enabled = true
+    const setting = Object.assign({}, state.template[config.type])
+    setting.id = `${config.id}-${config.settingsCounta++}`
+    setting.enabled = true
     // 追加
-    setting.lines.push(line)
+    config.settings.push(setting)
   },
   /**
    * 挿入/置換 設定行の使用可否の変更
    * @param {Object} state $store.state
-   * @param {Object} payload.line 挿入/置換 設定行
+   * @param {Object} setting 挿入/置換 設定行
    */
-  toggleLineEnabled(state, { line }) {
-    line.enabled = !line.enabled
+  toggleSettingEnabled(state, setting) {
+    setting.enabled = !setting.enabled
   },
   /**
    * 挿入/置換 設定行の値更新
    * @param {Object} state $store.state
-   * @param {Object} payload.line 挿入/置換 設定行
+   * @param {Object} payload.setting 挿入/置換 設定行
    * @param {String} payload.value 設定する値
    */
-  updateLine(state, { line, value }) {
-    line.value = value
+  updateSetting(state, { setting, value }) {
+    setting.value = value
   },
   /**
    * 挿入/置換 設定行の削除
    * @param {Object} state $store.state
-   * @param {Object} payload.line 挿入/置換 設定行
+   * @param {Object} setting 挿入/置換 設定行
    */
-  deleteLine(state, { line }) {
-    const setting = state.list.find(d => d.id === line.id.split('-')[0])
-    const index = setting.lines.findIndex(l => l.id === line.id)
-    setting.lines.splice(index, 1)
+  deleteSetting(state, setting) {
+    const config = state.list.find(d => d.id === setting.id.split('-')[0])
+    const index = config.settings.findIndex(l => l.id === setting.id)
+    config.settings.splice(index, 1)
   }
 }

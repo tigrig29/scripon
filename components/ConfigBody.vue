@@ -1,95 +1,55 @@
 <template>
-  <div class="Config__Body">
-    <template v-if="setting.type !== 'none'">
-      <div
-        v-for="line in setting.lines"
-        :key="line.id"
-        class="Config__Body__Item"
-        :class="{
-          'Config__Body__Item--enabled': line.enabled,
-          'Config__Body__Item--disabled': !line.enabled
-        }"
-      >
-        <!-- 挿入フォーム -->
-        <ConfigInsertForm
-          v-if="setting.type === 'insert'"
-          :line="line"
-          placeholder="文字、スクリプト等を入力して下さい"
-          :switchfunc="
-            () => {
-              toggleLineEnabled({ line })
-            }
-          "
-          :inputfunc="
-            value => {
-              updateLine({ line, value })
-            }
-          "
-          :deletefunc="
-            () => {
-              deleteLine({ line })
-            }
-          "
-        />
-        <!-- 置換フォーム -->
-        <ConfigReplaceForm
-          v-if="setting.type === 'replace'"
-          :line="line"
-          :placeholder="{
-            before: '置換対象の文字列を入力（正規表現可）',
-            after: '置換後の文字列を入力（正規表現可）'
-          }"
-          :switchfunc="
-            () => {
-              toggleLineEnabled({ line })
-            }
-          "
-          :inputfunc="
-            value => {
-              updateLine({ line, value })
-            }
-          "
-          :deletefunc="
-            () => {
-              deleteLine({ line })
-            }
-          "
-        />
-      </div>
-      <!-- 追加ボタン -->
-      <button
-        type="button"
-        class="btn btn-primary add-new-line"
-        @click="addLine({ setting })"
-      >
-        追加
-      </button>
-    </template>
+  <div v-show="config.enabled && config.type !== 'none'" class="Config__Body">
+    <div class="Config__Body__Item">
+      <!-- 挿入フォーム -->
+      <template v-if="config.type === 'insert'">
+        <InsertForm :config="config" />
+      </template>
+      <!-- 置換フォーム -->
+      <!-- <div
+          v-if="config.type === 'replace'"
+          class="Config__Body__Item"
+        >
+          <ReplaceForm
+            :line="line"
+            :placeholder="{
+              before: '置換対象の文字列を入力（正規表現可）',
+              after: '置換後の文字列を入力（正規表現可）'
+            }"
+            :switchfunc="
+              () => {
+                toggleLineEnabled({ line })
+              }
+            "
+            :inputfunc="
+              value => {
+                updateLine({ line, value })
+              }
+            "
+            :deletefunc="
+              () => {
+                deleteLine({ line })
+              }
+            "
+          />
+        </div> -->
+    </div>
   </div>
 </template>
 <script>
-import ConfigInsertForm from '@/components/ConfigInsertForm.vue'
-import ConfigReplaceForm from '@/components/ConfigReplaceForm.vue'
-import { mapMutations } from 'vuex'
+import InsertForm from '@/components/config/InsertForm.vue'
+// import ReplaceForm from '@/components/config/ReplaceForm.vue'
 
 export default {
   components: {
-    ConfigInsertForm,
-    ConfigReplaceForm
+    InsertForm
+    // ReplaceForm
   },
   props: {
-    setting: {
+    config: {
       type: Object,
       required: true
     }
-  },
-  methods: {
-    ...mapMutations('config', [
-      'addLine',
-      'toggleLineEnabled',
-      'updateLine',
-      'deleteLine'
-    ])
   }
 }
 </script>
@@ -110,25 +70,6 @@ export default {
       p {
         line-height: 2rem;
         margin: 0;
-      }
-    }
-    textarea {
-      height: 40px;
-      overflow-y: hidden;
-      overflow-x: scroll;
-      resize: none;
-      cursor: default;
-      &::-webkit-scrollbar {
-        width: 0px;
-      }
-      &::-webkit-scrollbar:horizontal {
-        height: 10px;
-      }
-      &::-webkit-scrollbar-thumb {
-        background-clip: padding-box;
-        background-color: rgba(0, 0, 50, 0.2);
-        border: solid 3px rgba(0, 0, 0, 0);
-        border-radius: 10px;
       }
     }
 

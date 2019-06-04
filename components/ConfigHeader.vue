@@ -32,7 +32,7 @@
 <script>
 export default {
   props: {
-    setting: {
+    config: {
       type: Object,
       required: true
     }
@@ -40,9 +40,9 @@ export default {
   computed: {
     selectbox() {
       return {
-        id: this.setting.id,
-        title: this.setting.title,
-        value: this.setting.enabled,
+        id: this.config.id,
+        title: this.config.title,
+        value: this.config.enabled,
         options: [
           {
             text: 'する',
@@ -58,7 +58,7 @@ export default {
   },
   methods: {
     toggleEnabled() {
-      this.$store.commit('config/changeEnabled', { setting: this.setting })
+      this.$store.commit('config/changeEnabled', this.config)
     }
   }
 }

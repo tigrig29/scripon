@@ -1,7 +1,7 @@
 <template>
   <aside class="Sidebar">
-    <div v-for="set in config" :key="set.id" class="Sidebar__Item">
-      <Config :setting="set" />
+    <div v-for="conf in config" :key="conf.id" class="Sidebar__Item">
+      <Config :config="conf" />
     </div>
   </aside>
 </template>

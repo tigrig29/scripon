@@ -1,5 +1,5 @@
 <template>
-  <div class="Inserter form-row">
+  <div class="ReplaceForm form-row">
     <!-- スイッチ（共通） -->
     <div class="col-switch">
       <div class="custom-control custom-switch">
@@ -17,18 +17,37 @@
       </div>
     </div>
     <!-- 入力エリア -->
-    <div class="col-input">
+    <div class="col-input-half">
       <textarea
         class="form-control"
         type="text"
         rows="1"
         wrap="off"
-        :value="line.value"
-        :placeholder="placeholder"
+        :value="line.value.before"
+        :placeholder="placeholder.before"
         @keydown.enter.prevent=""
         @input="
           e => {
-            inputfunc(e.target.value)
+            inputfunc({ before: e.target.value, after: line.value.after })
+          }
+        "
+      />
+    </div>
+    <div class="col-separater">
+      <p>→</p>
+    </div>
+    <div class="col-input-half">
+      <textarea
+        class="form-control"
+        type="text"
+        rows="1"
+        wrap="off"
+        :value="line.value.after"
+        :placeholder="placeholder.after"
+        @keydown.enter.prevent=""
+        @input="
+          e => {
+            inputfunc({ before: line.value.before, after: e.target.value })
           }
         "
       />
@@ -59,15 +78,23 @@ export default {
       default() {
         return {
           id: '',
-          value: '',
+          value: {
+            before: '',
+            after: ''
+          },
           enabled: true
         }
       }
     },
     placeholder: {
-      type: String,
+      type: Object,
       require: false,
-      default: '文字、スクリプト等を入力して下さい'
+      default() {
+        return {
+          before: '置換対象の文字列を入力（正規表現可）',
+          after: '置換後の文字列を入力（正規表現可）'
+        }
+      }
     },
     switchfunc: {
       type: Function,

@@ -1,7 +1,7 @@
 <template>
   <div class="Config">
-    <ConfigHeader :setting="setting" />
-    <ConfigBody v-show="setting.enabled" :setting="setting" />
+    <ConfigHeader :config="config" />
+    <ConfigBody :config="config" />
   </div>
 </template>
 
@@ -15,7 +15,7 @@ export default {
     ConfigBody
   },
   props: {
-    setting: {
+    config: {
       type: Object,
       required: true
     }
