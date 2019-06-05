@@ -2,3 +2,19 @@
   position: sticky;
   z-index: $--z-index-shallowest;
 }
+
+.spacer {
+  margin-top: $space-base;
+  &--xs {
+    margin-top: $space-xs;
+  }
+  &--lg {
+    margin-top: $space-lg;
+  }
+  &--sm {
+    margin-top: $space-sm;
+  }
+  &--xs {
+    margin-top: $space-xs;
+  }
+}

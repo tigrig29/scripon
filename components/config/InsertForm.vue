@@ -22,6 +22,7 @@
         <ScriponTextarea
           :horizontal="true"
           :value="setting.value"
+          :placeholder="setting.placeholder"
           :enabled="setting.enabled"
           @keydown.enter.prevent=""
           @input="

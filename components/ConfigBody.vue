@@ -6,44 +6,20 @@
         <InsertForm :config="config" />
       </template>
       <!-- 置換フォーム -->
-      <!-- <div
-          v-if="config.type === 'replace'"
-          class="Config__Body__Item"
-        >
-          <ReplaceForm
-            :line="line"
-            :placeholder="{
-              before: '置換対象の文字列を入力（正規表現可）',
-              after: '置換後の文字列を入力（正規表現可）'
-            }"
-            :switchfunc="
-              () => {
-                toggleLineEnabled({ line })
-              }
-            "
-            :inputfunc="
-              value => {
-                updateLine({ line, value })
-              }
-            "
-            :deletefunc="
-              () => {
-                deleteLine({ line })
-              }
-            "
-          />
-        </div> -->
+      <template v-if="config.type === 'replace'">
+        <ReplaceForm :config="config" />
+      </template>
     </div>
   </div>
 </template>
 <script>
 import InsertForm from '@/components/config/InsertForm.vue'
-// import ReplaceForm from '@/components/config/ReplaceForm.vue'
+import ReplaceForm from '@/components/config/ReplaceForm.vue'
 
 export default {
   components: {
-    InsertForm
-    // ReplaceForm
+    InsertForm,
+    ReplaceForm
   },
   props: {
     config: {

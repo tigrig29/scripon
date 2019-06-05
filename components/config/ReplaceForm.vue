@@ -1,124 +1,116 @@
 <template>
-  <div class="ReplaceForm form-row">
-    <!-- スイッチ（共通） -->
-    <div class="col-switch">
-      <div class="custom-control custom-switch">
-        <input
-          :id="`customSwitch-${line.id}`"
-          type="checkbox"
-          class="custom-control-input"
-          :checked="line.enabled"
-          @change="switchfunc"
+  <div class="ReplaceForm">
+    <div
+      v-for="setting in config.settings"
+      :key="setting.id"
+      class="ReplaceForm__Item form-row"
+      :class="{
+        'ReplaceForm--enabled': setting.enabled,
+        'ReplaceForm--disabled': !setting.enabled
+      }"
+    >
+      <!-- スイッチ -->
+      <div class="ReplaceForm__Item__Switch">
+        <ScriponSwitch
+          :id="setting.id"
+          :enabled="setting.enabled"
+          @change="toggleSettingEnabled(setting)"
         />
-        <label
-          class="custom-control-label"
-          :for="`customSwitch-${line.id}`"
-        ></label>
+      </div>
+      <!-- 入力エリア -->
+      <div class="ReplaceForm__Item__Textarea">
+        <ScriponTextarea
+          :horizontal="true"
+          :value="setting.value.before"
+          :placeholder="setting.placeholder.before"
+          :enabled="setting.enabled"
+          @keydown.enter.prevent=""
+          @input="
+            e => {
+              updateSetting({
+                setting,
+                value: { before: e.target.value, after: setting.value.after }
+              })
+            }
+          "
+        />
+        <div class="spacer--xs" />
+        <ScriponTextarea
+          :horizontal="true"
+          :value="setting.value.after"
+          :placeholder="setting.placeholder.after"
+          :enabled="setting.enabled"
+          @keydown.enter.prevent=""
+          @input="
+            e => {
+              updateSetting({
+                setting,
+                value: { before: setting.value.before, after: e.target.value }
+              })
+            }
+          "
+        />
+      </div>
+      <!-- 削除ボタン -->
+      <div class="ReplaceForm__Item__Button">
+        <scripon-button
+          caption="削除"
+          :danger="true"
+          :enabled="setting.enabled"
+          @click="deleteSetting(setting)"
+        />
       </div>
     </div>
-    <!-- 入力エリア -->
-    <div class="col-input-half">
-      <textarea
-        class="form-control"
-        type="text"
-        rows="1"
-        wrap="off"
-        :value="line.value.before"
-        :placeholder="placeholder.before"
-        @keydown.enter.prevent=""
-        @input="
-          e => {
-            inputfunc({ before: e.target.value, after: line.value.after })
-          }
-        "
-      />
-    </div>
-    <div class="col-separater">
-      <p>→</p>
-    </div>
-    <div class="col-input-half">
-      <textarea
-        class="form-control"
-        type="text"
-        rows="1"
-        wrap="off"
-        :value="line.value.after"
-        :placeholder="placeholder.after"
-        @keydown.enter.prevent=""
-        @input="
-          e => {
-            inputfunc({ before: line.value.before, after: e.target.value })
-          }
-        "
-      />
-    </div>
-    <!-- 削除ボタン（共通） -->
-    <div class="col-btn">
-      <button
-        type="button"
-        class="btn btn-danger"
-        @click="
-          () => {
-            deletefunc()
-          }
-        "
-      >
-        削除
-      </button>
-    </div>
+    <!-- 追加ボタン -->
+    <scripon-button
+      caption="追加"
+      :horizontal="true"
+      @click="addSetting(config)"
+    />
   </div>
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+import ScriponButton from '~/components/forms/ScriponButton'
+import ScriponTextarea from '~/components/forms/ScriponTextarea'
+import ScriponSwitch from '~/components/forms/ScriponSwitch'
+
 export default {
+  components: {
+    ScriponButton,
+    ScriponTextarea,
+    ScriponSwitch
+  },
   props: {
-    line: {
+    config: {
       type: Object,
-      require: true,
-      default() {
-        return {
-          id: '',
-          value: {
-            before: '',
-            after: ''
-          },
-          enabled: true
-        }
-      }
-    },
-    placeholder: {
-      type: Object,
-      require: false,
-      default() {
-        return {
-          before: '置換対象の文字列を入力（正規表現可）',
-          after: '置換後の文字列を入力（正規表現可）'
-        }
-      }
-    },
-    switchfunc: {
-      type: Function,
-      require: false,
-      default: () => {
-        alert('toggleEnabled')
-      }
-    },
-    inputfunc: {
-      type: Function,
-      require: false,
-      default: ({ value }) => {
-        alert(value)
-      }
-    },
-    deletefunc: {
-      type: Function,
-      require: false,
-      default: () => {
-        alert('delete')
-      }
+      required: true
     }
+  },
+  methods: {
+    ...mapMutations('config', [
+      'toggleSettingEnabled',
+      'addSetting',
+      'updateSetting',
+      'deleteSetting'
+    ])
   }
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.ReplaceForm {
+  &__Item {
+    margin-bottom: $space-base;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    &__Textarea {
+      width: 75%;
+    }
+    &__Button {
+      align-self: flex-end;
+    }
+  }
+}
+</style>
