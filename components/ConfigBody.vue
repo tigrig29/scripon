@@ -60,9 +60,6 @@ export default {
     margin-bottom: 1rem;
     flex-wrap: nowrap;
     justify-content: flex-end;
-    .col-input {
-      width: 75%;
-    }
     .col-input-half {
       width: 34%;
     }
@@ -71,40 +68,6 @@ export default {
         line-height: 2rem;
         margin: 0;
       }
-    }
-
-    // 使用可否によるデザイン変更
-    &--enabled {
-      .form-control {
-        transition: color 0.15s ease-in-out;
-      }
-      .btn-danger {
-        transition: background-color 0.15s ease-in-out,
-          border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-      }
-    }
-    &--disabled {
-      .form-control {
-        color: #adb5bd;
-      }
-      .btn-danger {
-        border-color: #b36f76;
-        background-color: #b36f76;
-      }
-    }
-  }
-  .custom-switch {
-    margin-top: 0.4rem;
-  }
-
-  .add-new-line {
-    width: 100%;
-    padding: 0.3rem 0.6rem;
-    margin-bottom: 1rem;
-    background: #fff;
-    color: #007bff;
-    &:hover {
-      background: #dfeeff;
     }
   }
 }
