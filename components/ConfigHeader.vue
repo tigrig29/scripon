@@ -4,8 +4,8 @@
       <label
         class="input-group-text Config__Header__Title__Label"
         :class="{
-          'Config__Header__Title__Label--enabled': selectbox.value,
-          'Config__Header__Title__Label--disabled': !selectbox.value
+          'Config__Header__Title__Label--Enabled': selectbox.value,
+          'Config__Header__Title__Label--Disabled': !selectbox.value
         }"
         :for="selectbox.id"
       >
@@ -15,6 +15,10 @@
     <select
       :id="selectbox.id"
       class="custom-select Config__Header__Select"
+      :class="{
+        'Config__Header__Select--Enabled': selectbox.value,
+        'Config__Header__Select--Disabled': !selectbox.value
+      }"
       :value="selectbox.value"
       @change="toggleEnabled"
     >
@@ -68,16 +72,22 @@ export default {
 .Config__Header {
   &__Title {
     &__Label {
-      &--enabled {
-        background-color: #d6f4ff;
+      &--Enabled {
+        background-color: mix(
+          mix($color-primary, $--color-white),
+          $--color-blue-2
+        );
       }
-      &--disabled {
-        background-color: #e9ecef;
+      &--Disabled {
+        color: $--color-grey-9;
+        background-color: $--color-grey-4;
       }
     }
   }
-}
-.input-group-text.enabled {
-  background-color: #d6f4ff; //#a1f8c3;
+  &__Select {
+    &--Disabled {
+      color: $--color-grey-9;
+    }
+  }
 }
 </style>

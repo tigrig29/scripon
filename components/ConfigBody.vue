@@ -57,9 +57,7 @@ export default {
 <style lang="scss">
 .Config__Body {
   &__Item {
-    margin-bottom: 1rem;
-    flex-wrap: nowrap;
-    justify-content: flex-end;
+    margin-bottom: $space-base;
     .col-input-half {
       width: 34%;
     }

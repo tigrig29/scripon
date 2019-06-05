@@ -44,7 +44,7 @@
     <!-- 追加ボタン -->
     <scripon-button
       caption="追加"
-      horizontal="true"
+      :horizontal="true"
       @click="addSetting(config)"
     />
   </div>
@@ -82,9 +82,9 @@ export default {
 <style lang="scss" scoped>
 .InsertForm {
   &__Item {
-    margin-bottom: 1rem;
+    margin-bottom: $space-base;
     flex-wrap: nowrap;
-    justify-content: space-evenly;
+    justify-content: space-around;
     &__Textarea {
       width: 75%;
     }
