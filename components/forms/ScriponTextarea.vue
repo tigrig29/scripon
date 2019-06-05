@@ -47,6 +47,9 @@ export default {
 
 <style lang="scss">
 .ScriponTextarea {
+  @include input-trans();
+  @include placeholder-color($--color-grey-8);
+
   &--Horizontal {
     height: $font-size-base * 2.5 !important;
     overflow-y: hidden;
@@ -65,6 +68,7 @@ export default {
   }
 
   &--Disabled {
+    @include placeholder-color($--color-grey-4);
     color: $--color-grey-6;
   }
 }

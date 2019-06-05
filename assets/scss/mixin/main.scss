@@ -34,3 +34,34 @@
   -webkit-background-clip: text;
   display: inline-block;
 }
+
+// input, textarea の placeholder 文字色設定
+@mixin placeholder-color($color) {
+  &::placeholder {
+    color: $color;
+  }
+  // IE
+  &:-ms-input-placeholder {
+    color: $color;
+  }
+  // Edge
+  &::-ms-input-placeholder {
+    color: $color;
+  }
+}
+
+// input, textarea の transition 設定
+@mixin input-trans() {
+  transition: color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  &::placeholder {
+    transition: color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+  // IE
+  &:-ms-input-placeholder {
+    transition: color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+  // Edge
+  &::-ms-input-placeholder {
+    transition: color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+}

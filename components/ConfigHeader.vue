@@ -71,6 +71,7 @@ export default {
 <style lang="scss" scoped>
 .Config__Header {
   &__Title {
+    user-select: none;
     &__Label {
       &--Enabled {
         background-color: mix(
