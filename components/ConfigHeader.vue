@@ -74,10 +74,7 @@ export default {
     user-select: none;
     &__Label {
       &--Enabled {
-        background-color: mix(
-          mix($color-primary, $--color-white),
-          $--color-blue-2
-        );
+        background-color: $color-bright;
       }
       &--Disabled {
         color: $--color-grey-9;
