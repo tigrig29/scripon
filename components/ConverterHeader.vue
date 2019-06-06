@@ -41,7 +41,5 @@ export default {
 .Converter__Header {
   display: flex;
   justify-content: space-between;
-  &__Item {
-  }
 }
 </style>

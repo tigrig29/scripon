@@ -42,6 +42,7 @@ export default {
 .ScriponSwitch {
   margin-top: 0.4rem;
   &__Label {
+    color: mix($color-reverse, $--color-black-3);
     cursor: pointer;
     user-select: none;
     transition: color 0.15s ease-in-out;
