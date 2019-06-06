@@ -1,5 +1,5 @@
 <template>
-  <section class="convert-container">
+  <div class="convert-container">
     <div v-if="false" class="convert-file-area convert-area"></div>
     <div v-if="true" class="convert-text-area convert-area">
       <b-form-textarea
@@ -19,7 +19,7 @@
         readonly
       ></b-form-textarea>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>

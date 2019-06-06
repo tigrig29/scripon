@@ -7,7 +7,13 @@
       :checked="enabled"
       v-on="$listeners"
     />
-    <label class="custom-control-label" :for="`ScriponSwitch-${id}`">
+    <label
+      class="custom-control-label ScriponSwitch__Label"
+      :class="{
+        'ScriponSwitch__Label--Disabled': !enabled
+      }"
+      :for="`ScriponSwitch-${id}`"
+    >
       {{ caption }}
     </label>
   </div>
@@ -35,5 +41,23 @@ export default {
 <style lang="scss">
 .ScriponSwitch {
   margin-top: 0.4rem;
+  &__Label {
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.15s ease-in-out;
+    &::before {
+      box-shadow: none !important;
+      color: $--color-white !important;
+      border-color: $color-primary !important;
+      background-color: $color-primary !important;
+    }
+    &--Disabled {
+      color: $--color-grey-6;
+      &::before {
+        border-color: $--color-grey-6 !important;
+        background-color: $--color-white !important;
+      }
+    }
+  }
 }
 </style>
