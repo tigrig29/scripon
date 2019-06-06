@@ -114,7 +114,7 @@ export const mutations = {
    * @param {Object} setting 挿入/置換 設定行
    */
   deleteSetting(state, setting) {
-    const config = state.list.find(d => d.id === setting.id.split('-')[0])
+    const config = state.list.find(conf => conf.id === setting.id.split('-')[0])
     const index = config.settings.findIndex(l => l.id === setting.id)
     config.settings.splice(index, 1)
   }
