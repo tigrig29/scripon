@@ -82,6 +82,7 @@
 .Social {
   display: flex;
   list-style: none;
+  margin-right: $space-base;
   &__Item {
     display: flex;
     align-items: center;

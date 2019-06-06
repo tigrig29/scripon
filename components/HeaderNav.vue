@@ -26,7 +26,7 @@ export default {
   height: $header-height-sp;
   padding: 0;
   display: flex;
-  flex: 5;
+  flex: 1;
   overflow-x: hidden;
   @media (min-width: $--sm) {
     height: $header-height-pc;
@@ -37,6 +37,7 @@ export default {
   }
   &__Social {
     display: flex;
+    justify-content: flex-end;
     flex: 1;
     @media (max-width: $--xs) {
       display: none;

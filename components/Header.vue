@@ -50,8 +50,10 @@ export default {
   // ロゴエリア
   &__Logo {
     display: flex;
-    flex: 1;
     align-items: center;
+    @media (min-width: $--sm) {
+      margin-right: 3.5rem;
+    }
     &__Text {
       margin: 0;
       width: 0;
