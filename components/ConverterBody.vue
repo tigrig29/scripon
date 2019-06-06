@@ -1,5 +1,5 @@
 <template>
-  <div class="convert-container">
+  <div class="Conveter__Body">
     <div v-if="false" class="convert-file-area convert-area"></div>
     <div v-if="true" class="convert-text-area convert-area">
       <b-form-textarea
@@ -23,7 +23,11 @@
 </template>
 
 <script>
+import utils from '~/assets/js/utils'
+import convert from '~/assets/js/convert'
+
 export default {
+  mixins: [utils, convert],
   data() {
     return {
       inputValue: ''
@@ -35,101 +39,12 @@ export default {
       return value
     }
   },
-  methods: {
-    convertSenarioToScript(value) {
-      if (value === '') return value
-
-      const $state = this.$store.state
-
-      // 各種 挿入・置換処理
-      for (const setting of $state.config.list) {
-        // 機能OFF判定
-        if (!setting.enabled) continue
-
-        switch (setting.id) {
-          // コメント削除処理
-          case 'deleteComments':
-            value = value.replace(/[\s\t]*;.*/g, '')
-            break
-          // シナリオ先頭行に挿入
-          case 'insertToFirst':
-            for (const line of setting.lines) {
-              if (!line.enabled) continue
-              value = line.value + '\n' + value
-            }
-            break
-          // シナリオ末尾行に挿入
-          case 'insertToLast':
-            for (const line of setting.lines) {
-              if (!line.enabled) continue
-              value += '\n' + line.value
-            }
-            break
-          // 行頭に挿入
-          case 'insertLineHead':
-            for (const insertObj of [...setting.lines].reverse()) {
-              if (!insertObj.enabled) continue
-              // value を行ごとにループ
-              const valueLines = value.split('\n')
-              for (const i in [...Array(valueLines.length).keys()]) {
-                valueLines[i] =
-                  valueLines[i] === '' ? '' : insertObj.value + valueLines[i]
-              }
-              value = valueLines.join('\n')
-            }
-            break
-          // 行末に挿入
-          case 'insertLineEnd':
-            for (const insertObj of setting.lines) {
-              if (!insertObj.enabled) continue
-              // value を行ごとにループ
-              const valueLines = value.split('\n')
-              for (const i in [...Array(valueLines.length).keys()]) {
-                valueLines[i] += valueLines[i] === '' ? '' : insertObj.value
-              }
-              value = valueLines.join('\n')
-            }
-            break
-          // 詳細な置換
-          case 'detailsReplace':
-            for (const replaceObj of setting.lines) {
-              if (!replaceObj.enabled || replaceObj.value.before === '')
-                continue
-              const regexpObj = {}
-              try {
-                regexpObj.before = new RegExp(replaceObj.value.before, 'g')
-              } catch (error) {
-                continue
-              }
-              value = value.replace(
-                regexpObj.before,
-                this.unEscapeJs(replaceObj.value.after)
-              )
-            }
-            break
-        }
-      }
-
-      return value
-    },
-    /**
-     * JavaScriptアンエスケープ
-     *
-     * @param {String} str 変換したい文字列
-     */
-    unEscapeJs(str) {
-      if (['\\\\n', '\\\\t', '\\\\0'].includes(str)) return str
-      return str
-        .replace('\\n', '\n')
-        .replace('\\t', '\t')
-        .replace('\\0', '\0')
-    }
-  }
+  methods: {}
 }
 </script>
 
 <style lang="scss" scoped>
-.convert-container {
+.Conveter__Body {
   display: flex;
   flex-flow: column nowrap;
   .convert-area {
