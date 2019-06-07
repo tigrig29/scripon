@@ -2,22 +2,36 @@
   <div class="Conveter__Body">
     <div v-if="false" class="convert-file-area convert-area"></div>
     <div v-if="true" class="convert-text-area convert-area">
-      <b-form-textarea
+      <!-- 入力エリア -->
+      <textarea
         id="inputScenario"
-        v-model="inputValue"
-        :value="inputValue"
+        :value="converterText.input"
         placeholder="変換したいシナリオテキストを入力（貼り付け等）して下さい。"
         rows="10"
-      ></b-form-textarea>
-      <font-awesome-icon icon="angle-double-down" class="fa-5x ngss-color" />
-      <b-form-textarea
+        @input="
+          e => {
+            inputScenario(e.target.value)
+            // リアルタイム変換
+            if (converterSetting.realtime) outputScript()
+          }
+        "
+      ></textarea>
+      <!-- 変換ボタン（リアルタイム変換 OFF 時のみ） -->
+      <scripon-button
+        v-if="!converterSetting.realtime"
+        caption="変換"
+        :horizontal="true"
+        @click="outputScript"
+      />
+      <!-- 変換後 出力エリア -->
+      <font-awesome-icon icon="angle-double-down" class="fa-5x" />
+      <textarea
         id="outputScript"
-        v-model="outputValue"
-        :value="outputValue"
+        :value="converterText.output"
         placeholder="ここに変換結果が出力されます。"
         rows="10"
         readonly
-      ></b-form-textarea>
+      ></textarea>
     </div>
   </div>
 </template>
@@ -26,20 +40,31 @@
 import utils from '~/assets/js/utils'
 import convert from '~/assets/js/convert'
 
+import ScriponButton from '@/components/forms/ScriponButton'
+import { mapState } from 'vuex'
+
 export default {
+  components: {
+    ScriponButton
+  },
   mixins: [utils, convert],
-  data() {
-    return {
-      inputValue: ''
-    }
-  },
   computed: {
-    outputValue() {
-      const value = this.convertSenarioToScript(this.inputValue)
-      return value
-    }
+    ...mapState('converter', {
+      converterSetting: 'setting',
+      converterText: 'text'
+    })
   },
-  methods: {}
+  methods: {
+    inputScenario(value) {
+      this.$store.commit('converter/updateInputText', value)
+    },
+    outputScript() {
+      this.$store.commit(
+        'converter/updateOutputText',
+        this.convertSenarioToScript(this.converterText.input)
+      )
+    }
+  }
 }
 </script>
 
@@ -56,9 +81,6 @@ export default {
       &.form-control[readonly] {
         background-color: #f5f8fa;
       }
-    }
-    .ngss-color {
-      color: #9ee4fd;
     }
   }
 }
