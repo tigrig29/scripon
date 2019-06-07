@@ -1,13 +1,13 @@
 <template>
-  <div class="Conveter__Body">
-    <div v-if="false" class="convert-file-area convert-area"></div>
-    <div v-if="true" class="convert-text-area convert-area">
+  <div class="Converter__Body">
+    <div v-if="false" class="Converter__Body__Item"></div>
+    <div v-if="true" class="Converter__Body__Item">
       <!-- 入力エリア -->
-      <textarea
-        id="inputScenario"
+      <ScriponTextarea
+        class="Converter__Body__Item__Textarea"
         :value="converterText.input"
         placeholder="変換したいシナリオテキストを入力（貼り付け等）して下さい。"
-        rows="10"
+        :rows="10"
         @input="
           e => {
             inputScenario(e.target.value)
@@ -15,23 +15,28 @@
             if (converterSetting.realtime) outputScript()
           }
         "
-      ></textarea>
+      />
       <!-- 変換ボタン（リアルタイム変換 OFF 時のみ） -->
       <scripon-button
         v-if="!converterSetting.realtime"
+        class="Converter__Body__Item__Button"
         caption="変換"
         :horizontal="true"
         @click="outputScript"
       />
+      <!-- 矢印 -->
+      <font-awesome-icon
+        icon="angle-double-down"
+        class="fa-5x Converter__Body__Item__Arrow"
+      />
       <!-- 変換後 出力エリア -->
-      <font-awesome-icon icon="angle-double-down" class="fa-5x" />
-      <textarea
-        id="outputScript"
+      <ScriponTextarea
+        class="Converter__Body__Item__Textarea"
         :value="converterText.output"
         placeholder="ここに変換結果が出力されます。"
-        rows="10"
+        :rows="10"
         readonly
-      ></textarea>
+      />
     </div>
   </div>
 </template>
@@ -41,11 +46,13 @@ import utils from '~/assets/js/utils'
 import convert from '~/assets/js/convert'
 
 import ScriponButton from '@/components/forms/ScriponButton'
+import ScriponTextarea from '@/components/forms/ScriponTextarea'
 import { mapState } from 'vuex'
 
 export default {
   components: {
-    ScriponButton
+    ScriponButton,
+    ScriponTextarea
   },
   mixins: [utils, convert],
   computed: {
@@ -69,18 +76,26 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.Conveter__Body {
+.Converter__Body {
   display: flex;
   flex-flow: column nowrap;
-  .convert-area {
+  &__Item {
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
-    textarea {
-      margin-top: 10px;
-      &.form-control[readonly] {
-        background-color: #f5f8fa;
+    &__Textarea {
+      margin-top: $space-base;
+      margin-bottom: $space-base;
+      &[readonly] {
+        background-color: rgba(mix($color-primary, $--color-grey-9), 0.1);
       }
+    }
+    &__Button {
+      text-indent: 2rem;
+      letter-spacing: 2rem;
+    }
+    &__Arrow {
+      color: mix($color-secondary, $--color-white);
     }
   }
 }

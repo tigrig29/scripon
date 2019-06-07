@@ -9,7 +9,6 @@
     :rows="horizontal ? 1 : rows"
     :wrap="horizontal ? 'off' : wrap"
     :value="value"
-    :placeholder="placeholder"
     v-on="$listeners"
   />
 </template>
@@ -17,10 +16,6 @@
 <script>
 export default {
   props: {
-    placeholder: {
-      type: String,
-      default: ''
-    },
     value: {
       type: String,
       default: ''
