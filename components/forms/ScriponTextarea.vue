@@ -44,6 +44,7 @@ export default {
 .ScriponTextarea {
   @include input-trans();
   @include placeholder-color($--color-grey-8);
+  @include thin-scrollbar(10px);
 
   &--Horizontal {
     height: $font-size-base * 2.5 !important;
@@ -51,15 +52,6 @@ export default {
     overflow-x: auto;
     resize: none;
     cursor: default;
-    &::-webkit-scrollbar:horizontal {
-      height: 10px;
-    }
-    &::-webkit-scrollbar-thumb {
-      background-clip: padding-box;
-      background-color: rgba(0, 0, 50, 0.2);
-      border: solid 3px rgba(0, 0, 0, 0);
-      border-radius: 10px;
-    }
   }
 
   &--Disabled {

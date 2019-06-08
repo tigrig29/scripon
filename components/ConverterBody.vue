@@ -7,7 +7,7 @@
         class="Converter__Body__Item__Textarea"
         :value="converterText.input"
         placeholder="変換したいシナリオテキストを入力（貼り付け等）して下さい。"
-        :rows="10"
+        :rows="12"
         @input="
           e => {
             inputScenario(e.target.value)
@@ -34,7 +34,7 @@
         class="Converter__Body__Item__Textarea"
         :value="converterText.output"
         placeholder="ここに変換結果が出力されます。"
-        :rows="10"
+        :rows="12"
         readonly
       />
     </div>
