@@ -1,0 +1,53 @@
+a
+{
+  text-decoration: none;
+  color: $color-primary;
+  &:hover
+  {
+    text-decoration: underline;
+  }
+}
+
+// outline はデフォルトでは無しとする
+a:active, a:hover
+{
+  outline-width: 0;
+}
+
+// Safari 6. 表示用
+b, strong
+{
+  font-weight: inherit;
+}
+
+// Chrome, Edge, Safari.
+b, strong
+{
+  font-weight: 600;
+}
+
+// コード系
+code, kbd, samp
+{
+  font-family: "Andale Mono", monospace, monospace;
+  font-size: 14px;
+}
+
+// 下付き文字、上付き文字
+sub, sup
+{
+  font-size: 12px;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub
+{
+  bottom: -0.25em;
+}
+
+sup
+{
+  top: -0.5em;
+}

@@ -1,36 +1,28 @@
 <template>
-  <nuxt />
+  <div>
+    <Header :title="title" />
+    <nuxt />
+  </div>
 </template>
 
-<style lang="scss">
-@font-face {
-  font-family: 'spin cycle 3d';
-  src: url('~assets/others/spincycle_3d_ot.otf') format('opentype');
-}
-.container {
-  // grid.scss 帳消し
-  max-width: 1920px;
-  padding: 0;
-}
-</style>
+<script>
+import Header from '@/components/Header.vue'
 
-<style>
-html {
-  font-family: 'GenNoKakuJP', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-}
+const title = 'ScriPon!'
 
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-  margin: 0;
+export default {
+  head() {
+    return {
+      title: `${title} | ノベルゲーム制作のシナリオ→スクリプト化作業を簡単に！`
+    }
+  },
+  components: {
+    Header
+  },
+  data() {
+    return {
+      title
+    }
+  }
 }
-</style>
+</script>
