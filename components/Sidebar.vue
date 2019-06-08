@@ -42,8 +42,10 @@ export default {
 // PC
 @media (min-width: 768px) {
   .Sidebar {
-    height: calc(100vh - 58px);
+    top: 64px;
+    height: calc(100vh - 64px);
     border-right: 2px solid #efefef;
+    position: sticky;
   }
 }
 </style>
