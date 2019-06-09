@@ -4,7 +4,7 @@
     <div v-if="true" class="Converter__Body__Item">
       <!-- 入力エリア -->
       <ScriponTextarea
-        class="Converter__Body__Item__Textarea"
+        class="Converter__Body__Item__Input"
         :value="converterText.input"
         placeholder="変換したいシナリオテキストを入力（貼り付け等）して下さい。"
         :rows="12"
@@ -19,7 +19,7 @@
       <!-- 変換ボタン（リアルタイム変換 OFF 時のみ） -->
       <scripon-button
         v-if="!converterSetting.realtime"
-        class="Converter__Body__Item__Button"
+        class="Converter__Body__Item__Convert"
         caption="変換"
         :horizontal="true"
         @click="outputScript"
@@ -27,16 +27,12 @@
       <!-- 矢印 -->
       <font-awesome-icon
         icon="angle-double-down"
-        class="fa-5x Converter__Body__Item__Arrow"
+        class="fa-4x Converter__Body__Item__Arrow"
       />
-      <!-- 変換後 出力エリア -->
-      <ScriponTextarea
-        class="Converter__Body__Item__Textarea"
-        :value="converterText.output"
-        placeholder="ここに変換結果が出力されます。"
-        :rows="12"
-        readonly
-      />
+      <!-- 出力エリア -->
+      <div class="Converter__Body__Item__Output">
+        <output-form :value="converterText.output" />
+      </div>
     </div>
   </div>
 </template>
@@ -44,15 +40,17 @@
 <script>
 import utils from '~/assets/js/utils'
 import convert from '~/assets/js/convert'
+import { mapState } from 'vuex'
 
 import ScriponButton from '@/components/forms/ScriponButton'
 import ScriponTextarea from '@/components/forms/ScriponTextarea'
-import { mapState } from 'vuex'
+import OutputForm from '@/components/converter/OutputForm'
 
 export default {
   components: {
     ScriponButton,
-    ScriponTextarea
+    ScriponTextarea,
+    OutputForm
   },
   mixins: [utils, convert],
   computed: {
@@ -80,22 +78,21 @@ export default {
   display: flex;
   flex-flow: column nowrap;
   &__Item {
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    &__Textarea {
+    text-align: center;
+    &__Input {
       margin-top: $space-base;
       margin-bottom: $space-base;
-      &[readonly] {
-        background-color: rgba(mix($color-primary, $--color-grey-9), 0.1);
-      }
     }
-    &__Button {
+    &__Convert {
       text-indent: 2rem;
       letter-spacing: 2rem;
     }
     &__Arrow {
       color: mix($color-secondary, $--color-white);
+    }
+    &__Output {
+      margin-top: $space-base;
+      margin-bottom: $space-base;
     }
   }
 }
