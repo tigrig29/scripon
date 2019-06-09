@@ -16,9 +16,9 @@
     <!-- 変換後 出力エリア -->
     <scripon-textarea
       class="OutputForm__Textarea"
-      :value="value"
+      :value="converterText.output"
       placeholder="ここに変換結果が出力されます。"
-      :rows="12"
+      :rows="rows"
       readonly
       @mouseenter="mouseentering = true"
       @mouseleave="mouseentering = false"
@@ -28,6 +28,8 @@
 
 <script>
 import utils from '~/assets/js/utils'
+import { mapState } from 'vuex'
+
 import ScriponTextarea from '@/components/forms/ScriponTextarea'
 
 export default {
@@ -39,6 +41,10 @@ export default {
     value: {
       type: String,
       required: true
+    },
+    rows: {
+      type: Number,
+      default: 12
     }
   },
   data() {
@@ -46,11 +52,16 @@ export default {
       mouseentering: false
     }
   },
+  computed: {
+    ...mapState('converter', {
+      converterText: 'text'
+    })
+  },
   methods: {
     // コピーボタン処理
     execCopy() {
       // コピー
-      const result = this.copyTextToClipboard(this.value)
+      const result = this.copyTextToClipboard(this.converterText.output)
       // トースト表示
       const message = result
         ? 'クリップボードにコピーしました！'
@@ -123,8 +134,6 @@ export default {
     }
   }
   &__Textarea {
-    margin-top: $space-base;
-    margin-bottom: $space-base;
     &[readonly] {
       background-color: rgba(mix($color-primary, $--color-grey-9), 0.1);
     }
