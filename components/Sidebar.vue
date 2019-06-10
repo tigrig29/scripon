@@ -23,20 +23,12 @@ export default {
 <style lang="scss">
 // SP
 .Sidebar {
+  @include thin-scrollbar(12px);
+
   padding: 8px;
   overflow-x: auto;
   height: 50vh;
   border-bottom: 2px solid #efefef;
-
-  &::-webkit-scrollbar {
-    width: 12px;
-  }
-  &::-webkit-scrollbar-thumb {
-    background-clip: padding-box;
-    background-color: rgba(0, 0, 50, 0.2);
-    border: solid 3px rgba(0, 0, 0, 0);
-    border-radius: 10px;
-  }
 }
 
 // PC
