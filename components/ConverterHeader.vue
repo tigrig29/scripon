@@ -1,6 +1,9 @@
 <template>
   <div class="Converter__Header">
     <div class="Converter__Header__Item">
+      <adsbygoogle :ad-slot="'8389601426'" />
+    </div>
+    <div class="Converter__Header__Item">
       <div v-if="false" class="Button__ChangeMode">
         <b-button-group size="sm">
           <b-button variant="primary">

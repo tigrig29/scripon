@@ -43,7 +43,21 @@ export default {
     //      https://github.com/FortAwesome/vue-fontawesome
     'nuxt-fontawesome',
     // scss 読み込み
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources',
+    // Google Analytics
+    [
+      '@nuxtjs/google-analytics',
+      {
+        id: 'UA-133183584-2'
+      }
+    ],
+    // Google Adsense
+    [
+      '@nuxtjs/google-adsense',
+      {
+        id: 'ca-pub-8705969011896754'
+      }
+    ]
   ],
   styleResources: {
     scss: ['~/assets/scss/mixin/main.scss', '~/assets/scss/variables/main.scss']
