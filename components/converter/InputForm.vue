@@ -5,27 +5,25 @@
       <scripon-switch
         id="RealtimeSwitch"
         caption="リアルタイム変換"
-        :enabled="converterSetting.realtime"
+        :enabled="realtime"
         @change="toggleRealtime()"
       />
     </div>
     <!-- 入力エリア -->
     <ScriponTextarea
       class="InputForm__Textarea"
-      :value="converterText.input"
+      :value="scenario"
       placeholder="変換したいシナリオテキストを入力（貼り付け等）して下さい。"
       :rows="rows"
       @input="
         e => {
           inputScenario(e.target.value)
-          // リアルタイム変換
-          if (converterSetting.realtime) outputScript()
         }
       "
     />
     <!-- 変換ボタン（リアルタイム変換 OFF 時のみ） -->
     <scripon-button
-      v-if="!converterSetting.realtime"
+      v-if="!realtime"
       class="InputForm__ConvertButton"
       caption="変換"
       :horizontal="true"
@@ -37,7 +35,6 @@
 <script>
 import utils from '~/assets/js/utils'
 import convert from '~/assets/js/convert'
-import { mapState } from 'vuex'
 
 import ScriponButton from '@/components/forms/ScriponButton'
 import ScriponTextarea from '@/components/forms/ScriponTextarea'
@@ -57,10 +54,27 @@ export default {
     }
   },
   computed: {
-    ...mapState('converter', {
-      converterSetting: 'setting',
-      converterText: 'text'
-    })
+    realtime() {
+      return this.$store.state.converter.setting.realtime
+    },
+    scenario() {
+      return this.$store.state.converter.text.input
+    },
+    configList() {
+      return this.$store.state.config.list
+    }
+  },
+  // リアルタイム変換用（入力テキスト、コンフィグの値を監視する）
+  watch: {
+    scenario() {
+      if (this.realtime) this.outputScript()
+    },
+    configList: {
+      deep: true,
+      handler() {
+        if (this.realtime) this.outputScript()
+      }
+    }
   },
   methods: {
     inputScenario(value) {
@@ -69,7 +83,7 @@ export default {
     outputScript() {
       this.$store.commit(
         'converter/updateOutputText',
-        this.convertSenarioToScript(this.converterText.input)
+        this.convertSenarioToScript(this.scenario)
       )
     },
     toggleRealtime() {
