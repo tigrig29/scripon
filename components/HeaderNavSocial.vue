@@ -50,7 +50,7 @@
         aria-label="Youtube"
         rel="noopener"
         target="_blank"
-        href="https://www.youtube.com/"
+        href="https://www.youtube.com/channel/UCLM05Voaa5qv-riT3XtlfUA"
         class="Social__Item__Link"
       >
         <svg
