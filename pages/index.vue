@@ -1,43 +1,28 @@
 <template>
-  <div>
-    <HeaderArea :title="title" />
-    <article>
-      <SettingArea />
-      <ConvertArea />
-    </article>
-  </div>
+  <main class="Main">
+    <Sidebar />
+    <Converter />
+  </main>
 </template>
 
 <script>
-import HeaderArea from '@/components/HeaderArea.vue'
-import SettingArea from '@/components/SettingArea.vue'
-import ConvertArea from '@/components/ConvertArea.vue'
-
-const title = 'NovelGame-SS-Converter'
+import Sidebar from '@/components/Sidebar.vue'
+import Converter from '@/components/Converter.vue'
 
 export default {
-  head() {
-    return {
-      title: `${title} | ノベルゲーム制作のシナリオ→スクリプト化作業を簡単に！`
-    }
-  },
   components: {
-    HeaderArea,
-    SettingArea,
-    ConvertArea
-  },
-  data() {
-    return {
-      title
-    }
+    Sidebar,
+    Converter
   }
 }
 </script>
 
-<style>
-@media (min-width: 1025px) {
-  article {
-    display: flex;
+<style lang="scss">
+// PC
+@media (min-width: 768px) {
+  .Main {
+    display: grid;
+    grid-template-columns: 512px minmax(256px, auto);
   }
 }
 </style>

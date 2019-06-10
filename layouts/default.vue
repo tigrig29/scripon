@@ -1,53 +1,62 @@
 <template>
-  <nuxt />
+  <div>
+    <Header :title="title" />
+    <nuxt />
+  </div>
 </template>
 
-<style>
-html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-}
+<script>
+import Header from '@/components/Header.vue'
 
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-  margin: 0;
-}
+const title = 'Scripon!'
 
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
+export default {
+  head() {
+    return {
+      title: `${title} | ノベルゲーム制作のスクリプト作業を簡単に！`,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            'ノベルゲーム制作のスクリプト作業といえば、クリック待ちタグの挿入、記号の置換など、単純作業の連続で大変……。' +
+            'そんなあなたにスクリプト作業簡易化アプリ『Scripon!』。' +
+            'シナリオテキストを入力してクリック待ちタグや置換文字を指定すれば、Pon!と自動でスクリプトを出力します。'
+        },
+        { name: 'author', content: 'TigRig' },
+        {
+          name: 'format-detection',
+          content: 'telephone=no,address=no,email=no'
+        },
+        {
+          name: 'og:title',
+          content: 'Scripon!'
+        },
+        { name: 'og:site_name', content: 'Scripon!' },
+        {
+          name: 'og:description',
+          content: 'ノベルゲーム制作のスクリプト作業を簡単に！'
+        },
+        { name: 'og:type', content: 'website' },
+        { name: 'og:url', content: 'https://scripon.toranos.net/' },
+        { name: 'og:image', content: '/scripon-logo.png' },
+        { name: 'twitter:card', content: 'summary' },
+        { name: 'twitter:site', content: '@TigRig_TRNS' }
+      ],
+      link: [
+        { rel: 'shortcut icon', type: 'image/x-icon', href: '/favicon.ico' },
+        { rel: 'apple-touch-icon', type: 'image/x-icon', href: '/favicon.ico' },
+        { rel: 'canonical', href: 'https://scripon.toranos.net/' }
+      ]
+    }
+  },
+  components: {
+    Header
+  },
+  data() {
+    return {
+      title
+    }
+  }
 }
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-}
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
-}
-</style>
+</script>

@@ -1,0 +1,6 @@
+// iOS 4-7. 表示用
+audio:not([controls])
+{
+  display: none;
+  height: 0;
+}

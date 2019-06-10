@@ -24,7 +24,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: ['~/assets/styles/main.scss'],
 
   /*
    ** Plugins to load before mounting the App
@@ -38,11 +38,30 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     // Doc: https://bootstrap-vue.js.org/docs/
-    'bootstrap-vue/nuxt',
+    ['bootstrap-vue/nuxt'],
     // Doc: https://fontawesome.com/icons?d=gallery
     //      https://github.com/FortAwesome/vue-fontawesome
-    'nuxt-fontawesome'
+    'nuxt-fontawesome',
+    // scss 読み込み
+    '@nuxtjs/style-resources',
+    // Google Analytics
+    [
+      '@nuxtjs/google-analytics',
+      {
+        id: 'UA-133183584-2'
+      }
+    ],
+    // Google Adsense
+    [
+      '@nuxtjs/google-adsense',
+      {
+        id: 'ca-pub-8705969011896754'
+      }
+    ]
   ],
+  styleResources: {
+    scss: ['~/assets/scss/mixin/main.scss', '~/assets/scss/variables/main.scss']
+  },
   /*
    ** Axios module configuration
    */
