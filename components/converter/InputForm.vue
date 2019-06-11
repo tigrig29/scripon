@@ -4,22 +4,17 @@
     <div class="InputForm__RealtimeSwitch">
       <scripon-switch
         id="RealtimeSwitch"
+        v-model="realtime"
         caption="リアルタイム変換"
         :enabled="realtime"
-        @change="toggleRealtime()"
       />
     </div>
     <!-- 入力エリア -->
     <ScriponTextarea
+      v-model="scenario"
       class="InputForm__Textarea"
-      :value="scenario"
       placeholder="変換したいシナリオテキストを入力（貼り付け等）して下さい。"
       :rows="rows"
-      @input="
-        e => {
-          inputScenario(e.target.value)
-        }
-      "
     />
     <!-- 変換ボタン（リアルタイム変換 OFF 時のみ） -->
     <scripon-button
@@ -54,11 +49,23 @@ export default {
     }
   },
   computed: {
-    realtime() {
-      return this.$store.state.converter.setting.realtime
+    realtime: {
+      get() {
+        return this.$store.state.converter.setting.realtime
+      },
+      set($event) {
+        // リアルタイム変換 ON にし、変換処理を走らせる
+        this.$store.commit('converter/toggleSetting', { key: 'realtime' })
+        this.outputScript()
+      }
     },
-    scenario() {
-      return this.$store.state.converter.text.input
+    scenario: {
+      get() {
+        return this.$store.state.converter.text.input
+      },
+      set($event) {
+        this.$store.commit('converter/updateInputText', $event.target.value)
+      }
     },
     configList() {
       return this.$store.state.config.list
@@ -77,19 +84,11 @@ export default {
     }
   },
   methods: {
-    inputScenario(value) {
-      this.$store.commit('converter/updateInputText', value)
-    },
     outputScript() {
       this.$store.commit(
         'converter/updateOutputText',
         this.convertSenarioToScript(this.scenario)
       )
-    },
-    toggleRealtime() {
-      // リアルタイム変換 ON にし、変換処理を走らせる
-      this.$store.commit('converter/toggleSetting', { key: 'realtime' })
-      this.outputScript()
     }
   }
 }
