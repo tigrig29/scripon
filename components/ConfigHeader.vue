@@ -72,7 +72,7 @@ export default {
 .Config__Header {
   margin-bottom: $space-base;
   &__Title {
-    flex: 1;
+    flex: 5;
     user-select: none;
     &__Label {
       display: block;
@@ -87,7 +87,8 @@ export default {
     }
   }
   &__Select {
-    flex: 2;
+    flex: 1;
+    text-align: center;
     &--Disabled {
       color: $--color-grey-9;
     }

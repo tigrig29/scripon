@@ -3,7 +3,7 @@
     <div
       v-for="setting in config.settings"
       :key="setting.id"
-      class="ReplaceForm__Item form-row"
+      class="ReplaceForm__Item"
       :class="{
         'ReplaceForm--enabled': setting.enabled,
         'ReplaceForm--disabled': !setting.enabled
@@ -102,14 +102,19 @@ export default {
 <style lang="scss" scoped>
 .ReplaceForm {
   &__Item {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
     margin-bottom: $space-base;
-    flex-wrap: nowrap;
-    justify-content: space-around;
     &__Textarea {
-      width: 75%;
+      width: 100%;
     }
     &__Button {
+      min-width: 60px;
       align-self: flex-end;
+    }
+    [class^='ReplaceForm__Item'] {
+      margin-left: $space-sm;
     }
   }
 }

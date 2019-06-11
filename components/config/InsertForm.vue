@@ -3,7 +3,7 @@
     <div
       v-for="setting in config.settings"
       :key="setting.id"
-      class="InsertForm__Item form-row"
+      class="InsertForm__Item"
       :class="{
         'InsertForm--enabled': setting.enabled,
         'InsertForm--disabled': !setting.enabled
@@ -83,11 +83,20 @@ export default {
 <style lang="scss" scoped>
 .InsertForm {
   &__Item {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+
     margin-bottom: $space-base;
-    flex-wrap: nowrap;
-    justify-content: space-around;
     &__Textarea {
-      width: 75%;
+      width: 100%;
+    }
+    &__Button {
+      min-width: 60px;
+      align-self: flex-end;
+    }
+    [class^='InsertForm__Item'] {
+      margin-left: $space-sm;
     }
   }
 }
