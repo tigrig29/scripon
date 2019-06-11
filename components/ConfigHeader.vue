@@ -1,5 +1,5 @@
 <template>
-  <div class="Config__Header input-group mb-3">
+  <div class="Config__Header input-group">
     <div class="Config__Header__Title input-group-prepend">
       <label
         class="input-group-text Config__Header__Title__Label"
@@ -70,9 +70,13 @@ export default {
 
 <style lang="scss" scoped>
 .Config__Header {
+  margin-bottom: $space-base;
   &__Title {
+    flex: 1;
     user-select: none;
     &__Label {
+      display: block;
+      width: 100%;
       &--Enabled {
         background-color: $color-bright;
       }
@@ -83,6 +87,7 @@ export default {
     }
   }
   &__Select {
+    flex: 2;
     &--Disabled {
       color: $--color-grey-9;
     }
