@@ -55,7 +55,10 @@ export default {
     [
       '@nuxtjs/google-adsense',
       {
-        id: 'ca-pub-8705969011896754'
+        id: 'ca-pub-8705969011896754',
+        pageLevelAds: false,
+        analyticsUacct: 'UA-133183584-2',
+        analyticsDomainName: 'scripon.toranos.net'
       }
     ]
   ],
