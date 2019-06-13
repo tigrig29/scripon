@@ -33,12 +33,12 @@ export default {
   }
   &__Menu {
     display: flex;
-    flex: 5;
   }
   &__Social {
     display: flex;
     justify-content: flex-end;
     flex: 1;
+    margin-left: $space-base;
     @media (max-width: $--xs) {
       display: none;
     }
