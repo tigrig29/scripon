@@ -24,8 +24,11 @@ export default {
     return {
       adStyle: {
         display: 'block',
-        'min-width': '240px',
-        'max-width': '1392px'
+        // 'min-width': '240px',
+        // 'max-width': '1392px',
+        width: '100%',
+        height: 'auto'
+        // height: '64px'
       }
     }
   }
