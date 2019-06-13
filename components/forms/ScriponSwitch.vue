@@ -44,7 +44,6 @@ export default {
   &__Label {
     color: mix($color-reverse, $--color-black-3);
     cursor: pointer;
-    user-select: none;
     transition: color 0.15s ease-in-out;
     &::before {
       box-shadow: none !important;
