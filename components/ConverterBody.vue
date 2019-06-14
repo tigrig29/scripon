@@ -18,6 +18,15 @@
         <output-form :rows="12" />
       </div>
     </div>
+
+    <!-- Ad:リンクユニット -->
+    <div class="Converter__Body__Item">
+      <adsbygoogle
+        class="Converter__Body__Item__Adsense"
+        :ad-slot="'2101761107'"
+        :ad-format="'false'"
+      />
+    </div>
   </div>
 </template>
 
@@ -49,6 +58,10 @@ export default {
     &__Output {
       margin-top: $space-base;
       margin-bottom: $space-base;
+    }
+
+    &__Adsense {
+      height: 48px;
     }
   }
 }
