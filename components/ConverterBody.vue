@@ -19,11 +19,11 @@
       </div>
     </div>
 
-    <!-- Ad:リンクユニット -->
+    <!-- Ad -->
     <div class="Converter__Body__Item">
       <adsbygoogle
         class="Converter__Body__Item__Adsense"
-        :ad-slot="'2101761107'"
+        :ad-slot="'3728637730'"
         :ad-format="'false'"
       />
     </div>
@@ -48,6 +48,7 @@ export default {
   flex-flow: column nowrap;
   &__Item {
     text-align: center;
+    margin-bottom: $space-base;
     &__Input {
       margin-top: $space-base;
       margin-bottom: $space-base;
@@ -61,7 +62,8 @@ export default {
     }
 
     &__Adsense {
-      height: 48px;
+      height: 90px;
+      margin: auto;
     }
   }
 }
