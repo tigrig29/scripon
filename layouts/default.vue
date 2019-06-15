@@ -28,23 +28,30 @@ export default {
           name: 'format-detection',
           content: 'telephone=no,address=no,email=no'
         },
+        { hid: 'twitter:card', name: 'twitter:card', content: 'summary' },
+        { hid: 'twitter:site', name: 'twitter:site', content: '@TigRig_TRNS' },
+        { hid: 'og:type', name: 'og:type', content: 'website' },
         {
+          hid: 'og:title',
           name: 'og:title',
           content: 'Scripon!'
         },
-        { name: 'og:site_name', content: 'Scripon!' },
         {
+          hid: 'og:url',
+          name: 'og:url',
+          content: 'https://scripon.toranos.net/'
+        },
+        {
+          hid: 'og:description',
           name: 'og:description',
           content: 'ノベルゲーム制作のスクリプト作業を簡単に！'
         },
-        { name: 'og:type', content: 'website' },
-        { name: 'og:url', content: 'https://scripon.toranos.net/' },
         {
+          hid: 'og:image',
           name: 'og:image',
           content: 'https://scripon.toranos.net/scripon-logo.png'
         },
-        { name: 'twitter:card', content: 'summary' },
-        { name: 'twitter:site', content: '@TigRig_TRNS' }
+        { hid: 'og:site_name', name: 'og:site_name', content: 'Scripon!' }
       ],
       link: [
         { rel: 'shortcut icon', type: 'image/x-icon', href: '/favicon.ico' },
