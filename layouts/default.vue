@@ -39,7 +39,10 @@ export default {
         },
         { name: 'og:type', content: 'website' },
         { name: 'og:url', content: 'https://scripon.toranos.net/' },
-        { name: 'og:image', content: '/scripon-logo.png' },
+        {
+          name: 'og:image',
+          content: 'https://scripon.toranos.net/scripon-logo.png'
+        },
         { name: 'twitter:card', content: 'summary' },
         { name: 'twitter:site', content: '@TigRig_TRNS' }
       ],
