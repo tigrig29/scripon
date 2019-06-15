@@ -30,25 +30,25 @@ export default {
         },
         { hid: 'twitter:card', name: 'twitter:card', content: 'summary' },
         { hid: 'twitter:site', name: 'twitter:site', content: '@TigRig_TRNS' },
-        { hid: 'og:type', name: 'og:type', content: 'website' },
+        { hid: 'og:type', property: 'og:type', content: 'website' },
         {
           hid: 'og:title',
-          name: 'og:title',
+          property: 'og:title',
           content: 'Scripon!'
         },
         {
           hid: 'og:url',
-          name: 'og:url',
+          property: 'og:url',
           content: 'https://scripon.toranos.net/'
         },
         {
           hid: 'og:description',
-          name: 'og:description',
+          property: 'og:description',
           content: 'ノベルゲーム制作のスクリプト作業を簡単に！'
         },
         {
           hid: 'og:image',
-          name: 'og:image',
+          property: 'og:image',
           content: 'https://scripon.toranos.net/scripon-logo.png'
         },
         { hid: 'og:site_name', name: 'og:site_name', content: 'Scripon!' }
