@@ -1,7 +1,7 @@
 <template>
   <header class="Header sticky">
     <nuxt-link to="/" class="Header__Logo">
-      <!-- <scripon-logo /> -->
+      <scripon-logo />
       <h1 class="Header__Logo__Text">{{ title }}</h1>
     </nuxt-link>
     <HeaderNav />
@@ -9,12 +9,12 @@
 </template>
 
 <script>
-// import scriponLogo from '@/components/icons/scriponLogo'
+import scriponLogo from '@/components/icons/scriponLogo'
 import HeaderNav from '@/components/HeaderNav'
 
 export default {
   components: {
-    // scriponLogo,
+    scriponLogo,
     HeaderNav
   },
   props: {
@@ -45,14 +45,11 @@ export default {
     display: flex;
     align-items: center;
     @media (min-width: $--sm) {
-      margin-right: 3.5rem;
+      width: 210px;
     }
     &__Text {
-      margin: 0;
-      // width: 0;
+      width: 0;
       overflow: hidden;
-      font-family: 'Myrica M';
-      // font-family: 'Fira Code Retina';
     }
     &:hover {
       color: $color-primary;

@@ -18,6 +18,15 @@
         <output-form :rows="12" />
       </div>
     </div>
+
+    <!-- Ad -->
+    <div class="Converter__Body__Item">
+      <adsbygoogle
+        class="Converter__Body__Item__Adsense"
+        :ad-slot="'3728637730'"
+        :ad-format="'false'"
+      />
+    </div>
   </div>
 </template>
 
@@ -39,6 +48,7 @@ export default {
   flex-flow: column nowrap;
   &__Item {
     text-align: center;
+    margin-bottom: $space-base;
     &__Input {
       margin-top: $space-base;
       margin-bottom: $space-base;
@@ -49,6 +59,11 @@ export default {
     &__Output {
       margin-top: $space-base;
       margin-bottom: $space-base;
+    }
+
+    &__Adsense {
+      height: 90px;
+      margin: auto;
     }
   }
 }

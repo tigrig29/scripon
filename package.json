@@ -1,5 +1,5 @@
 {
-  "name": "novelgame-ss-converter",
+  "name": "scripon",
   "version": "1.0.0",
   "description": "My flawless Nuxt.js project",
   "author": "tigrig",
@@ -25,7 +25,8 @@
     "bootstrap-vue": "^2.0.0-rc.22",
     "cross-env": "^5.2.0",
     "nuxt": "^2.4.0",
-    "nuxt-fontawesome": "^0.4.0"
+    "nuxt-fontawesome": "^0.4.0",
+    "vuedraggable": "^2.21.0"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^0.0.1",

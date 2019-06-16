@@ -24,10 +24,14 @@
 .Menu {
   display: flex;
   list-style: none;
+  padding: 0;
   &__Item {
     display: flex;
     align-items: center;
-    margin-right: $space-xl;
+    margin-left: $space-base;
+    @media (min-width: $--sm) {
+      margin-left: $space-xl;
+    }
     &__Link {
       font-size: $font-size-sm;
       color: $color-reverse;

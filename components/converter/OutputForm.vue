@@ -38,10 +38,6 @@ export default {
   },
   mixins: [utils],
   props: {
-    value: {
-      type: String,
-      required: true
-    },
     rows: {
       type: Number,
       default: 12
