@@ -1,22 +1,22 @@
 <template>
   <aside class="Sidebar">
-    <draggable>
-      <div v-for="conf in config" :key="conf.id" class="Sidebar__Item">
-        <Config :config="conf" />
-      </div>
-    </draggable>
+    <!-- <draggable> -->
+    <div v-for="conf in config" :key="conf.id" class="Sidebar__Item">
+      <Config :config="conf" />
+    </div>
+    <!-- </draggable> -->
   </aside>
 </template>
 
 <script>
-import draggable from 'vuedraggable'
+// import draggable from 'vuedraggable'
 import { mapState } from 'vuex'
 
 import Config from '@/components/Config.vue'
 
 export default {
   components: {
-    draggable,
+    // draggable,
     Config
   },
   computed: {
