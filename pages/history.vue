@@ -1,15 +1,15 @@
 <template>
   <div>
-    <Converter />
+    <History />
   </div>
 </template>
 
 <script>
-import Converter from '@/components/Converter.vue'
+// import History from '@/components/History.vue'
 
 export default {
   components: {
-    Converter
+    // History
   }
 }
 </script>
