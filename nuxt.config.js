@@ -71,7 +71,10 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [{ src: '~plugins/persistedstate.js', ssr: false }],
+  plugins: [
+    { src: '~plugins/persistedstate.js', ssr: false },
+    { src: '~plugins/ga.js', ssr: false }
+  ],
 
   /*
    ** Nuxt.js modules

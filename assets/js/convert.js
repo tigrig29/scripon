@@ -100,11 +100,14 @@ export default {
           continue
         }
 
+        // 置換後文字列において、\n と \t の入力を可能にする
+        regexpObj.after = replaceObj.value.after
+        while (regexpObj.after !== this.unEscapeJs(regexpObj.after)) {
+          regexpObj.after = this.unEscapeJs(regexpObj.after)
+        }
+
         // 置換処理
-        ret = ret.replace(
-          regexpObj.before,
-          this.unEscapeJs(replaceObj.value.after) // \n と \t の入力を可能にする
-        )
+        ret = ret.replace(regexpObj.before, regexpObj.after)
       }
       return ret
     }
