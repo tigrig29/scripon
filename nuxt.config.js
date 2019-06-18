@@ -124,10 +124,6 @@ export default {
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
   },
-  // 開発環境でも PWA 実行できるように設定
-  workbox: {
-    dev: true
-  },
   fontawesome: {
     imports: [
       {
@@ -141,7 +137,6 @@ export default {
    ** Build configuration
    */
   build: {
-    analyze: true,
     extractCSS: true,
     /*
      ** You can extend webpack config here
