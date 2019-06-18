@@ -162,6 +162,10 @@ export default {
             whitelist: ['html', 'body']
           })
         )
+
+        // HardSourceWebpackPlugin（ビルド高速化）
+        const HardSourceWebpackPlugin = require('hard-source-webpack-plugin')
+        config.plugins.push(new HardSourceWebpackPlugin())
       }
     }
   }
