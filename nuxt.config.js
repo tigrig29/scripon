@@ -1,3 +1,6 @@
+import path from 'path'
+import PurgecssPlugin from 'purgecss-webpack-plugin'
+import glob from 'glob-all'
 import pkg from './package'
 
 export default {
@@ -66,13 +69,19 @@ export default {
   /*
    ** Global CSS
    */
-  css: ['~/assets/styles/main.scss'],
+  css: [
+    '~/assets/styles/main.scss',
+    // Doc: https://fontawesome.com/icons?d=gallery
+    //      https://github.com/FortAwesome/vue-fontawesome
+    '@fortawesome/fontawesome-svg-core/styles.css'
+  ],
 
   /*
    ** Plugins to load before mounting the App
    */
   plugins: [
     { src: '~plugins/persistedstate.js', ssr: false },
+    { src: '~plugins/font-awesome', ssr: false },
     { src: '~plugins/ga.js', ssr: false }
   ],
 
@@ -84,9 +93,6 @@ export default {
     '@nuxtjs/axios',
     // Doc: https://bootstrap-vue.js.org/docs/
     ['bootstrap-vue/nuxt'],
-    // Doc: https://fontawesome.com/icons?d=gallery
-    //      https://github.com/FortAwesome/vue-fontawesome
-    'nuxt-fontawesome',
     // scss 読み込み
     '@nuxtjs/style-resources',
     // Google Analytics
@@ -129,6 +135,8 @@ export default {
    ** Build configuration
    */
   build: {
+    analyze: true,
+    extractCSS: true,
     /*
      ** You can extend webpack config here
      */
@@ -141,6 +149,19 @@ export default {
           loader: 'eslint-loader',
           exclude: /(node_modules)/
         })
+
+        // Remove unused CSS using purgecss. See https://github.com/FullHuman/purgecss
+        // for more information about purgecss.
+        config.plugins.push(
+          new PurgecssPlugin({
+            paths: glob.sync([
+              path.join(__dirname, './pages/**/*.vue'),
+              path.join(__dirname, './layouts/**/*.vue'),
+              path.join(__dirname, './components/**/*.vue')
+            ]),
+            whitelist: ['html', 'body']
+          })
+        )
       }
     }
   }

@@ -9,7 +9,7 @@
         <input-form :rows="12" />
       </div>
       <!-- 矢印 -->
-      <font-awesome-icon
+      <fa-icon
         icon="angle-double-down"
         class="fa-4x Converter__Body__Item__Arrow"
       />
