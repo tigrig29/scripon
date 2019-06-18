@@ -89,6 +89,8 @@ export default {
    ** Nuxt.js modules
    */
   modules: [
+    // PWA
+    '@nuxtjs/pwa',
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     // Doc: https://bootstrap-vue.js.org/docs/
@@ -121,6 +123,10 @@ export default {
    */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+  },
+  // 開発環境でも PWA 実行できるように設定
+  workbox: {
+    dev: true
   },
   fontawesome: {
     imports: [
