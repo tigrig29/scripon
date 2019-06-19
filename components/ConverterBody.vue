@@ -24,7 +24,6 @@
       <adsbygoogle
         class="Converter__Body__Item__Adsense"
         :ad-slot="'3728637730'"
-        :ad-format="'false'"
       />
     </div>
   </div>
@@ -59,11 +58,6 @@ export default {
     &__Output {
       margin-top: $space-base;
       margin-bottom: $space-base;
-    }
-
-    &__Adsense {
-      height: 90px;
-      margin: auto;
     }
   }
 }
