@@ -1,6 +1,3 @@
-import path from 'path'
-import PurgecssPlugin from 'purgecss-webpack-plugin'
-import glob from 'glob-all'
 import pkg from './package'
 
 export default {
@@ -99,6 +96,16 @@ export default {
       {
         id: 'UA-133183584-2'
       }
+    ],
+    // Google Adsense
+    [
+      '@nuxtjs/google-adsense',
+      {
+        id: 'ca-pub-8705969011896754'
+        // pageLevelAds: false,
+        // analyticsUacct: 'UA-133183584-2',
+        // analyticsDomainName: 'scripon.toranos.net'
+      }
     ]
   ],
   styleResources: {
@@ -123,7 +130,6 @@ export default {
    ** Build configuration
    */
   build: {
-    extractCSS: true,
     /*
      ** You can extend webpack config here
      */
@@ -137,18 +143,6 @@ export default {
           exclude: /(node_modules)/
         })
       }
-      // Remove unused CSS using purgecss. See https://github.com/FullHuman/purgecss
-      // for more information about purgecss.
-      config.plugins.push(
-        new PurgecssPlugin({
-          paths: glob.sync([
-            path.join(__dirname, './pages/**/*.vue'),
-            path.join(__dirname, './layouts/**/*.vue'),
-            path.join(__dirname, './components/**/*.vue')
-          ]),
-          whitelist: ['html', 'body']
-        })
-      )
 
       // HardSourceWebpackPlugin（ビルド高速化）
       const HardSourceWebpackPlugin = require('hard-source-webpack-plugin')
