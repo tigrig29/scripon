@@ -93,8 +93,6 @@ export default {
     '@nuxtjs/pwa',
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    // Doc: https://bootstrap-vue.js.org/docs/
-    ['bootstrap-vue/nuxt'],
     // scss 読み込み
     '@nuxtjs/style-resources',
     // Google Analytics
