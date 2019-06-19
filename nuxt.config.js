@@ -1,6 +1,3 @@
-import path from 'path'
-import PurgecssPlugin from 'purgecss-webpack-plugin'
-import glob from 'glob-all'
 import pkg from './package'
 
 export default {
@@ -91,8 +88,8 @@ export default {
   modules: [
     '@nuxtjs/pwa',
     '@nuxtjs/axios',
+    ['bootstrap-vue/nuxt', { css: false }],
     '@nuxtjs/style-resources',
-    '@nuxtjs/toast',
     // Google Analytics
     [
       '@nuxtjs/google-analytics',
@@ -128,12 +125,15 @@ export default {
       }
     ]
   },
+  bootstrapVue: {
+    componentPlugins: ['BVToastPlugin'],
+    directivePlugins: []
+  },
 
   /*
    ** Build configuration
    */
   build: {
-    extractCSS: true,
     /*
      ** You can extend webpack config here
      */
@@ -146,23 +146,11 @@ export default {
           loader: 'eslint-loader',
           exclude: /(node_modules)/
         })
-      }
-      // Remove unused CSS using purgecss. See https://github.com/FullHuman/purgecss
-      // for more information about purgecss.
-      config.plugins.push(
-        new PurgecssPlugin({
-          paths: glob.sync([
-            path.join(__dirname, './pages/**/*.vue'),
-            path.join(__dirname, './layouts/**/*.vue'),
-            path.join(__dirname, './components/**/*.vue')
-          ]),
-          whitelist: ['html', 'body']
-        })
-      )
 
-      // HardSourceWebpackPlugin（ビルド高速化）
-      const HardSourceWebpackPlugin = require('hard-source-webpack-plugin')
-      config.plugins.push(new HardSourceWebpackPlugin())
+        // HardSourceWebpackPlugin（ビルド高速化）
+        const HardSourceWebpackPlugin = require('hard-source-webpack-plugin')
+        config.plugins.push(new HardSourceWebpackPlugin())
+      }
     }
   }
 }
