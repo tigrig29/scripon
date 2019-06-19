@@ -156,7 +156,9 @@ export default {
           loader: 'eslint-loader',
           exclude: /(node_modules)/
         })
+      }
 
+      if (!ctx.isDev) {
         // Remove unused CSS using purgecss. See https://github.com/FullHuman/purgecss
         // for more information about purgecss.
         config.plugins.push(
@@ -169,11 +171,11 @@ export default {
             whitelist: ['html', 'body']
           })
         )
-
-        // HardSourceWebpackPlugin（ビルド高速化）
-        const HardSourceWebpackPlugin = require('hard-source-webpack-plugin')
-        config.plugins.push(new HardSourceWebpackPlugin())
       }
+
+      // HardSourceWebpackPlugin（ビルド高速化）
+      const HardSourceWebpackPlugin = require('hard-source-webpack-plugin')
+      config.plugins.push(new HardSourceWebpackPlugin())
     }
   }
 }
