@@ -88,8 +88,8 @@ export default {
   modules: [
     '@nuxtjs/pwa',
     '@nuxtjs/axios',
+    ['bootstrap-vue/nuxt', { css: false }],
     '@nuxtjs/style-resources',
-    '@nuxtjs/toast',
     // Google Analytics
     [
       '@nuxtjs/google-analytics',
@@ -125,6 +125,10 @@ export default {
       }
     ]
   },
+  bootstrapVue: {
+    componentPlugins: ['BVToastPlugin'],
+    directivePlugins: []
+  },
 
   /*
    ** Build configuration
@@ -142,11 +146,11 @@ export default {
           loader: 'eslint-loader',
           exclude: /(node_modules)/
         })
-      }
 
-      // HardSourceWebpackPlugin（ビルド高速化）
-      const HardSourceWebpackPlugin = require('hard-source-webpack-plugin')
-      config.plugins.push(new HardSourceWebpackPlugin())
+        // HardSourceWebpackPlugin（ビルド高速化）
+        const HardSourceWebpackPlugin = require('hard-source-webpack-plugin')
+        config.plugins.push(new HardSourceWebpackPlugin())
+      }
     }
   }
 }

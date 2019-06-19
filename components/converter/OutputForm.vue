@@ -62,7 +62,7 @@ export default {
       const message = result
         ? 'クリップボードにコピーしました！'
         : 'コピーに失敗しました。ブラウザのバージョンが古い場合には更新してください。'
-      const variant = result ? 'info' : 'error'
+      const variant = result ? 'info' : 'danger'
       this.toast({ append: true, variant, message })
     },
     // クリップボードへコピー処理
@@ -93,17 +93,18 @@ export default {
       return result
     },
     // トースト表示
-    toast({ variant = 'info', message }) {
-      this.$toasted[variant](message, {
-        theme: 'outline',
-        position: 'bottom-right',
-        duration: 3000,
-        action: {
-          text: 'close',
-          onClick: (e, toastObject) => {
-            toastObject.goAway(0)
-          }
-        }
+    toast({
+      toaster = 'b-toaster-bottom-right',
+      append = false,
+      variant = 'info',
+      message
+    }) {
+      this.$bvToast.toast(message, {
+        title: this.capitalize(variant),
+        toaster,
+        variant,
+        solid: true,
+        appendToast: append
       })
     }
   }
