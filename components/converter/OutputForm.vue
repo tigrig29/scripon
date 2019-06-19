@@ -2,16 +2,16 @@
   <div class="OutputForm">
     <!-- コピーボタン -->
     <transition name="fade">
-      <b-button
+      <button
         v-show="mouseentering"
         id="outputCopyButton"
-        class="OutputForm__Copy"
+        class="btn OutputForm__Copy"
         pill
         @mouseenter="mouseentering = true"
         @click="execCopy()"
       >
         コピーする
-      </b-button>
+      </button>
     </transition>
     <!-- 変換後 出力エリア -->
     <scripon-textarea
@@ -62,7 +62,7 @@ export default {
       const message = result
         ? 'クリップボードにコピーしました！'
         : 'コピーに失敗しました。ブラウザのバージョンが古い場合には更新してください。'
-      const variant = result ? 'info' : 'danger'
+      const variant = result ? 'info' : 'error'
       this.toast({ append: true, variant, message })
     },
     // クリップボードへコピー処理
@@ -93,23 +93,35 @@ export default {
       return result
     },
     // トースト表示
-    toast({
-      toaster = 'b-toaster-bottom-right',
-      append = false,
-      variant = 'info',
-      message
-    }) {
-      this.$bvToast.toast(message, {
-        title: this.capitalize(variant),
-        toaster,
-        variant,
-        solid: true,
-        appendToast: append
+    toast({ variant = 'info', message }) {
+      this.$toasted[variant](message, {
+        theme: 'outline',
+        position: 'bottom-right',
+        duration: 3000,
+        action: {
+          text: 'close',
+          onClick: (e, toastObject) => {
+            toastObject.goAway(0)
+          }
+        }
       })
     }
   }
 }
 </script>
+
+<style lang="scss">
+.toasted.outline {
+  &.info {
+    border-color: $color-secondary;
+    color: $color-secondary;
+  }
+  &.error {
+    border-color: $--color-red;
+    color: $--color-red;
+  }
+}
+</style>
 
 <style lang="scss" scoped>
 .OutputForm {
