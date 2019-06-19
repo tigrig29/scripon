@@ -132,6 +132,12 @@ export default {
       }
     ]
   },
+  bootstrapVue: {
+    componentPlugins: ['BVToastPlugin'],
+    directivePlugins: [],
+    components: ['BButton'],
+    directives: []
+  },
 
   /*
    ** Build configuration
