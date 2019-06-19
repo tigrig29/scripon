@@ -99,16 +99,6 @@ export default {
       {
         id: 'UA-133183584-2'
       }
-    ],
-    // Google Adsense
-    [
-      '@nuxtjs/google-adsense',
-      {
-        id: 'ca-pub-8705969011896754'
-        // pageLevelAds: false,
-        // analyticsUacct: 'UA-133183584-2',
-        // analyticsDomainName: 'scripon.toranos.net'
-      }
     ]
   ],
   styleResources: {
