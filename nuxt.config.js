@@ -132,12 +132,6 @@ export default {
       }
     ]
   },
-  bootstrapVue: {
-    componentPlugins: ['BVToastPlugin'],
-    directivePlugins: [],
-    components: ['BButton'],
-    directives: []
-  },
 
   /*
    ** Build configuration
@@ -157,21 +151,18 @@ export default {
           exclude: /(node_modules)/
         })
       }
-
-      if (!ctx.isDev) {
-        // Remove unused CSS using purgecss. See https://github.com/FullHuman/purgecss
-        // for more information about purgecss.
-        config.plugins.push(
-          new PurgecssPlugin({
-            paths: glob.sync([
-              path.join(__dirname, './pages/**/*.vue'),
-              path.join(__dirname, './layouts/**/*.vue'),
-              path.join(__dirname, './components/**/*.vue')
-            ]),
-            whitelist: ['html', 'body']
-          })
-        )
-      }
+      // Remove unused CSS using purgecss. See https://github.com/FullHuman/purgecss
+      // for more information about purgecss.
+      config.plugins.push(
+        new PurgecssPlugin({
+          paths: glob.sync([
+            path.join(__dirname, './pages/**/*.vue'),
+            path.join(__dirname, './layouts/**/*.vue'),
+            path.join(__dirname, './components/**/*.vue')
+          ]),
+          whitelist: ['html', 'body']
+        })
+      )
 
       // HardSourceWebpackPlugin（ビルド高速化）
       const HardSourceWebpackPlugin = require('hard-source-webpack-plugin')
