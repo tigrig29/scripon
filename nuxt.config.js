@@ -89,12 +89,10 @@ export default {
    ** Nuxt.js modules
    */
   modules: [
-    // PWA
     '@nuxtjs/pwa',
-    // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    // scss 読み込み
     '@nuxtjs/style-resources',
+    '@nuxtjs/toast',
     // Google Analytics
     [
       '@nuxtjs/google-analytics',
