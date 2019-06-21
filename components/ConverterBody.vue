@@ -18,14 +18,6 @@
         <output-form :rows="12" />
       </div>
     </div>
-
-    <!-- Ad -->
-    <div class="Converter__Body__Item">
-      <adsbygoogle
-        class="Converter__Body__Item__Adsense"
-        :ad-slot="'3728637730'"
-      />
-    </div>
   </div>
 </template>
 
