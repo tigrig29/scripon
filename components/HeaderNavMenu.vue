@@ -18,8 +18,6 @@
   </ul>
 </template>
 
-<script></script>
-
 <style lang="scss" scoped>
 .Menu {
   display: flex;
