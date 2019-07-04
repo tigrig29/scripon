@@ -66,13 +66,19 @@ export default {
   /*
    ** Global CSS
    */
-  css: ['~/assets/styles/main.scss'],
+  css: [
+    '~/assets/styles/main.scss',
+    // Doc: https://fontawesome.com/icons?d=gallery
+    //      https://github.com/FortAwesome/vue-fontawesome
+    '@fortawesome/fontawesome-svg-core/styles.css'
+  ],
 
   /*
    ** Plugins to load before mounting the App
    */
   plugins: [
     { src: '~plugins/persistedstate.js', ssr: false },
+    { src: '~plugins/font-awesome', ssr: false },
     { src: '~plugins/ga.js', ssr: false }
   ],
 
@@ -80,30 +86,15 @@ export default {
    ** Nuxt.js modules
    */
   modules: [
-    // Doc: https://axios.nuxtjs.org/usage
+    '@nuxtjs/pwa',
     '@nuxtjs/axios',
-    // Doc: https://bootstrap-vue.js.org/docs/
-    ['bootstrap-vue/nuxt'],
-    // Doc: https://fontawesome.com/icons?d=gallery
-    //      https://github.com/FortAwesome/vue-fontawesome
-    'nuxt-fontawesome',
-    // scss 読み込み
+    ['bootstrap-vue/nuxt', { css: false }],
     '@nuxtjs/style-resources',
     // Google Analytics
     [
       '@nuxtjs/google-analytics',
       {
         id: 'UA-133183584-2'
-      }
-    ],
-    // Google Adsense
-    [
-      '@nuxtjs/google-adsense',
-      {
-        id: 'ca-pub-8705969011896754',
-        pageLevelAds: false,
-        analyticsUacct: 'UA-133183584-2',
-        analyticsDomainName: 'scripon.toranos.net'
       }
     ]
   ],
@@ -124,6 +115,10 @@ export default {
       }
     ]
   },
+  bootstrapVue: {
+    componentPlugins: ['BVToastPlugin'],
+    directivePlugins: []
+  },
 
   /*
    ** Build configuration
@@ -141,6 +136,10 @@ export default {
           loader: 'eslint-loader',
           exclude: /(node_modules)/
         })
+
+        // HardSourceWebpackPlugin（ビルド高速化）
+        const HardSourceWebpackPlugin = require('hard-source-webpack-plugin')
+        config.plugins.push(new HardSourceWebpackPlugin())
       }
     }
   }

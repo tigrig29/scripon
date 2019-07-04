@@ -9,7 +9,7 @@
         <input-form :rows="12" />
       </div>
       <!-- 矢印 -->
-      <font-awesome-icon
+      <fa-icon
         icon="angle-double-down"
         class="fa-4x Converter__Body__Item__Arrow"
       />
@@ -17,15 +17,6 @@
       <div class="Converter__Body__Item__Output">
         <output-form :rows="12" />
       </div>
-    </div>
-
-    <!-- Ad -->
-    <div class="Converter__Body__Item">
-      <adsbygoogle
-        class="Converter__Body__Item__Adsense"
-        :ad-slot="'3728637730'"
-        :ad-format="'false'"
-      />
     </div>
   </div>
 </template>
@@ -59,11 +50,6 @@ export default {
     &__Output {
       margin-top: $space-base;
       margin-bottom: $space-base;
-    }
-
-    &__Adsense {
-      height: 90px;
-      margin: auto;
     }
   }
 }

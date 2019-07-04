@@ -2,16 +2,16 @@
   <div class="OutputForm">
     <!-- コピーボタン -->
     <transition name="fade">
-      <b-button
+      <button
         v-show="mouseentering"
         id="outputCopyButton"
-        class="OutputForm__Copy"
+        class="btn OutputForm__Copy"
         pill
         @mouseenter="mouseentering = true"
         @click="execCopy()"
       >
         コピーする
-      </b-button>
+      </button>
     </transition>
     <!-- 変換後 出力エリア -->
     <scripon-textarea
@@ -110,6 +110,19 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.toasted.outline {
+  &.info {
+    border-color: $color-secondary;
+    color: $color-secondary;
+  }
+  &.error {
+    border-color: $--color-red;
+    color: $--color-red;
+  }
+}
+</style>
 
 <style lang="scss" scoped>
 .OutputForm {
