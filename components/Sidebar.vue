@@ -1,6 +1,15 @@
 <template>
-  <aside class="Sidebar">
-    <template v-if="$store.state.layout.sidebar === 'config'">
+  <aside
+    class="Sidebar"
+    :class="{
+      'Sidebar--Default': type === 'default',
+      'Sidebar--Config': type === 'config'
+    }"
+  >
+    <template v-if="type === 'default'">
+      aa
+    </template>
+    <template v-if="type === 'config'">
       <draggable>
         <div
           v-for="conf in $store.state.config.list"
@@ -23,6 +32,12 @@ export default {
   components: {
     draggable,
     Config
+  },
+  props: {
+    type: {
+      type: String,
+      required: true
+    }
   }
 }
 </script>
@@ -30,12 +45,14 @@ export default {
 <style lang="scss">
 // SP
 .Sidebar {
-  @include thin-scrollbar(12px);
-
   padding: 8px;
-  overflow-x: auto;
-  height: 50vh;
   border-bottom: 2px solid #efefef;
+
+  &--Config {
+    @include thin-scrollbar(12px);
+    overflow-y: auto;
+    height: 50vh;
+  }
 }
 
 // PC
@@ -43,8 +60,8 @@ export default {
   .Sidebar {
     top: 64px;
     height: calc(100vh - 64px);
-    border-right: 2px solid #efefef;
     position: sticky;
+    border-right: 2px solid #efefef;
   }
 }
 </style>

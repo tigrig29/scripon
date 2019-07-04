@@ -1,8 +1,14 @@
 <template>
   <div>
     <Header :title="title" />
-    <main class="Main">
-      <Sidebar />
+    <main
+      class="Main"
+      :class="{
+        'Main--Default': route !== '/',
+        'Main--Converter': route === '/'
+      }"
+    >
+      <Sidebar :type="sidebarType" />
       <nuxt />
     </main>
   </div>
@@ -24,20 +30,31 @@ export default {
     Header,
     Sidebar
   },
-  data() {
-    return {
-      title
+  computed: {
+    title() {
+      return title
+    },
+    route() {
+      return this.$route.path
+    },
+    sidebarType() {
+      return this.route === '/' ? 'config' : 'default'
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-// PC
+// ALL
 @media (min-width: 768px) {
   .Main {
     display: grid;
-    grid-template-columns: 512px minmax(256px, auto);
+    &--Default {
+      grid-template-columns: 288px minmax(256px, auto);
+    }
+    &--Converter {
+      grid-template-columns: 512px minmax(256px, auto);
+    }
   }
 }
 </style>
