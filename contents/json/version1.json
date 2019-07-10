@@ -1,0 +1,12 @@
+{
+  "title": "Version 1.00 ～（2019-6-16 ～ ）",
+  "description": "Scripon! バージョン１系の更新履歴",
+  "created_at": "2019-07-10 00:00:00",
+  "bodyContent": "# Version 1.00\r\n\r\n## 2019-7-10\r\n\r\n### 更新履歴ページ作成\r\n\r\n## 2019-6-21\r\n\r\n### パフォーマンス改善\r\n\r\n- GoogleAdsense 削除\r\n- コードの最適化\r\n\r\n## 2019-6-17\r\n\r\n### バグ修正\r\n\r\n- 『詳細な置換』の「置換後文字列」において、\"\\n\\n\" のように特殊文字を複数回使用した場合、2 つ目以降の特殊文字が通常の文字列として認識されてしまう問題を修正。\r\n\r\n## 2019-06-16\r\n\r\n### Scripon リリース",
+  "bodyHtml": "<h1>Version 1.00</h1>\n<h2>2019-7-10</h2>\n<h3>更新履歴ページ作成</h3>\n<h2>2019-6-21</h2>\n<h3>パフォーマンス改善</h3>\n<ul>\n<li>GoogleAdsense 削除</li>\n<li>コードの最適化</li>\n</ul>\n<h2>2019-6-17</h2>\n<h3>バグ修正</h3>\n<ul>\n<li>『詳細な置換』の「置換後文字列」において、&quot;\\n\\n&quot; のように特殊文字を複数回使用した場合、2 つ目以降の特殊文字が通常の文字列として認識されてしまう問題を修正。</li>\n</ul>\n<h2>2019-06-16</h2>\n<h3>Scripon リリース</h3>\n",
+  "dir": "contents/json",
+  "base": "version1.json",
+  "ext": ".json",
+  "sourceBase": "version1.md",
+  "sourceExt": ".md"
+}
