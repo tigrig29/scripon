@@ -82,3 +82,8 @@ dist
 
 # Service worker
 sw.*
+
+
+# 記事用 Json
+# （元の Markdown だけバージョン管理すれば良い）
+content/json/
