@@ -45,9 +45,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// ALL
-@media (min-width: 768px) {
-  .Main {
+.Main {
+  @media (min-width: $--sm) {
     display: grid;
     &--Default {
       grid-template-columns: 288px minmax(256px, auto);

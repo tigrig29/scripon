@@ -7,7 +7,14 @@
     }"
   >
     <template v-if="type === 'default'">
-      aa
+      <div
+        v-for="item in $store.state.menu.items"
+        :key="item.id"
+        class="Sidebar__Item"
+      >
+        {{ item }}
+        <SidebarItem :item="item" />
+      </div>
     </template>
     <template v-if="type === 'config'">
       <draggable>
@@ -56,8 +63,8 @@ export default {
 }
 
 // PC
-@media (min-width: 768px) {
-  .Sidebar {
+.Sidebar {
+  @media (min-width: $--sm) {
     top: 64px;
     height: calc(100vh - 64px);
     position: sticky;

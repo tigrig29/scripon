@@ -1,10 +1,9 @@
 ---
-title: Version 1.00 ～（2019-6-16 ～ ）
+title: 更新履歴（Version 1.00）
+menuTitle: Version 1.00
 description: Scripon! バージョン１系の更新履歴
-created_at: '2019-07-10 00:00:00'
+createdAt: '2019-07-10 00:00:00'
 ---
-
-# 更新履歴（Version 1.00）
 
 ## 2019-7-10
 
