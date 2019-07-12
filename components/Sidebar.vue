@@ -6,6 +6,7 @@
       'Sidebar--Config': type === 'config'
     }"
   >
+    <!-- 通常 -->
     <template v-if="type === 'default'">
       <div
         v-for="item in $store.state.menu.items"
@@ -17,6 +18,8 @@
         </nuxt-link>
       </div>
     </template>
+
+    <!-- コンフィグ（コンバーターページ）用 -->
     <template v-if="type === 'config'">
       <draggable>
         <div
@@ -63,6 +66,9 @@ export default {
   }
 
   &--Default {
+    // SP では非表示
+    display: none;
+
     padding: $space-lg;
     .Sidebar__Item {
       margin-bottom: $space-sm;
@@ -94,6 +100,10 @@ export default {
     height: calc(100vh - 64px);
     position: sticky;
     border-right: 2px solid #efefef;
+
+    &--Default {
+      display: block;
+    }
   }
 }
 </style>

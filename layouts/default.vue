@@ -8,6 +8,7 @@
         'Main--Converter': route === '/'
       }"
     >
+      <Hamburger v-if="route !== '/'" />
       <Sidebar :type="sidebarType" />
       <nuxt />
     </main>
@@ -17,6 +18,7 @@
 <script>
 import Header from '@/components/Header.vue'
 import Sidebar from '@/components/Sidebar.vue'
+import Hamburger from '@/components/Hamburger.vue'
 
 const title = 'Scripon!'
 
@@ -28,7 +30,8 @@ export default {
   },
   components: {
     Header,
-    Sidebar
+    Sidebar,
+    Hamburger
   },
   computed: {
     title() {

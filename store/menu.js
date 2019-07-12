@@ -1,8 +1,9 @@
 export const state = () => ({
   template: {
-    id: 0,
+    id: '',
     title: '',
-    anchor: ''
+    link: '',
+    innerList: {}
   },
   items: []
 })
