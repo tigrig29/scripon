@@ -11,7 +11,11 @@
           :key="item.id"
           class="Content__TOC__List__Item"
         >
-          <nuxt-link class="Content__TOC__List__Item__Link" :to="item.link">
+          <nuxt-link
+            class="Content__TOC__List__Item__Link"
+            :to="item.link"
+            exact
+          >
             {{ item.title }}
           </nuxt-link>
         </li>

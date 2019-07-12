@@ -10,9 +10,7 @@ export default {
     getMenuItems(urlParams, fileMap, sourceFileArray) {
       // url の _category から、対象となる記事マークダウンのファイルパスを全て取得
       const contentPaths = sourceFileArray.filter(value => {
-        // category だけだと、カテゴリートップも含まれてしまうため // で囲う
-        const regTestCategory = new RegExp(`/${urlParams.category}/`)
-        return regTestCategory.test(value)
+        return value.includes(urlParams.category)
       })
 
       // summary.json から、対象記事のサイドメニュー情報を作成
@@ -21,14 +19,14 @@ export default {
         const jsonPath = path
           .replace('markdown', 'json')
           .replace('.md', '.json')
-        const articleJson = fileMap[jsonPath]
+        const summary = fileMap[jsonPath]
         const targetPath =
-          articleJson.dir.replace('content/json', '') +
+          summary.dir.replace('content/json', '') +
           '/' +
-          articleJson.base.replace('.json', '')
+          summary.base.replace('.json', '')
         menuItems.push({
           id: targetPath,
-          title: articleJson.menuTitle,
+          title: summary.menuTitle,
           link: targetPath,
           innerLink: {}
         })

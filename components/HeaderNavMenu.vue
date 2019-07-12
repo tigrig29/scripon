@@ -15,6 +15,11 @@
         コンバーター
       </nuxt-link>
     </li> -->
+    <li class="Menu__Item">
+      <nuxt-link class="Menu__Item__Link" to="/history">
+        更新履歴
+      </nuxt-link>
+    </li>
   </ul>
 </template>
 
