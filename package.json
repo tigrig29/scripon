@@ -11,7 +11,10 @@
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "precommit": "npm run lint",
-    "dev-debug": "node --inspect-brk=9229 node_modules/nuxt/bin/nuxt"
+    "dev-debug": "node --inspect-brk=9229 node_modules/nuxt/bin/nuxt",
+    "rm-content-json": "rmdir content\\json /s /q",
+    "convmd": "yarn rm-content-json & processmd \"content/markdown/**/*.md\" --outputDir content/json --summaryOutput content/json/summary.json",
+    "convmd-watch": "yarn rm-content-json & processmd \"content/markdown/**/*.md\" --outputDir content/json --summaryOutput content/json/summary.json --watch"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.18",
@@ -47,6 +50,7 @@
     "node-sass": "^4.11.0",
     "nodemon": "^1.18.9",
     "prettier": "^1.16.4",
+    "processmd": "^4.4.2",
     "sass-loader": "^7.1.0",
     "vuex-persistedstate": "^2.5.4"
   }
