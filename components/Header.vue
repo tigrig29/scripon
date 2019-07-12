@@ -2,7 +2,7 @@
   <header class="Header sticky">
     <nuxt-link to="/" class="Header__Logo">
       <scripon-logo />
-      <h1 class="Header__Logo__Text">{{ title }}</h1>
+      <h1 v-if="$route.path === '/'" class="Header__Logo__Text">{{ title }}</h1>
     </nuxt-link>
     <HeaderNav />
   </header>
