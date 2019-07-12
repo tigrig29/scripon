@@ -23,11 +23,16 @@ export default {
       return value.includes(params.category)
     })
 
-    // summary.json から、対象記事全ての menuTitle を取得
+    // summary.json から、対象記事のサイドメニュー情報を作成
     const menuTitleList = []
     for (const path of contentPaths) {
       const jsonPath = path.replace('markdown', 'json').replace('.md', '.json')
-      menuTitleList.push(fileMap[jsonPath].menuTitle)
+      const articleJson = fileMap[jsonPath]
+      menuTitleList.push({
+        title: articleJson.menuTitle,
+        link: articleJson.base.replace('.json', ''),
+        innerLink: {}
+      })
     }
 
     // $store.menu に登録

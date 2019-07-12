@@ -12,8 +12,9 @@
         :key="item.id"
         class="Sidebar__Item"
       >
-        {{ item }}
-        <SidebarItem :item="item" />
+        <nuxt-link class="Sidebar__Item__Link" :to="`./${item.link}`">
+          {{ item.title }}
+        </nuxt-link>
       </div>
     </template>
     <template v-if="type === 'config'">
@@ -52,13 +53,37 @@ export default {
 <style lang="scss">
 // SP
 .Sidebar {
-  padding: 8px;
   border-bottom: 2px solid #efefef;
 
   &--Config {
+    padding: $space-sm;
     @include thin-scrollbar(12px);
     overflow-y: auto;
     height: 50vh;
+  }
+
+  &--Default {
+    padding: $space-lg;
+    .Sidebar__Item {
+      margin-bottom: $space-sm;
+      padding: $space-xs;
+      &__Link {
+        display: block;
+        text-decoration: none;
+        color: $--color-black-8;
+        padding: 0 $space-sm;
+        border-radius: $space-sm;
+        letter-spacing: 0.25px;
+        &:hover {
+          color: $--color-black-9;
+          background-color: $--color-grey-4;
+        }
+      }
+      .nuxt-link-active {
+        color: $--color-white;
+        background-color: rgba($color-primary, 0.8);
+      }
+    }
   }
 }
 
