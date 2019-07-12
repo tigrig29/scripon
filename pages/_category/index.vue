@@ -3,6 +3,20 @@
   <div class="Content">
     <h1>{{ title }}</h1>
     <div class="Content__Body" v-html="bodyHtml"></div>
+    <div class="Content__TOC">
+      <h2>目次</h2>
+      <ul class="Content__TOC__List">
+        <li
+          v-for="item in $store.state.menu.items"
+          :key="item.id"
+          class="Content__TOC__List__Item"
+        >
+          <nuxt-link class="Content__TOC__List__Item__Link" :to="item.link">
+            {{ item.title }}
+          </nuxt-link>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -12,9 +26,7 @@ import menuBuilder from '@/assets/js/menu'
 
 export default {
   validate({ params }) {
-    return sourceFileArray.includes(
-      `content/markdown/${params.category}/${params.slug}.md`
-    )
+    return sourceFileArray.includes(`content/markdown/${params.category}.md`)
   },
   asyncData({ store, params }) {
     // $store.menu.items に、サイドバー項目を設定
@@ -28,7 +40,7 @@ export default {
     // 記事用コンテンツのインポート
     return Object.assign(
       {},
-      require(`~/content/json/${params.category}/${params.slug}.json`),
+      require(`~/content/json/${params.category}.json`),
       { params }
     )
   }

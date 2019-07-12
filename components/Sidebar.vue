@@ -12,7 +12,7 @@
         :key="item.id"
         class="Sidebar__Item"
       >
-        <nuxt-link class="Sidebar__Item__Link" :to="`./${item.link}`">
+        <nuxt-link class="Sidebar__Item__Link" :to="item.link">
           {{ item.title }}
         </nuxt-link>
       </div>
