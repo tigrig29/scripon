@@ -1,9 +1,6 @@
 <template>
   <div class="Converter__Header">
     <div class="Converter__Header__Item">
-      <adsbygoogle :ad-style="adStyle" :ad-slot="'2101761107'" />
-    </div>
-    <div class="Converter__Header__Item">
       <div v-if="false" class="Button__ChangeMode">
         <b-button-group size="sm">
           <b-button variant="primary">
@@ -17,20 +14,6 @@
     </div>
   </div>
 </template>
-
-<script>
-export default {
-  data: function() {
-    return {
-      adStyle: {
-        display: 'block',
-        'min-width': '240px',
-        'max-width': '1392px'
-      }
-    }
-  }
-}
-</script>
 
 <style scoped lang="scss">
 .Converter__Header {

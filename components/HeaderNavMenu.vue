@@ -1,6 +1,6 @@
 <template>
   <ul class="Menu">
-    <li class="Menu__Item">
+    <!-- <li class="Menu__Item">
       <nuxt-link class="Menu__Item__Link" to="/guide">
         使い方
       </nuxt-link>
@@ -14,11 +14,14 @@
       <nuxt-link class="Menu__Item__Link" to="/converter">
         コンバーター
       </nuxt-link>
+    </li> -->
+    <li class="Menu__Item">
+      <nuxt-link class="Menu__Item__Link" to="/history">
+        更新履歴
+      </nuxt-link>
     </li>
   </ul>
 </template>
-
-<script></script>
 
 <style lang="scss" scoped>
 .Menu {

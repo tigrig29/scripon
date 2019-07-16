@@ -9,7 +9,7 @@
         <input-form :rows="12" />
       </div>
       <!-- 矢印 -->
-      <font-awesome-icon
+      <fa-icon
         icon="angle-double-down"
         class="fa-4x Converter__Body__Item__Arrow"
       />
@@ -39,6 +39,7 @@ export default {
   flex-flow: column nowrap;
   &__Item {
     text-align: center;
+    margin-bottom: $space-base;
     &__Input {
       margin-top: $space-base;
       margin-bottom: $space-base;
