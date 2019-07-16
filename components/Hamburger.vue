@@ -32,8 +32,8 @@ export default {
   right: 0;
   margin: $space-sm $space-base;
   display: block;
-  position: absolute;
-  z-index: 100;
+  position: fixed;
+  z-index: 20;
   &__Icon {
     cursor: pointer;
   }
