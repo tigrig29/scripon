@@ -1,49 +1,49 @@
 <template>
   <div class="InsertForm">
-    <draggable>
-      <div
-        v-for="setting in config.settings"
-        :key="setting.id"
-        class="InsertForm__Item"
-        :class="{
-          'InsertForm--enabled': setting.enabled,
-          'InsertForm--disabled': !setting.enabled
-        }"
-      >
-        <!-- スイッチ（共通） -->
-        <div class="InsertForm__Item__Switch">
-          <ScriponSwitch
-            :id="setting.id"
-            :enabled="setting.enabled"
-            @change="toggleSettingEnabled(setting)"
-          />
-        </div>
-        <!-- 入力エリア -->
-        <div class="InsertForm__Item__Textarea">
-          <ScriponTextarea
-            :horizontal="true"
-            :value="setting.value"
-            :placeholder="setting.placeholder"
-            :enabled="setting.enabled"
-            @keydown.enter.prevent=""
-            @input="
-              e => {
-                updateSetting({ setting, value: e.target.value })
-              }
-            "
-          />
-        </div>
-        <!-- 削除ボタン -->
-        <div class="InsertForm__Item__Button">
-          <scripon-button
-            caption="削除"
-            :danger="true"
-            :enabled="setting.enabled"
-            @click="deleteSetting(setting)"
-          />
-        </div>
+    <!-- <draggable> -->
+    <div
+      v-for="setting in config.settings"
+      :key="setting.id"
+      class="InsertForm__Item"
+      :class="{
+        'InsertForm--enabled': setting.enabled,
+        'InsertForm--disabled': !setting.enabled
+      }"
+    >
+      <!-- スイッチ（共通） -->
+      <div class="InsertForm__Item__Switch">
+        <ScriponSwitch
+          :id="setting.id"
+          :enabled="setting.enabled"
+          @change="toggleSettingEnabled(setting)"
+        />
       </div>
-    </draggable>
+      <!-- 入力エリア -->
+      <div class="InsertForm__Item__Textarea">
+        <ScriponTextarea
+          :horizontal="true"
+          :value="setting.value"
+          :placeholder="setting.placeholder"
+          :enabled="setting.enabled"
+          @keydown.enter.prevent=""
+          @input="
+            e => {
+              updateSetting({ setting, value: e.target.value })
+            }
+          "
+        />
+      </div>
+      <!-- 削除ボタン -->
+      <div class="InsertForm__Item__Button">
+        <scripon-button
+          caption="削除"
+          :danger="true"
+          :enabled="setting.enabled"
+          @click="deleteSetting(setting)"
+        />
+      </div>
+    </div>
+    <!-- </draggable> -->
     <!-- 追加ボタン -->
     <scripon-button
       caption="追加"
@@ -54,7 +54,7 @@
 </template>
 
 <script>
-import draggable from 'vuedraggable'
+// import draggable from 'vuedraggable'
 import { mapMutations } from 'vuex'
 
 import ScriponButton from '~/components/forms/ScriponButton'
@@ -63,7 +63,7 @@ import ScriponSwitch from '~/components/forms/ScriponSwitch'
 
 export default {
   components: {
-    draggable,
+    // draggable,
     ScriponButton,
     ScriponTextarea,
     ScriponSwitch
