@@ -57,6 +57,10 @@ export default {
 <style lang="scss">
 // SP
 .Sidebar {
+  top: 64px;
+  position: sticky;
+  background: white;
+  z-index: 10;
   border-bottom: 2px solid #efefef;
 
   &--Hidden {
@@ -98,9 +102,7 @@ export default {
 // PC
 .Sidebar {
   @media (min-width: $--sm) {
-    top: 64px;
     height: calc(100vh - 64px);
-    position: sticky;
     border-right: 2px solid #efefef;
 
     &--Default {
