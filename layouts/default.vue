@@ -1,14 +1,9 @@
 <template>
   <div>
     <Header :title="title" />
-    <main
-      class="Main"
-      :class="{
-        'Main--Default': route !== '/',
-        'Main--Converter': route === '/'
-      }"
-    >
-      <Sidebar :type="sidebarType" />
+    <main class="Main">
+      <Hamburger v-if="$route.path !== '/'" />
+      <Sidebar v-if="$route.path !== '/'" />
       <nuxt />
     </main>
   </div>
@@ -17,6 +12,7 @@
 <script>
 import Header from '@/components/Header.vue'
 import Sidebar from '@/components/Sidebar.vue'
+import Hamburger from '@/components/Hamburger.vue'
 
 const title = 'Scripon!'
 
@@ -28,17 +24,12 @@ export default {
   },
   components: {
     Header,
-    Sidebar
+    Sidebar,
+    Hamburger
   },
   computed: {
     title() {
       return title
-    },
-    route() {
-      return this.$route.path
-    },
-    sidebarType() {
-      return this.route === '/' ? 'config' : 'default'
     }
   }
 }
@@ -48,12 +39,7 @@ export default {
 .Main {
   @media (min-width: $--sm) {
     display: grid;
-    &--Default {
-      grid-template-columns: 288px minmax(256px, auto);
-    }
-    &--Converter {
-      grid-template-columns: 512px minmax(256px, auto);
-    }
+    grid-template-columns: 288px minmax(256px, auto);
   }
 }
 </style>

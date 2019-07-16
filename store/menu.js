@@ -1,13 +1,21 @@
 export const state = () => ({
+  visible: false,
   template: {
-    id: 0,
+    id: '',
     title: '',
-    anchor: ''
+    link: '',
+    innerList: {}
   },
   items: []
 })
 
 export const mutations = {
+  toggleVisible(state) {
+    state.visible = !state.visible
+  },
+  setVisible(state, visible) {
+    state.visible = visible
+  },
   setItems(state, items) {
     state.items = items
   }
