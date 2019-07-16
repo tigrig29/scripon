@@ -2,8 +2,8 @@
   <div>
     <Header :title="title" />
     <main class="Main">
-      <Hamburger v-if="$route.path !== '/'" />
-      <Sidebar v-if="$route.path !== '/'" />
+      <Hamburger v-if="$store.state.menu.enabled" />
+      <Sidebar v-if="$store.state.menu.enabled" />
       <nuxt />
     </main>
   </div>
