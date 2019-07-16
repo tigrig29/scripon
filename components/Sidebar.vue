@@ -2,6 +2,7 @@
   <aside
     class="Sidebar"
     :class="{
+      'Sidebar--Hidden': !$store.state.menu.visible,
       'Sidebar--Default': type === 'default',
       'Sidebar--Config': type === 'config'
     }"
@@ -58,6 +59,10 @@ export default {
 .Sidebar {
   border-bottom: 2px solid #efefef;
 
+  &--Hidden {
+    display: none;
+  }
+
   &--Config {
     padding: $space-sm;
     @include thin-scrollbar(12px);
@@ -66,9 +71,6 @@ export default {
   }
 
   &--Default {
-    // SP では非表示
-    display: none;
-
     padding: $space-lg;
     .Sidebar__Item {
       margin-bottom: $space-sm;

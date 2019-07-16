@@ -33,6 +33,9 @@ export default {
     return sourceFileArray.includes(`content/markdown/${params.category}.md`)
   },
   asyncData({ store, params }) {
+    // メニューの非表示化（SP用）
+    store.commit('menu/setVisible', false)
+
     // $store.menu.items に、サイドバー項目を設定
     const menuItems = menuBuilder.methods.getMenuItems(
       params,
