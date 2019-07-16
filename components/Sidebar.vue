@@ -2,10 +2,12 @@
   <aside
     class="Sidebar"
     :class="{
+      'Sidebar--Hidden': !$store.state.menu.visible,
       'Sidebar--Default': type === 'default',
       'Sidebar--Config': type === 'config'
     }"
   >
+    <!-- 通常 -->
     <template v-if="type === 'default'">
       <div
         v-for="item in $store.state.menu.items"
@@ -17,6 +19,8 @@
         </nuxt-link>
       </div>
     </template>
+
+    <!-- コンフィグ（コンバーターページ）用 -->
     <template v-if="type === 'config'">
       <draggable>
         <div
@@ -54,6 +58,10 @@ export default {
 // SP
 .Sidebar {
   border-bottom: 2px solid #efefef;
+
+  &--Hidden {
+    display: none;
+  }
 
   &--Config {
     padding: $space-sm;
@@ -94,6 +102,10 @@ export default {
     height: calc(100vh - 64px);
     position: sticky;
     border-right: 2px solid #efefef;
+
+    &--Default {
+      display: block;
+    }
   }
 }
 </style>
