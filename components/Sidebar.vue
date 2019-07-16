@@ -2,49 +2,23 @@
   <aside
     class="Sidebar"
     :class="{
-      'Sidebar--Hidden': !$store.state.menu.visible,
-      'Sidebar--Default': type === 'default',
-      'Sidebar--Config': type === 'config'
+      'Sidebar--Hidden': !$store.state.menu.visible
     }"
   >
-    <!-- 通常 -->
-    <template v-if="type === 'default'">
-      <div
-        v-for="item in $store.state.menu.items"
-        :key="item.id"
-        class="Sidebar__Item"
-      >
-        <nuxt-link class="Sidebar__Item__Link" :to="item.link" exact>
-          {{ item.title }}
-        </nuxt-link>
-      </div>
-    </template>
-
-    <!-- コンフィグ（コンバーターページ）用 -->
-    <template v-if="type === 'config'">
-      <draggable>
-        <div
-          v-for="conf in $store.state.config.list"
-          :key="conf.id"
-          class="Sidebar__Item"
-        >
-          <Config :config="conf" />
-        </div>
-      </draggable>
-    </template>
+    <div
+      v-for="item in $store.state.menu.items"
+      :key="item.id"
+      class="Sidebar__Item"
+    >
+      <nuxt-link class="Sidebar__Item__Link" :to="item.link" exact>
+        {{ item.title }}
+      </nuxt-link>
+    </div>
   </aside>
 </template>
 
 <script>
-import draggable from 'vuedraggable'
-
-import Config from '@/components/Config.vue'
-
 export default {
-  components: {
-    draggable,
-    Config
-  },
   props: {
     type: {
       type: String,
@@ -54,48 +28,39 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 // SP
 .Sidebar {
   top: 64px;
   position: sticky;
+  padding: $space-lg;
   background: white;
   z-index: 10;
-  border-bottom: 2px solid #efefef;
+  border-bottom: 2px solid $--color-grey-4;
+
+  &__Item {
+    margin-bottom: $space-sm;
+    padding: $space-xs;
+    &__Link {
+      display: block;
+      text-decoration: none;
+      color: $--color-black-8;
+      padding: 0 $space-sm;
+      border-radius: $space-sm;
+      letter-spacing: 0.25px;
+      &:hover {
+        color: $--color-black-9;
+        background-color: $--color-grey-4;
+      }
+    }
+    .nuxt-link-active {
+      color: $--color-white;
+      background-color: rgba($color-primary, 0.8);
+    }
+  }
 
   &--Hidden {
     display: none;
-  }
-
-  &--Config {
-    padding: $space-sm;
-    @include thin-scrollbar(12px);
-    overflow-y: auto;
-    height: 50vh;
-  }
-
-  &--Default {
-    padding: $space-lg;
-    .Sidebar__Item {
-      margin-bottom: $space-sm;
-      padding: $space-xs;
-      &__Link {
-        display: block;
-        text-decoration: none;
-        color: $--color-black-8;
-        padding: 0 $space-sm;
-        border-radius: $space-sm;
-        letter-spacing: 0.25px;
-        &:hover {
-          color: $--color-black-9;
-          background-color: $--color-grey-4;
-        }
-      }
-      .nuxt-link-active {
-        color: $--color-white;
-        background-color: rgba($color-primary, 0.8);
-      }
-    }
   }
 }
 
@@ -103,9 +68,9 @@ export default {
 .Sidebar {
   @media (min-width: $--sm) {
     height: calc(100vh - 64px);
-    border-right: 2px solid #efefef;
+    border-right: 2px solid $--color-grey-4;
 
-    &--Default {
+    &--Hidden {
       display: block;
     }
   }
