@@ -28,7 +28,7 @@ export default {
           id: targetPath,
           title: summary.menuTitle,
           link: targetPath,
-          innerLink: {}
+          innerList: {}
         })
       }
 
