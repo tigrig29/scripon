@@ -56,8 +56,6 @@ export default {
 
 <style lang="scss" scoped>
 .Welcome {
-  padding-top: $space-base;
-  background: $--color-white;
   &__Content {
     &__Text {
       margin-top: $space-base;
