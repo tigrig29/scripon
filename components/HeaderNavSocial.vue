@@ -51,9 +51,9 @@
         rel="noopener"
         target="_blank"
         href="https://ofuse.me/#users/11838"
-        class="Social__Item__Link Social__Item__Link__Support"
+        class="Social__Item__Support link-button color-green"
       >
-        <span class="Social__Item__Link__Support__Text">
+        <span class="Social__Item__Support__Text link-button-text">
           支援する
         </span>
       </a>
@@ -89,28 +89,11 @@
           color: $--color-youtube;
         }
       }
-      &__Support {
-        transition: background 0.15s;
-        padding: 4px 8px;
-        background: mix(
-          $--color-green-5,
-          mix($color-primary, $--color-green-5)
-        );
-        border: none;
-        border-radius: 4px;
-        text-decoration: none;
-        &:hover {
-          background: mix(
-            $--color-green-5,
-            mix($color-reverse, $--color-green-5)
-          );
-        }
-        &__Text {
-          font-size: $font-size-sm;
-          color: $--color-white;
-          white-space: nowrap;
-        }
-      }
+    }
+    &__Support {
+      padding: $space-xs $space-sm;
+      border-radius: $space-xs;
+      font-size: $font-size-sm;
     }
   }
 }
