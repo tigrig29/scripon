@@ -66,7 +66,7 @@ export default {
 
 // PC
 .Sidebar {
-  @media (min-width: $--sm) {
+  @media (min-width: $--md) {
     height: calc(100vh - 64px);
     border-right: 2px solid $--color-grey-4;
 

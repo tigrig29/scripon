@@ -1,4 +1,4 @@
-.partical-container{
+.partical-container, .Content {
   h1,
   h2,
   h3,
@@ -6,8 +6,8 @@
   h5,
   h6 {
     color: $color-reverse;
-    line-height: normal;
     word-spacing: 2px;
+    letter-spacing: 2px;
   }
 
   @media(min-width: $--xs){
@@ -18,8 +18,6 @@
   }
   @media (min-width: $--md) {
     max-width: $--md;
-    display: flex;
-    align-items: center;
   }
   @media (min-width: $--lg) {
     max-width: $--lg;
@@ -30,5 +28,17 @@
   margin-left: auto;
   padding-right: $space-base;
   padding-left: $space-base;
+}
 
+.partical-container {
+  @media (min-width: $--md) {
+    display:flex;
+    align-items: center;
+  }
+}
+
+.Content {
+  @media (min-width: $--md) {
+    max-width: 100%;
+  }
 }

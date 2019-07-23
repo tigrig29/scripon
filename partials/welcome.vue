@@ -1,11 +1,11 @@
 <template>
   <div class="Welcome partical-container">
     <div class="Welcome__Title">
-      <scripon-icon width="96px" />
-      <scripon-logo width="240px" />
+      <scripon-icon width="224px" />
+      <div class="spacer"></div>
+      <scripon-logo width="256px" />
     </div>
     <div class="Welcome__Content">
-      <h2 class="Welcome__Content__Text">ノベルゲーム開発支援ツール</h2>
       <p class="Welcome__Content__Text">
         Scripon! は、ノベルゲーム / ADV
         開発における『スクリプト制作』を手助けする Web アプリケーションです。
@@ -56,6 +56,9 @@ export default {
 
 <style lang="scss" scoped>
 .Welcome {
+  &__Title {
+    padding-bottom: $space-lg;
+  }
   &__Content {
     &__Text {
       margin-top: $space-base;
@@ -66,7 +69,7 @@ export default {
       display: flex;
       &__Item {
         margin-right: $space-xl;
-        padding: $space-base $space-xl;
+        padding: $space-base $space-lg;
         border-radius: $space-xs;
         line-height: $space-xl * 2.5;
         font-weight: $font-weight-bold;
@@ -74,9 +77,10 @@ export default {
     }
   }
 
-  @media (min-width: $--sm) {
+  @media (min-width: $--md) {
     &__Title {
       margin-right: $space-xl * 2.5;
+      padding-bottom: 0;
     }
   }
 }

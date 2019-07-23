@@ -26,7 +26,7 @@ export default {
   grid-column-start: 1;
   grid-column-end: 3;
 
-  @media (min-width: $--sm) {
+  @media (min-width: $--md) {
     display: grid;
     grid-template-columns: 512px minmax(256px, auto);
   }

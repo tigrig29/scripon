@@ -37,7 +37,7 @@ export default {
 
 <style lang="scss" scoped>
 .Main {
-  @media (min-width: $--sm) {
+  @media (min-width: $--md) {
     display: grid;
     grid-template-columns: 288px minmax(256px, auto);
   }

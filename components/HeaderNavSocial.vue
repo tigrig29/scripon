@@ -76,7 +76,7 @@
         width: $font-size-base;
         height: 30px;
         fill: currentColor;
-        @media (min-width: $--sm) {
+        @media (min-width: $--md) {
           width: $font-size-lg;
         }
         &--Github {

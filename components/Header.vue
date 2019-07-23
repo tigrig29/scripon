@@ -35,7 +35,7 @@ export default {
   flex-direction: row;
   border-bottom: 2px $--color-grey-4 solid;
   background: $--color-white;
-  @media (min-width: $--sm) {
+  @media (min-width: $--md) {
     height: $header-height-pc;
   }
   // ヘッダー固定用
@@ -46,7 +46,7 @@ export default {
   &__Title {
     display: flex;
     align-items: center;
-    @media (min-width: $--sm) {
+    @media (min-width: $--md) {
       width: 210px;
     }
     &__Text {

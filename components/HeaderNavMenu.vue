@@ -32,7 +32,7 @@
     display: flex;
     align-items: center;
     margin-left: $space-base;
-    @media (min-width: $--sm) {
+    @media (min-width: $--md) {
       margin-left: $space-xl;
     }
     &__Link {
@@ -43,7 +43,7 @@
       &:hover {
         color: $color-primary;
       }
-      @media (min-width: $--sm) {
+      @media (min-width: $--md) {
         font-size: $font-size-base;
       }
     }
