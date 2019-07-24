@@ -1,5 +1,5 @@
 <template>
-  <div class="Content">
+  <div class="App">
     <Config />
     <Converter />
   </div>
@@ -22,7 +22,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.Content {
+.App {
   grid-column-start: 1;
   grid-column-end: 3;
 

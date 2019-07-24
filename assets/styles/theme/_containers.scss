@@ -1,10 +1,5 @@
 .partical-container, .Content {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  h1, h2, h3, h4, h5, h6 {
     color: $color-reverse;
     word-spacing: 2px;
     letter-spacing: 2px;
@@ -31,9 +26,9 @@
 }
 
 .partical-container {
-  @media (min-width: $--md) {
-    display:flex;
-    align-items: center;
+  h1, h2, h3, h4, h5, h6 {
+    font-family: $font-family-header;
+    font-weight: $font-weight-bold;
   }
 }
 

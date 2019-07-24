@@ -16,18 +16,6 @@ export default {
   asyncData({ store }) {
     // サイドバーメニューの非表示化
     store.commit('menu/setEnabled', false)
-  },
-  methods: {
-    getSeparatorPayload(count) {
-      const payload = {}
-
-      if (count % 2 === 0) payload.side = 'upper'
-      else payload.side = 'lower'
-      if (Math.floor(count / 2) % 2 === 0) payload.color = 'grey'
-      else payload.color = 'white'
-
-      return payload
-    }
   }
 }
 </script>
@@ -38,7 +26,7 @@ export default {
   grid-column-end: 3;
 
   &__Item {
-    padding: $space-base * 3 0;
+    padding: $space-base * 5 0;
     border-bottom: solid 2px $--color-grey-5;
     &:nth-child(even) {
       background: $--color-grey-3;

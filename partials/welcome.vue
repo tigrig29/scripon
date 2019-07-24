@@ -1,11 +1,12 @@
 <template>
   <div class="Welcome partical-container">
-    <div class="Welcome__Title">
-      <scripon-icon width="224px" />
-      <div class="spacer"></div>
-      <scripon-logo width="256px" />
+    <div class="Welcome__Icon">
+      <scripon-icon :width="iconWidth" />
     </div>
     <div class="Welcome__Content">
+      <h2 class="Welcome__Content__Text">
+        <scripon-logo :width="logoWidth" />
+      </h2>
       <p class="Welcome__Content__Text">
         Scripon! は、ノベルゲーム / ADV
         開発における『スクリプト制作』を手助けする Web アプリケーションです。
@@ -46,30 +47,51 @@
 import scriponIcon from '@/components/icons/scriponIcon'
 import scriponLogo from '@/components/icons/scriponLogo'
 
+import window from '@/assets/js/window.js'
+
 export default {
   components: {
     scriponIcon,
     scriponLogo
+  },
+  mixins: [window],
+  computed: {
+    iconWidth() {
+      return this.width >= this.BREAKPOINTS.MD ? '256px' : '224px'
+    },
+    logoWidth() {
+      return this.width >= this.BREAKPOINTS.MD ? '256px' : '208px'
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .Welcome {
-  &__Title {
-    padding-bottom: $space-lg;
+  &__Icon {
+    margin-top: -1 * $space-base;
+    padding-bottom: $space-base * 3;
   }
   &__Content {
     &__Text {
       margin-top: $space-base;
       margin-bottom: 0;
+      /deep/ .ScriponLogo {
+        margin: 0;
+        margin-top: -1 * $space-base;
+        margin-left: -1 * $space-base;
+      }
     }
     &__Link {
       margin-top: $space-xl;
       display: flex;
       &__Item {
         margin-right: $space-xl;
-        padding: $space-base $space-lg;
+        padding-top: $space-base - 1;
+        padding-bottom: $space-base + 1;
+        padding-left: $space-lg;
+        padding-right: $space-lg;
+        box-shadow: 5px 5px 3px mix($--color-white, $color-reverse);
         border-radius: $space-xs;
         line-height: $space-xl * 2.5;
         font-weight: $font-weight-bold;
@@ -78,7 +100,9 @@ export default {
   }
 
   @media (min-width: $--md) {
-    &__Title {
+    display: flex;
+    &__Icon {
+      margin-top: $space-base;
       margin-right: $space-xl * 2.5;
       padding-bottom: 0;
     }
