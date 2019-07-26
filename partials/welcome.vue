@@ -16,28 +16,24 @@
         の面倒な作業は、全てツールに任せてしまいましょう！
       </p>
       <div class="Welcome__Content__Link">
-        <div class="Welcome__Content__Link__Wrapper">
-          <nuxt-link
-            to="/converter"
-            class="Welcome__Content__Link__Item link-button color-primary"
-          >
-            <span class="Welcome__Content__Link__Item__Text link-button-text">
-              使ってみる
-            </span>
-          </nuxt-link>
-        </div>
-        <div class="Welcome__Content__Link__Wrapper">
-          <a
-            rel="noopener"
-            target="_blank"
-            href="https://github.com/tigrig29/scripon"
-            class="Welcome__Content__Link__Item link-button"
-          >
-            <span class="Welcome__Content__Link__Item__Text link-button-text">
-              GitHub
-            </span>
-          </a>
-        </div>
+        <nuxt-link
+          to="/converter"
+          class="Welcome__Content__Link__Item link-button color-primary"
+        >
+          <span class="Welcome__Content__Link__Item__Text link-button-text">
+            使ってみる
+          </span>
+        </nuxt-link>
+        <a
+          rel="noopener"
+          target="_blank"
+          href="https://github.com/tigrig29/scripon"
+          class="Welcome__Content__Link__Item link-button"
+        >
+          <span class="Welcome__Content__Link__Item__Text link-button-text">
+            GitHub
+          </span>
+        </a>
       </div>
     </div>
   </div>
@@ -84,7 +80,6 @@ export default {
     }
     &__Link {
       margin-top: $space-xl;
-      display: flex;
       &__Item {
         margin-right: $space-xl;
         padding-top: $space-base - 1;
