@@ -46,24 +46,10 @@
   </div>
 </template>
 
-<script>
-export default {
-  computed: {
-    iconWidth() {
-      return this.width >= this.BREAKPOINTS.MD ? '256px' : '224px'
-    },
-    logoWidth() {
-      return this.width >= this.BREAKPOINTS.MD ? '256px' : '208px'
-    }
-  }
-}
-</script>
-
 <style lang="scss" scoped>
 .Introduction {
   display: grid;
-  grid-template: auto / 1fr;
-  grid-gap: $space-base * 5 0;
+  grid-gap: $space-base * 4 0;
   &__Title {
     &__Wrapper {
       width: 300px;
