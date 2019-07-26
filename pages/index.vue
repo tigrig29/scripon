@@ -3,15 +3,20 @@
     <div class="Home__Item">
       <partWelcome />
     </div>
+    <div class="Home__Item">
+      <partIntroduction />
+    </div>
   </div>
 </template>
 
 <script>
 import partWelcome from '@/partials/welcome'
+import partIntroduction from '@/partials/introduction'
 
 export default {
   components: {
-    partWelcome
+    partWelcome,
+    partIntroduction
   },
   asyncData({ store }) {
     // サイドバーメニューの非表示化
@@ -26,7 +31,9 @@ export default {
   grid-column-end: 3;
 
   &__Item {
-    padding: $space-base * 5 0;
+    padding: 0;
+    padding-top: $space-base * 4.5;
+    padding-bottom: $space-base * 5;
     border-bottom: solid 2px $--color-grey-5;
     &:nth-child(even) {
       background: $--color-grey-3;
