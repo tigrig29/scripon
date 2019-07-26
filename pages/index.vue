@@ -6,17 +6,22 @@
     <div class="Home__Item">
       <partIntroduction />
     </div>
+    <div class="Home__Item">
+      <partDetails />
+    </div>
   </div>
 </template>
 
 <script>
 import partWelcome from '@/partials/welcome'
 import partIntroduction from '@/partials/introduction'
+import partDetails from '@/partials/details'
 
 export default {
   components: {
     partWelcome,
-    partIntroduction
+    partIntroduction,
+    partDetails
   },
   asyncData({ store }) {
     // サイドバーメニューの非表示化
