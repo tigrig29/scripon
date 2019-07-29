@@ -1,47 +1,55 @@
 <template>
   <div class="Introduction partical-container">
-    <!-- タイトル -->
     <div class="Introduction__Title">
       <div class="Introduction__Title__Wrapper">
-        <h1>Scripon! の特徴</h1>
+        <h1>Scripon! の使い方</h1>
       </div>
     </div>
-    <!-- ブロック１ -->
+
+    <!-- 紹介文 -->
     <div class="Introduction__Content">
-      <h2 class="Introduction__Content__Head">手軽な変換</h2>
-      <p class="Introduction__Content__Text">
-        ソフトのダウンロード不要、Web
-        ブラウザさえあれば、パソコンでもスマホでも、いつでもどこでも使用できます。
-      </p>
-      <p class="Introduction__Content__Text">
-        「行末にクリック待ちを置きたいだけ……」などのちょっとした変換処理なら、たった一つの設定だけで簡単かつ高速に変換が可能です。
-      </p>
+      <h2 class="Introduction__Content__Head">様々な設定ができます</h2>
+      <ul class="Introduction__Content__List">
+        <li class="Introduction__Content__List__Item">
+          コメントの削除
+        </li>
+        <li class="Introduction__Content__List__Item">
+          文章の行頭・行末にスクリプトを挿入
+        </li>
+        <li class="Introduction__Content__List__Item">
+          文章の先頭行・最終行にスクリプトを挿入
+        </li>
+        <li class="Introduction__Content__List__Item">
+          正規表現による詳細な置換処理
+        </li>
+      </ul>
+      <div class="Introduction__Content__Link">
+        <nuxt-link
+          to="/converter"
+          class="Introduction__Content__Link__Item link-button color-primary"
+        >
+          <span
+            class="Introduction__Content__Link__Item__Text link-button-text"
+          >
+            設定方法を見る
+          </span>
+        </nuxt-link>
+        <nuxt-link
+          to="/converter"
+          class="Introduction__Content__Link__Item link-button"
+        >
+          <span
+            class="Introduction__Content__Link__Item__Text link-button-text"
+          >
+            サンプルを見る
+          </span>
+        </nuxt-link>
+      </div>
     </div>
-    <!-- ブロック２ -->
-    <div class="Introduction__Content">
-      <h2 class="Introduction__Content__Head">自由度の高い設定</h2>
-      <p class="Introduction__Content__Text">
-        Scripon! には様々な設定項目があります。
-        これらを使いこなせば、全てのシナリオをゲーム動作用スクリプトに変換することができます。
-      </p>
-      <p class="Introduction__Content__Text">
-        また、『正規表現による置換処理』にも対応しているため、
-        複雑な条件での変換、Scripon! の設定には無い変換方法なども、
-        自由に実装することができます。
-      </p>
-    </div>
-    <!-- ブロック３ -->
-    <div class="Introduction__Content">
-      <h2 class="Introduction__Content__Head">
-        様々なエンジン対応
-      </h2>
-      <p class="Introduction__Content__Text">
-        吉里吉里、NScripter、ティラノスクリプト、Light.vn、……
-      </p>
-      <p class="Introduction__Content__Text">
-        Scripon! は、スクリプトエンジンに縛られることがありません。
-        設定次第で、どんなエンジンのスクリプトにも対応することができます。
-      </p>
+
+    <!-- 動作動画 -->
+    <div class="Introduction__Movie">
+      <p class="Introduction__Movie__Item"></p>
     </div>
   </div>
 </template>
@@ -52,7 +60,7 @@
   grid-gap: $space-base * 4 0;
   &__Title {
     &__Wrapper {
-      width: 300px;
+      width: 350px;
       margin: auto;
       h1 {
         margin: 0;
@@ -66,21 +74,43 @@
     &__Head {
       padding-bottom: $space-base;
     }
-    &__Text {
-      margin-top: $space-base;
-      margin-bottom: 0;
+    &__List {
+      &__Item {
+        margin-top: $space-base;
+        margin-bottom: 0;
+      }
+    }
+    &__Link {
+      margin-top: $space-xl;
+      &__Item {
+        margin-right: $space-xl;
+        padding-top: $space-base - 1;
+        padding-bottom: $space-base + 1;
+        padding-left: $space-lg;
+        padding-right: $space-lg;
+        box-shadow: 5px 5px 3px mix($--color-white, $color-reverse);
+        border-radius: $space-xs;
+        line-height: $space-xl * 2.5;
+        font-weight: $font-weight-bold;
+      }
+    }
+  }
+  &__Movie {
+    padding-top: $space-lg;
+    &__Item {
+      // 実際の動画を挿入するまで仮置
+      display: block;
+      width: 100%;
+      padding-top: calc(100% / 16 * 9);
+      background: grey;
     }
   }
 
   // PC
   @media (min-width: $--md) {
-    grid-template-columns: repeat(3, 1fr);
-    grid-column-gap: $space-base * 4;
+    grid-template-columns: 1fr 1fr;
     &__Title {
-      grid-column: 1 / 4;
-    }
-    &__Content {
-      margin-bottom: $space-base;
+      grid-column: 1 / 3;
     }
   }
 }
