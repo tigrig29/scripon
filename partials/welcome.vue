@@ -16,24 +16,12 @@
         の面倒な作業は、全てツールに任せてしまいましょう！
       </p>
       <div class="Welcome__Content__Link">
-        <nuxt-link
-          to="/converter"
-          class="Welcome__Content__Link__Item link-button color-primary"
-        >
-          <span class="Welcome__Content__Link__Item__Text link-button-text">
-            使ってみる
-          </span>
-        </nuxt-link>
-        <a
-          rel="noopener"
-          target="_blank"
-          href="https://github.com/tigrig29/scripon"
-          class="Welcome__Content__Link__Item link-button"
-        >
-          <span class="Welcome__Content__Link__Item__Text link-button-text">
-            GitHub
-          </span>
-        </a>
+        <link-button name="使ってみる" to="/converter" color="primary" />
+        <link-button
+          name="GitHub"
+          to="https://github.com/tigrig29/scripon"
+          is-external
+        />
       </div>
     </div>
   </div>
@@ -42,13 +30,15 @@
 <script>
 import scriponIcon from '@/components/icons/scriponIcon'
 import scriponLogo from '@/components/icons/scriponLogo'
+import LinkButton from '@/components/LinkButton'
 
 import window from '@/assets/js/window.js'
 
 export default {
   components: {
     scriponIcon,
-    scriponLogo
+    scriponLogo,
+    LinkButton
   },
   mixins: [window],
   computed: {
@@ -79,17 +69,10 @@ export default {
       }
     }
     &__Link {
+      display: flex;
       margin-top: $space-xl;
-      &__Item {
+      .LinkButton {
         margin-right: $space-xl;
-        padding-top: $space-base - 1;
-        padding-bottom: $space-base + 1;
-        padding-left: $space-lg;
-        padding-right: $space-lg;
-        box-shadow: 5px 5px 3px mix($--color-white, $color-reverse);
-        border-radius: $space-xs;
-        line-height: $space-xl * 2.5;
-        font-weight: $font-weight-bold;
       }
     }
   }

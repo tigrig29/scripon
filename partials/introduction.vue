@@ -24,26 +24,8 @@
         </li>
       </ul>
       <div class="Introduction__Content__Link">
-        <nuxt-link
-          to="/converter"
-          class="Introduction__Content__Link__Item link-button color-primary"
-        >
-          <span
-            class="Introduction__Content__Link__Item__Text link-button-text"
-          >
-            設定方法を見る
-          </span>
-        </nuxt-link>
-        <nuxt-link
-          to="/converter"
-          class="Introduction__Content__Link__Item link-button"
-        >
-          <span
-            class="Introduction__Content__Link__Item__Text link-button-text"
-          >
-            サンプルを見る
-          </span>
-        </nuxt-link>
+        <link-button name="設定方法を見る" to="/settings" color="primary" />
+        <link-button name="サンプルを見る" to="/example" />
       </div>
     </div>
 
@@ -53,6 +35,16 @@
     </div>
   </div>
 </template>
+
+<script>
+import LinkButton from '@/components/LinkButton'
+
+export default {
+  components: {
+    LinkButton
+  }
+}
+</script>
 
 <style lang="scss" scoped>
 .Introduction {
@@ -81,17 +73,10 @@
       }
     }
     &__Link {
+      display: flex;
       margin-top: $space-xl;
-      &__Item {
+      .LinkButton {
         margin-right: $space-xl;
-        padding-top: $space-base - 1;
-        padding-bottom: $space-base + 1;
-        padding-left: $space-lg;
-        padding-right: $space-lg;
-        box-shadow: 5px 5px 3px mix($--color-white, $color-reverse);
-        border-radius: $space-xs;
-        line-height: $space-xl * 2.5;
-        font-weight: $font-weight-bold;
       }
     }
   }

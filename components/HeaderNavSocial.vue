@@ -46,20 +46,27 @@
       </a>
     </li>
     <li class="Social__Item">
-      <a
-        aria-label="Youtube"
-        rel="noopener"
-        target="_blank"
-        href="https://ofuse.me/#users/11838"
-        class="Social__Item__Support link-button color-green"
-      >
-        <span class="Social__Item__Support__Text link-button-text">
-          支援する
-        </span>
-      </a>
+      <link-button
+        name="支援する"
+        to="https://ofuse.me/#users/11838"
+        is-external
+        padding="small"
+        :shadow="false"
+        color="green"
+      />
     </li>
   </ul>
 </template>
+
+<script>
+import LinkButton from '@/components/LinkButton'
+
+export default {
+  components: {
+    LinkButton
+  }
+}
+</script>
 
 <style lang="scss" scoped>
 .Social {
@@ -89,11 +96,6 @@
           color: $--color-youtube;
         }
       }
-    }
-    &__Support {
-      padding: $space-xs $space-sm;
-      border-radius: $space-xs;
-      font-size: $font-size-sm;
     }
   }
 }
