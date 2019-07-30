@@ -24,7 +24,7 @@
         </li>
       </ul>
       <div class="Introduction__Content__Link">
-        <link-button name="設定方法を見る" to="/settings" color="primary" />
+        <link-button name="設定ガイドを見る" to="/guide" color="primary" />
         <link-button name="サンプルを見る" to="/example" />
       </div>
     </div>
