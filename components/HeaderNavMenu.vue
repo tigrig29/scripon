@@ -9,12 +9,12 @@
       <nuxt-link class="Menu__Item__Link" to="/examples">
         使用例
       </nuxt-link>
-    </li>
+    </li> -->
     <li class="Menu__Item">
       <nuxt-link class="Menu__Item__Link" to="/converter">
         コンバーター
       </nuxt-link>
-    </li> -->
+    </li>
     <li class="Menu__Item">
       <nuxt-link class="Menu__Item__Link" to="/history">
         更新履歴
@@ -32,7 +32,7 @@
     display: flex;
     align-items: center;
     margin-left: $space-base;
-    @media (min-width: $--sm) {
+    @media (min-width: $--md) {
       margin-left: $space-xl;
     }
     &__Link {
@@ -43,7 +43,7 @@
       &:hover {
         color: $color-primary;
       }
-      @media (min-width: $--sm) {
+      @media (min-width: $--md) {
         font-size: $font-size-base;
       }
     }

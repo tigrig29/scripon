@@ -2,8 +2,8 @@
   <div>
     <Header :title="title" />
     <main class="Main">
-      <Hamburger v-if="$route.path !== '/'" />
-      <Sidebar v-if="$route.path !== '/'" />
+      <Hamburger v-if="$store.state.menu.enabled" />
+      <Sidebar v-if="$store.state.menu.enabled" />
       <nuxt />
     </main>
   </div>
@@ -37,7 +37,7 @@ export default {
 
 <style lang="scss" scoped>
 .Main {
-  @media (min-width: $--sm) {
+  @media (min-width: $--md) {
     display: grid;
     grid-template-columns: 288px minmax(256px, auto);
   }

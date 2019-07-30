@@ -46,20 +46,27 @@
       </a>
     </li>
     <li class="Social__Item">
-      <a
-        aria-label="Youtube"
-        rel="noopener"
-        target="_blank"
-        href="https://ofuse.me/#users/11838"
-        class="Social__Item__Link Social__Item__Link__Support"
-      >
-        <span class="Social__Item__Link__Support__Text">
-          支援する
-        </span>
-      </a>
+      <link-button
+        name="支援する"
+        to="https://ofuse.me/#users/11838"
+        is-external
+        padding="small"
+        :shadow="false"
+        color="green"
+      />
     </li>
   </ul>
 </template>
+
+<script>
+import LinkButton from '@/components/LinkButton'
+
+export default {
+  components: {
+    LinkButton
+  }
+}
+</script>
 
 <style lang="scss" scoped>
 .Social {
@@ -76,7 +83,7 @@
         width: $font-size-base;
         height: 30px;
         fill: currentColor;
-        @media (min-width: $--sm) {
+        @media (min-width: $--md) {
           width: $font-size-lg;
         }
         &--Github {
@@ -87,28 +94,6 @@
         }
         &--Youtube {
           color: $--color-youtube;
-        }
-      }
-      &__Support {
-        transition: background 0.15s;
-        padding: 4px 8px;
-        background: mix(
-          $--color-green-5,
-          mix($color-primary, $--color-green-5)
-        );
-        border: none;
-        border-radius: 4px;
-        text-decoration: none;
-        &:hover {
-          background: mix(
-            $--color-green-5,
-            mix($color-reverse, $--color-green-5)
-          );
-        }
-        &__Text {
-          font-size: $font-size-sm;
-          color: $--color-white;
-          white-space: nowrap;
         }
       }
     }

@@ -1,20 +1,22 @@
 <template>
   <header class="Header sticky">
-    <nuxt-link to="/" class="Header__Logo">
-      <scripon-logo />
-      <h1 v-if="$route.path === '/'" class="Header__Logo__Text">{{ title }}</h1>
+    <nuxt-link to="/" class="Header__Title">
+      <scripon-title />
+      <h1 class="Header__Title__Text">
+        {{ title }}
+      </h1>
     </nuxt-link>
     <HeaderNav />
   </header>
 </template>
 
 <script>
-import scriponLogo from '@/components/icons/scriponLogo'
+import scriponTitle from '@/components/icons/scriponTitle'
 import HeaderNav from '@/components/HeaderNav'
 
 export default {
   components: {
-    scriponLogo,
+    scriponTitle,
     HeaderNav
   },
   props: {
@@ -33,7 +35,7 @@ export default {
   flex-direction: row;
   border-bottom: 2px $--color-grey-4 solid;
   background: $--color-white;
-  @media (min-width: $--sm) {
+  @media (min-width: $--md) {
     height: $header-height-pc;
   }
   // ヘッダー固定用
@@ -41,10 +43,10 @@ export default {
     top: 0;
   }
   // ロゴエリア
-  &__Logo {
+  &__Title {
     display: flex;
     align-items: center;
-    @media (min-width: $--sm) {
+    @media (min-width: $--md) {
       width: 210px;
     }
     &__Text {
