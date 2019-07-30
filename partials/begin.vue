@@ -14,7 +14,7 @@
       />
     </div>
     <div class="Begin__Link">
-      <link-button name="設定方法を見る" to="/settings" />
+      <link-button name="設定ガイドを見る" to="/guide" />
     </div>
     <div class="Begin__Link">
       <link-button name="使用例を見る" to="/example" />
