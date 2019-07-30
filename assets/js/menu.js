@@ -24,13 +24,17 @@ export default {
           summary.dir.replace('content/json', '') +
           '/' +
           summary.base.replace('.json', '')
-        menuItems.push({
-          id: targetPath,
-          title: summary.menuTitle,
-          order: summary.menuOrder,
-          link: targetPath,
-          innerList: {}
-        })
+
+        // menuTitle を持たない記事は、メニューに載せない
+        if (summary.menuTitle) {
+          menuItems.push({
+            id: targetPath,
+            title: summary.menuTitle,
+            order: summary.menuOrder,
+            link: targetPath,
+            innerList: {}
+          })
+        }
       }
 
       // menuOrder 順に並べ替える
