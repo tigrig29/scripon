@@ -27,10 +27,18 @@ export default {
         menuItems.push({
           id: targetPath,
           title: summary.menuTitle,
+          order: summary.menuOrder,
           link: targetPath,
           innerList: {}
         })
       }
+
+      // menuOrder 順に並べ替える
+      menuItems.sort((a, b) => {
+        if (a.order > b.order) return 1
+        if (a.order < b.order) return -1
+        else return 0
+      })
 
       return menuItems
     }
