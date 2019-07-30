@@ -28,7 +28,7 @@ export default {
   display: flex;
   flex: 1;
   overflow-x: hidden;
-  @media (min-width: $--sm) {
+  @media (min-width: $--md) {
     height: $header-height-pc;
   }
   &__Menu {

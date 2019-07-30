@@ -41,7 +41,7 @@ export default {
 
 // PC
 .Hamburger {
-  @media (min-width: $--sm) {
+  @media (min-width: $--md) {
     display: none;
   }
 }

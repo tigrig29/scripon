@@ -1,0 +1,39 @@
+a.link-button{
+  text-decoration: none;
+}
+.link-button {
+  transition: background 0.15s;
+  border: none;
+  &-text {
+    white-space: nowrap;
+  }
+  
+  color: $color-reverse;
+  background: $--color-grey-4;
+  &:hover {
+    color: $color-reverse;
+    background: $--color-grey-5;
+  }
+
+  &.color-green {
+    color: $--color-white;
+    background: mix($--color-green-5, mix($color-primary, $--color-green-5));
+    &:hover {
+      background: mix(
+        $--color-green-5,
+        mix($color-reverse, $--color-green-5)
+      );
+    }
+  }
+
+  &.color-primary {
+    color: $--color-white;
+    background: $color-primary;
+    &:hover {
+      background: mix(
+        $color-primary,
+        mix($color-reverse, $color-primary)
+      );
+    }
+  }
+}
