@@ -14,7 +14,7 @@
     "dev-debug": "yarn convmd-init & node --inspect-brk=9229 node_modules/nuxt/bin/nuxt",
     "rm-content-json": "rmdir content\\json /s /q",
     "convmd": "processmd \"content/markdown/**/*.md\" --outputDir content/json --summaryOutput content/json/summary.json",
-    "convmd-init": "yarn rm-content-json & yarn rm-content-json"
+    "convmd-init": "yarn rm-content-json & yarn convmd"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.18",
