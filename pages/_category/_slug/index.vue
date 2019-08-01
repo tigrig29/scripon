@@ -40,9 +40,19 @@ export default {
 
 <style lang="scss" scoped>
 .Content /deep/ {
-  padding: $space-base;
+  padding-left: $space-xl;
+  padding-right: $space-xl;
   h2 {
-    margin-top: $space-xl;
+    margin-top: $space-base * 4;
+    padding-bottom: $space-base;
+    border-bottom: solid 1px $--color-grey-5;
+  }
+  li {
+    margin-top: $space-base;
+  }
+  img {
+    width: 100%;
+    height: auto;
   }
 }
 </style>

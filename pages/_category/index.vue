@@ -56,9 +56,13 @@ export default {
 
 <style lang="scss" scoped>
 .Content /deep/ {
-  padding: $space-base;
+  padding-left: $space-xl;
+  padding-right: $space-xl;
   h2 {
     margin-top: $space-xl;
+  }
+  li {
+    margin-top: $space-sm;
   }
 }
 </style>
