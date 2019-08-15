@@ -31,7 +31,11 @@
 
     <!-- 動作動画 -->
     <div class="Introduction__Movie">
-      <p class="Introduction__Movie__Item"></p>
+      <video
+        class="Introduction__Movie__Item"
+        src="~/assets/movies/scripon-sample.mp4"
+        controls
+      ></video>
     </div>
   </div>
 </template>
@@ -83,11 +87,8 @@ export default {
   &__Movie {
     padding-top: $space-lg;
     &__Item {
-      // 実際の動画を挿入するまで仮置
-      display: block;
       width: 100%;
-      padding-top: calc(100% / 16 * 9);
-      background: grey;
+      height: auto;
     }
   }
 
