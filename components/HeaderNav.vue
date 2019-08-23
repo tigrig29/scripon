@@ -27,7 +27,7 @@ export default {
   padding: 0;
   display: flex;
   flex: 1;
-  overflow-x: hidden;
+  overflow: hidden;
   @media (min-width: $--md) {
     height: $header-height-pc;
   }
