@@ -31,9 +31,10 @@ export default {
 <style lang="scss" scoped>
 // SP
 .Sidebar {
-  top: 64px;
+  top: 56px;
   position: sticky;
   padding: $space-lg;
+  padding-right: $space-xl * 2;
   background: white;
   z-index: 10;
   border-bottom: 2px solid $--color-grey-4;
