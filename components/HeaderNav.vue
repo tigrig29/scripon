@@ -2,7 +2,7 @@
   <nav
     class="Nav"
     :class="{
-      'Sidebar--Hidden': !$store.state.navigation.visible
+      'Nav--Hidden': !$store.state.navigation.visible
     }"
   >
     <div class="Nav__Menu">
@@ -60,7 +60,7 @@ export default {
       margin-left: $space-base;
     }
     &--Hidden {
-      display: block;
+      display: flex;
     }
   }
 }
