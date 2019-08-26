@@ -54,5 +54,12 @@ export default {
     width: 100%;
     height: auto;
   }
+
+  // PC
+  @media (min-width: $--md) {
+    img {
+      max-width: $--sm;
+    }
+  }
 }
 </style>
