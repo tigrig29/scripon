@@ -1,10 +1,5 @@
 <template>
   <ul class="Menu">
-    <!-- <li class="Menu__Item">
-      <nuxt-link class="Menu__Item__Link" to="/examples">
-        使用例
-      </nuxt-link>
-    </li> -->
     <li class="Menu__Item">
       <nuxt-link class="Menu__Item__Link" to="/converter">
         コンバーター
@@ -13,6 +8,11 @@
     <li class="Menu__Item">
       <nuxt-link class="Menu__Item__Link" to="/guide">
         ガイド
+      </nuxt-link>
+    </li>
+    <li class="Menu__Item">
+      <nuxt-link class="Menu__Item__Link" to="/examples">
+        活用サンプル
       </nuxt-link>
     </li>
     <li class="Menu__Item">
