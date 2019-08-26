@@ -41,6 +41,7 @@ export default {
   // ヘッダー固定用
   &.sticky {
     top: 0;
+    z-index: 30;
   }
   // ロゴエリア
   &__Title {
