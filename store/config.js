@@ -1,4 +1,5 @@
 export const state = () => ({
+  visible: true,
   template: {
     insert: {
       id: '',
@@ -70,6 +71,21 @@ export const state = () => ({
 })
 
 export const mutations = {
+  /**
+   * コンフィグ自体の表示/非表示切り替え
+   * @param {Object} state $store.state
+   */
+  toggleVisible(state) {
+    state.visible = !state.visible
+  },
+  /**
+   * コンフィグ自体の表示/非表示設定
+   * @param {Object} state $store.state
+   * @param {Object} visible 表示:true、非表示:false
+   */
+  setVisible(state, visible) {
+    state.visible = visible
+  },
   /**
    * 設定の有効/無効化
    * @param {Object} state $store.state
