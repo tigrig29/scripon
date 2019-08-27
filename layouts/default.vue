@@ -14,22 +14,15 @@ import Header from '@/components/Header.vue'
 import Sidebar from '@/components/Sidebar.vue'
 import Hamburger from '@/components/Hamburger.vue'
 
-const title = 'Scripon!'
-
 export default {
-  head() {
-    return {
-      title: `${title} | ノベルゲーム制作のスクリプト作業を簡単に！`
-    }
-  },
   components: {
     Header,
     Sidebar,
     Hamburger
   },
-  computed: {
-    title() {
-      return title
+  data() {
+    return {
+      title: 'Scripon!'
     }
   }
 }
