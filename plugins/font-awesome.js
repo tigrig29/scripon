@@ -5,11 +5,20 @@ import {
   faAngleDoubleDown,
   faBars,
   faTimes,
-  faEllipsisV
+  faEllipsisV,
+  faChevronUp,
+  faChevronDown
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faAngleDoubleDown, faBars, faTimes, faEllipsisV)
+library.add(
+  faAngleDoubleDown,
+  faBars,
+  faTimes,
+  faEllipsisV,
+  faChevronUp,
+  faChevronDown
+)
 
 Vue.component('fa-icon', FontAwesomeIcon)
 
