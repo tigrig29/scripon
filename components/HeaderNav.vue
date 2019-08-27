@@ -1,5 +1,10 @@
 <template>
-  <nav class="Nav">
+  <nav
+    class="Nav"
+    :class="{
+      'Nav--Hidden': !$store.state.navigation.visible
+    }"
+  >
     <div class="Nav__Menu">
       <nuxt-header-nav-menu />
     </div>
@@ -23,24 +28,39 @@ export default {
 
 <style lang="scss" scoped>
 .Nav {
-  height: $header-height-sp;
+  left: 0px;
+  top: 56px;
+  width: 100%;
+  height: calc(100vh - 56px);
   padding: 0;
-  display: flex;
-  flex: 1;
-  overflow: hidden;
+  position: absolute;
+  background: $--color-white;
+  z-index: 30;
+  &--Hidden {
+    display: none;
+  }
+}
+
+// PC
+.Nav {
   @media (min-width: $--md) {
     height: $header-height-pc;
-  }
-  &__Menu {
+    padding: 0;
     display: flex;
-  }
-  &__Social {
-    display: flex;
-    justify-content: flex-end;
     flex: 1;
-    margin-left: $space-base;
-    @media (max-width: $--xs) {
-      display: none;
+    position: static;
+    background: transparent;
+    &__Menu {
+      display: flex;
+    }
+    &__Social {
+      display: flex;
+      justify-content: flex-end;
+      flex: 1;
+      margin-left: $space-base;
+    }
+    &--Hidden {
+      display: flex;
     }
   }
 }
