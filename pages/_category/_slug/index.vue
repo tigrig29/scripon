@@ -11,6 +11,18 @@ import { fileMap, sourceFileArray } from '@/content/json/summary.json'
 import menuBuilder from '@/assets/js/menu'
 
 export default {
+  head() {
+    return {
+      title: `${this.title} - ${this.categoryTitle}`,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.description
+        }
+      ]
+    }
+  },
   validate({ params }) {
     return sourceFileArray.includes(
       `content/markdown/${params.category}/${params.slug}.md`
@@ -30,9 +42,13 @@ export default {
     )
     store.commit('menu/setItems', menuItems)
 
+    // タイトル用に、カテゴリページのタイトルも取得する
+    const categoryTitle = require(`~/content/json/${params.category}.json`)
+      .title
+
     // 記事用コンテンツのインポート
     return Object.assign(
-      {},
+      { categoryTitle },
       require(`~/content/json/${params.category}/${params.slug}.json`),
       { params }
     )

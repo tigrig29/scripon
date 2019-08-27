@@ -132,14 +132,13 @@ export default {
     right: 0;
     margin: $space-sm;
     position: absolute;
-    background: none;
+    background: $--color-white;
     border: 2px solid $color-secondary;
     color: $color-secondary;
     font-size: $font-size-sm;
     font-weight: $font-weight-bold;
     &:hover {
-      background: rgba($color-secondary, 0.5);
-      color: $--color-white;
+      background: mix($color-primary, $--color-white, 50%);
     }
   }
   &__Textarea {

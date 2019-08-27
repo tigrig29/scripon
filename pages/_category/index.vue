@@ -29,6 +29,18 @@ import { fileMap, sourceFileArray } from '@/content/json/summary.json'
 import menuBuilder from '@/assets/js/menu'
 
 export default {
+  head() {
+    return {
+      title: this.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.description
+        }
+      ]
+    }
+  },
   validate({ params }) {
     return sourceFileArray.includes(`content/markdown/${params.category}.md`)
   },

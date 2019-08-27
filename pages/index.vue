@@ -22,6 +22,11 @@ import partDetails from '@/partials/details'
 import partBegin from '@/partials/begin'
 
 export default {
+  head() {
+    return {
+      title: 'Scripon! - ノベルゲーム制作のスクリプト作業を簡単に！'
+    }
+  },
   components: {
     partWelcome,
     partIntroduction,

@@ -12,6 +12,20 @@ import Converter from '@/components/Converter.vue'
 import Config from '@/components/Config.vue'
 
 export default {
+  head() {
+    return {
+      title: 'Scripon! コンバーター',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            'Scripon コンバーターは、シナリオテキストからスクリプトへの変換作業を手助けします。' +
+            'シナリオテキストを入力して、各種設定を行い、スクリプト製作作業をしてみましょう！'
+        }
+      ]
+    }
+  },
   components: {
     ConfigCloser,
     Converter,
