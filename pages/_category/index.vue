@@ -33,6 +33,8 @@ export default {
     return sourceFileArray.includes(`content/markdown/${params.category}.md`)
   },
   asyncData({ store, params }) {
+    // グローバルナビゲーションの非表示化
+    store.commit('navigation/setVisible', false)
     // メニューの非表示化（SP用）
     store.commit('menu/setVisible', false)
 
@@ -56,9 +58,13 @@ export default {
 
 <style lang="scss" scoped>
 .Content /deep/ {
-  padding: $space-base;
+  padding-left: $space-xl;
+  padding-right: $space-xl;
   h2 {
     margin-top: $space-xl;
+  }
+  li {
+    margin-top: $space-sm;
   }
 }
 </style>
