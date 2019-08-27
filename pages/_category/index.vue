@@ -33,6 +33,8 @@ export default {
     return sourceFileArray.includes(`content/markdown/${params.category}.md`)
   },
   asyncData({ store, params }) {
+    // グローバルナビゲーションの非表示化
+    store.commit('navigation/setVisible', false)
     // メニューの非表示化（SP用）
     store.commit('menu/setVisible', false)
 

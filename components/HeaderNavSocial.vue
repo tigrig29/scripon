@@ -71,21 +71,17 @@ export default {
 <style lang="scss" scoped>
 .Social {
   display: flex;
+  justify-content: space-around;
+  margin: 0 $space-xl;
   list-style: none;
-  margin-right: $space-sm;
-  padding: 0;
   &__Item {
     display: flex;
     align-items: center;
-    margin-left: $space-base;
     &__Link {
       &__Icon {
-        width: $font-size-base;
+        width: $font-size-xl;
         height: 30px;
         fill: currentColor;
-        @media (min-width: $--md) {
-          width: $font-size-lg;
-        }
         &--Github {
           color: $--color-github;
         }
@@ -94,6 +90,24 @@ export default {
         }
         &--Youtube {
           color: $--color-youtube;
+        }
+      }
+    }
+  }
+}
+
+// PC
+.Social {
+  @media (min-width: $--md) {
+    justify-content: flex-start;
+    margin: 0;
+    margin-right: $space-sm;
+    margin-bottom: 1rem;
+    &__Item {
+      margin-left: $space-base;
+      &__Link {
+        &__Icon {
+          width: $font-size-lg;
         }
       }
     }

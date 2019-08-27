@@ -6,17 +6,20 @@
         {{ title }}
       </h1>
     </nuxt-link>
+    <NavHamburger />
     <HeaderNav />
   </header>
 </template>
 
 <script>
 import scriponTitle from '@/components/icons/scriponTitle'
+import NavHamburger from '@/components/NavHamburger'
 import HeaderNav from '@/components/HeaderNav'
 
 export default {
   components: {
     scriponTitle,
+    NavHamburger,
     HeaderNav
   },
   props: {
@@ -41,6 +44,7 @@ export default {
   // ヘッダー固定用
   &.sticky {
     top: 0;
+    z-index: 30;
   }
   // ロゴエリア
   &__Title {

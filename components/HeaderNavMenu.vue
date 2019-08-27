@@ -25,31 +25,38 @@
 
 <style lang="scss" scoped>
 .Menu {
-  display: flex;
   list-style: none;
   padding: 0;
   &__Item {
-    display: flex;
-    align-items: center;
-    margin-left: $space-base;
-    @media (min-width: $--md) {
-      margin-left: $space-xl;
-    }
+    padding: $space-lg 0;
+    border-bottom: solid 1px $--color-grey-4;
+    text-align: center;
     &__Link {
-      font-size: $font-size-sm;
       color: $color-reverse;
       text-decoration: none;
       white-space: nowrap;
+      font-size: $font-size-base;
       &:hover {
         color: $color-primary;
-      }
-      @media (min-width: $--md) {
-        font-size: $font-size-base;
       }
     }
     .nuxt-link-active,
     .nuxt-link-active:hover {
       color: $color-primary;
+    }
+  }
+}
+
+// PC
+.Menu {
+  @media (min-width: $--md) {
+    display: flex;
+    &__Item {
+      display: flex;
+      align-items: center;
+      margin-left: $space-xl;
+      padding: 0;
+      border-bottom: none;
     }
   }
 }

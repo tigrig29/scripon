@@ -15,6 +15,8 @@ export default {
     Config
   },
   asyncData({ store }) {
+    // グローバルナビゲーションの非表示化
+    store.commit('navigation/setVisible', false)
     // サイドバーメニューの非表示化
     store.commit('menu/setEnabled', false)
   }
